@@ -14,7 +14,6 @@ AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     init_boot \
-    odm \
     product \
     recovery \
     system \
@@ -24,7 +23,8 @@ AB_OTA_PARTITIONS += \
     vbmeta_system \
     vendor \
     vendor_boot \
-    vendor_dlkm
+    vendor_dlkm \
+    #odm 
 
 # Architecture
 TARGET_ARCH := arm64
@@ -120,12 +120,13 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 100663296 #0x6000000
 
 BOARD_SUPER_PARTITION_SIZE := 10737418240 #0x280000000
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_dlkm system_ext vendor vendor_dlkm
+#BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_dlkm system_ext vendor vendor_dlkm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_dlkm system_ext vendor vendor_dlkm
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 10733223936 #0x27fc00000
 
 BOARD_FLASH_BLOCK_SIZE := 262144
 
-BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+#BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -133,7 +134,7 @@ BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
 
-TARGET_COPY_OUT_ODM := odm
+#TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
@@ -144,7 +145,7 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 TARGET_POWERSHARE_NODE := /sys/class/qcom-battery/reverse_chg_mode
 
 # Properties
-TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
+#TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 
@@ -202,7 +203,7 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 5
 BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+#BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
 # Vibrator
 #SOONG_CONFIG_NAMESPACES += NUBIA_VIBRATOR
