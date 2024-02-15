@@ -208,13 +208,14 @@ KERNEL_PREBUILT_DIR := device/nubia/nx729j-kernel
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0.vendor \
+    android.hardware.keymaster@4.1.vendor \
     libkeymaster_messages.vendor
 
 # Keymint
 PRODUCT_PACKAGES += \
     android.hardware.hardware_keystore.xml \
     android.hardware.security.keymint-V2-ndk.vendor \
+    android.hardware.security.rkp-V3-ndk.vendor \
     android.hardware.security.secureclock-V1-ndk.vendor \
     android.hardware.security.sharedsecret-V1-ndk.vendor
 
