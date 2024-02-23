@@ -2101,9 +2101,9 @@ vendor/firmware/vpu33_4v.mbn
 vendor/firmware/vpu33_4v_unsigned.mbn
 
 # Vibrator
-odm/etc/aac_richtap.config
+odm/etc/aac_richtap.config:vendor/etc/aac_richtap.config
 vendor/bin/hw/vendor.qti.hardware.vibrator.service
-vendor/etc/init/vendor.qti.hardware.vibrator.service.rc
+vendor/etc/init/vendor.qti.hardware.vibrator.service.rc|13fdb655607e1db37b6a39758ad456ff0f5a4d52
 vendor/etc/vintf/manifest/vendor.qti.hardware.vibrator.service.xml
 vendor/lib64/hw/vibrator.default.so
 vendor/lib64/libaacvibrator.so
