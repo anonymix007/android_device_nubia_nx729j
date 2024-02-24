@@ -491,6 +491,6 @@
         <fqname>@1.0::IQspmhal/default</fqname>
     </hal>
     <sepolicy>
-        <version>33.0</version>
+        <version>34.0</version>
     </sepolicy>
 </manifest>
