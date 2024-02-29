@@ -1,0 +1,243 @@
+import /vendor/etc/init/hw/init.vendor.usb.rc
+import /vendor/etc/init/hw/init.qcom.factory.rc
+
+import /vendor/etc/init/hw/init.fingerprint.gf95xx.rc
+import /vendor/etc/init/hw/init.fingerprint.fpc.rc
+import /vendor/etc/init/hw/init.fingerprint.silead.rc
+
+on early-init
+    mount tracefs tracefs /sys/kernel/tracing
+    chmod 0755 /sys/kernel/tracing
+
+on early-boot
+    chown system system /mnt/vendor/persist/data/pfm/licenses
+    chmod 0775 /mnt/vendor/persist/data/pfm/licenses
+    chown system system /mnt/vendor/persist/data/pfm/licenses/ZTE_Widevine_2020_10_12.pfm
+    chmod 0644 /mnt/vendor/persist/data/pfm/licenses/ZTE_Widevine_2020_10_12.pfm
+    copy vendor/etc/898-898-no-exp-2574099444.pfm /mnt/vendor/persist/data/pfm/licenses/898-898-no-exp-2574099444.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/898-898-no-exp-2574099444.pfm
+    chmod 0644 /mnt/vendor/persist/data/pfm/licenses/898-898-no-exp-2574099444.pfm
+    copy vendor/etc/QWESAttestationCert.pfm /mnt/vendor/persist/data/pfm/licenses/QWESAttestationCert.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/QWESAttestationCert.pfm
+    chmod 0644 /mnt/vendor/persist/data/pfm/licenses/QWESAttestationCert.pfm
+    copy vendor/etc/oem_4_prj_ZTELTM8550_1663777224350.pfm /mnt/vendor/persist/data/pfm/licenses/oem_4_prj_ZTELTM8550_1663777224350.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/oem_4_prj_ZTELTM8550_1663777224350.pfm
+    chmod 0644 /mnt/vendor/persist/data/pfm/licenses/oem_4_prj_ZTELTM8550_1663777224350.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/store_0
+    chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_0
+    chown system system /mnt/vendor/persist/data/pfm/licenses/store_1
+    chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_1
+    chown system system /mnt/vendor/persist/data/pfm/licenses/store_2
+    chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_2
+    chown system system /mnt/vendor/persist/data/pfm/licenses/store_3
+    chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_3
+    chown system system /mnt/vendor/persist/data/pfm/licenses/store_4
+    chmod 0664 /mnt/vendor/persist/data/pfm/licenses/store_4
+    mkdir /mnt/vendor/persist/data/pfm/qxwz 0775 system system
+    copy vendor/etc/account.dat /mnt/vendor/persist/data/pfm/qxwz/account.dat
+    chown system system /mnt/vendor/persist/data/pfm/qxwz/account.dat
+    chmod 0664 /mnt/vendor/persist/data/pfm/qxwz/account.dat
+
+on boot
+    chown system system /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/brightness
+    chown system system /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/state
+    chown system system /sys/class/leds/vibrator/activate_mode
+    chown system system /sys/class/leds/vibrator/rtp
+    chown system system /sys/class/leds/vibrator/seq
+    chown system system /sys/class/leds/vibrator/loop
+    chown system system /sys/class/leds/vibrator/index
+    chown system system /sys/class/leds/vibrator/duration_aw
+    chown system system /sys/class/leds/vibrator/activate_aw
+    chown system system /sys/class/leds/vibrator/cont_save
+    chown system system /sys/class/leds/vibrator/f0_save
+    chown system system /sys/class/leds/vibrator/cali
+    chown system system /sys/class/leds/vibrator/f0
+
+    chown system system /sys/class/leds/vibrator_r/activate
+    chown system system /sys/class/leds/vibrator_r/brightness
+    chown system system /sys/class/leds/vibrator_r/duration
+    chown system system /sys/class/leds/vibrator_r/activate_mode
+    chown system system /sys/class/leds/vibrator_r/index
+    chown system system /sys/class/leds/vibrator_r/dual_activate
+    chown system system /sys/class/leds/vibrator_r/dual_mode
+    chown system system /sys/class/leds/vibrator_r/dual_index
+    chown system system /sys/class/leds/vibrator_r/dual_duration
+    chown system system /sys/class/leds/vibrator_r/haptic_audio
+    chown system system /sys/class/leds/vibrator_r/awrw
+    chown system system /sys/class/leds/vibrator_r/cont_save
+    chown system system /sys/class/leds/vibrator_r/f0_save
+    chown system system /sys/class/leds/vibrator_r/cali
+    chown system system /sys/class/leds/vibrator_r/f0
+
+    chown system system /sys/class/leds/vibrator_l/activate
+    chown system system /sys/class/leds/vibrator_l/brightness
+    chown system system /sys/class/leds/vibrator_l/duration
+    chown system system /sys/class/leds/vibrator_l/activate_mode
+    chown system system /sys/class/leds/vibrator_l/index
+    chown system system /sys/class/leds/vibrator_l/dual_activate
+    chown system system /sys/class/leds/vibrator_l/dual_duration
+    chown system system /sys/class/leds/vibrator_l/dual_index
+    chown system system /sys/class/leds/vibrator_l/dual_mode
+    chown system system /sys/class/leds/vibrator_l/haptic_audio
+    chown system system /sys/class/leds/vibrator_l/awrw
+    chown system system /sys/class/leds/vibrator_l/cont_save
+    chown system system /sys/class/leds/vibrator_l/f0_save
+    chown system system /sys/class/leds/vibrator_l/cali
+    chown system system /sys/class/leds/vibrator_l/f0
+
+    chmod 0664 /sys/class/leds/vibrator/state
+    chmod 0664 /sys/class/leds/vibrator/duration
+    chmod 0664 /sys/class/leds/vibrator/brightness
+    chmod 0664 /sys/class/leds/vibrator/activate
+    chmod 0664 /sys/class/leds/vibrator/brightness_aw
+    chmod 0664 /sys/class/leds/vibrator/activate_aw
+    chmod 0664 /sys/class/leds/vibrator/cont_save
+    chmod 0664 /sys/class/leds/vibrator/f0_save
+    chmod 0664 /sys/class/leds/vibrator/cali
+    chmod 0664 /sys/class/leds/vibrator/f0
+
+    chmod 0664 /sys/class/leds/vibrator/activate_mode
+    chmod 0664 /sys/class/leds/vibrator/rtp
+    chmod 0664 /sys/class/leds/vibrator/seq
+    chmod 0664 /sys/class/leds/vibrator/loop
+    chmod 0664 /sys/class/leds/vibrator/index
+
+    chmod 0664 /sys/class/leds/vibrator_r/activate
+    chmod 0664 /sys/class/leds/vibrator_r/brightness
+    chmod 0664 /sys/class/leds/vibrator_r/duration
+    chmod 0664 /sys/class/leds/vibrator_r/activate_mode
+    chmod 0664 /sys/class/leds/vibrator_r/index
+    chmod 0664 /sys/class/leds/vibrator_r/dual_activate
+    chmod 0664 /sys/class/leds/vibrator_r/dual_duration
+    chmod 0664 /sys/class/leds/vibrator_r/dual_index
+    chmod 0664 /sys/class/leds/vibrator_r/dual_mode
+    chmod 0666 /sys/class/leds/vibrator_r/haptic_audio
+    chmod 0777 /sys/class/leds/vibrator_r/awrw
+    chmod 0664 /sys/class/leds/vibrator_r/cont_save
+    chmod 0664 /sys/class/leds/vibrator_r/f0_save
+    chmod 0664 /sys/class/leds/vibrator_r/cali
+    chmod 0664 /sys/class/leds/vibrator_r/f0
+
+    chmod 0664 /sys/class/leds/vibrator_l/activate
+    chmod 0664 /sys/class/leds/vibrator_l/brightness
+    chmod 0664 /sys/class/leds/vibrator_l/duration
+    chmod 0664 /sys/class/leds/vibrator_l/activate_mode
+    chmod 0664 /sys/class/leds/vibrator_l/index
+    chmod 0664 /sys/class/leds/vibrator_l/dual_activate
+    chmod 0664 /sys/class/leds/vibrator_l/dual_duration
+    chmod 0664 /sys/class/leds/vibrator_l/dual_index
+    chmod 0664 /sys/class/leds/vibrator_l/dual_mode
+    chmod 0666 /sys/class/leds/vibrator_l/haptic_audio
+    chmod 0777 /sys/class/leds/vibrator_l/awrw
+    chmod 0664 /sys/class/leds/vibrator_l/cont_save
+    chmod 0664 /sys/class/leds/vibrator_l/f0_save
+    chmod 0664 /sys/class/leds/vibrator_l/cali
+    chmod 0664 /sys/class/leds/vibrator_l/f0
+
+# msm specific files that need to be created on /data
+on post-fs-data
+    #Create directory for qxwz for gps precise location
+    mkdir /data/vendor/qxwz 0770 gps system
+
+    # Nubia add start
+    chown system system /sys/class/leds/fan/fan_current
+    chown system system /sys/class/leds/fan/fan_enable
+    chown system system /sys/class/leds/fan/fan_speed_count
+    chown system system /sys/class/leds/fan/fan_speed_level
+    chown system system /sys/class/leds/fan/fan_temp
+    chown system system /sys/class/leds/fan/fan_thermal_engine_level
+
+    chown system system /sys/kernel/fan/fan_enable
+    chown system system /sys/kernel/fan/fan_speed_count
+    chown system system /sys/kernel/fan/fan_speed_level
+
+    chmod 664 /sys/class/leds/fan/fan_current
+    chmod 664 /sys/class/leds/fan/fan_enable
+    chmod 664 /sys/class/leds/fan/fan_speed_count
+    chmod 664 /sys/class/leds/fan/fan_speed_level
+    chmod 664 /sys/class/leds/fan/fan_temp
+    chmod 664 /sys/class/leds/fan/fan_thermal_engine_level
+
+    chmod 664 /sys/kernel/fan/fan_enable
+    chmod 664 /sys/kernel/fan/fan_speed_count
+    chmod 664 /sys/kernel/fan/fan_speed_level
+    # Nubia add end
+
+    # Touchkey start
+
+    chown system system /sys/class/leds/sar0/mode_operation
+    chown system system /sys/class/leds/sar0/diff
+    chown system system /sys/class/leds/sar0/sensy_config
+    chown system system /sys/class/leds/sar0/parasitic_data
+    chown system system /sys/class/leds/sar0/aot_cali
+    chown system system /sys/class/leds/sar0/baseline
+    chown system system /sys/class/leds/sar0
+
+    chown system system /sys/class/leds/sar1/mode_operation
+    chown system system /sys/class/leds/sar1/diff
+    chown system system /sys/class/leds/sar1/sensy_config
+    chown system system /sys/class/leds/sar1/parasitic_data
+    chown system system /sys/class/leds/sar1/aot_cali
+    chown system system /sys/class/leds/sar1/baseline
+    chown system system /sys/class/leds/sar1
+
+    chmod 666 /sys/class/leds/sar0
+    chmod 666 /sys/class/leds/sar0/mode_operation
+    chmod 666 /sys/class/leds/sar0/baseline
+    chmod 666 /sys/class/leds/sar0/parasitic_data
+    chmod 666 /sys/class/leds/sar0/diff
+    chmod 666 /sys/class/leds/sar0/sensy_config
+    chmod 666 /sys/class/leds/sar0/aot_cali
+
+    chmod 666 /sys/class/leds/sar1
+    chmod 666 /sys/class/leds/sar1/mode_operation
+    chmod 666 /sys/class/leds/sar1/baseline
+    chmod 666 /sys/class/leds/sar1/parasitic_data
+    chmod 666 /sys/class/leds/sar1/diff
+    chmod 666 /sys/class/leds/sar1/sensy_config
+    chmod 666 /sys/class/leds/sar1/aot_cali
+
+    # Touchkey end
+
+    # Nubia dp
+    chown system system /sys/devices/platform/soc/soc:nubia_usb_switch_dp_gpio_ctrl/enable
+    chown system system /sys/devices/platform/soc/soc:nubia_usb_switch_dp_gpio_ctrl/cc_statue
+    chown system system /sys/kernel/lcd_enhance/edid_modes
+    chown system system /sys/kernel/lcd_enhance/hpd
+    chown system system /sys/kernel/lcd_enhance/selected_edid
+
+    chmod 666 /sys/devices/platform/soc/soc:nubia_usb_switch_dp_gpio_ctrl/enable
+    chmod 666 /sys/devices/platform/soc/soc:nubia_usb_switch_dp_gpio_ctrl/cc_statue
+    chmod 666 /sys/kernel/lcd_enhance/edid_modes
+    chmod 666 /sys/kernel/lcd_enhance/hpd
+    chmod 666 /sys/kernel/lcd_enhance/selected_edid
+
+service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
+    class core
+    user vendor_qrtr
+    group vendor_qrtr
+    capabilities NET_BIND_SERVICE
+
+# Nubia add start
+on property:sys.fan.ready=*
+    restorecon /sys/class/leds/fan
+    restorecon /sys/kernel/fan
+    restorecon /sys/kernel/fan/fan_enable
+    restorecon /sys/kernel/fan/fan_speed_level
+    restorecon /sys/kernel/fan/fan_speed_count
+# Nubia add end
+
+#ZTE add for LTM
+service ltm /vendor/bin/ltm ${sys.nubia.ltm}
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+    seclabel u:r:ltm:s0
+
+on property:sys.nubia.ltm=*
+    start ltm
+#ZTE add end

@@ -183,23 +183,15 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.dmapp.rc \
-    init.nb.rc \
-    init.nubia.fingerprint.rc \
-    init.nubia.ltm.rc \
-    init.nubia.smartfan.rc \
+    init.fingerprint.gf95xx.rc \
+    init.qcom.factory.rc \
+    init.nx729j.rc \
+    init.qti.kernel.test.rc \
+    init.qti.ufs.rc \
     init.target.rc \
-    init.multicolor.led.rc \
-    init.nfc.sec.rc \
-    init.nubia.haptic.rc \
-    init.nubia.platform.rc \
-    init.nubia.stcoem.rc \
-    init.nb.boost.rc \
-    init.nubia.battery.rc \
-    init.nubia.Light.rc \
-    init.nubia.sensors.rc \
-    init.nubia.touch.lcd.rc \
-    ueventd.nubia.rc
+    init.vendor.rc \
+    init.vendor.usb.rc
+
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom

@@ -60,6 +60,11 @@ media.stagefright.enable-scan=true
 media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.mediaserver.64b.enable=true
 
+# USB
+ro.vendor.feature.zte_platform=true
+ro.vendor.product.ztemodel=NX729J_V1B
+ro.vendor.product.ztename=REDMAGIC 8 Pro
+
 # NFC
 
 # Telephony
