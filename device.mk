@@ -333,6 +333,9 @@ PRODUCT_PACKAGES += \
     android.hidl.memory.block@1.0.vendor \
     vendor.qti.hardware.systemhelper@1.0.vendor
 
+# USB
+PRODUCT_HAS_GADGET_HAL := true
+
 # Update Engine
 PRODUCT_PACKAGES += \
     update_engine \
