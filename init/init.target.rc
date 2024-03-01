@@ -100,10 +100,18 @@ on late-fs
     #exec_start wait_for_keymaster
     mount_all /vendor/etc/fstab.qcom --late
 
+service loggy /vendor/bin/loggy.sh
+    class core
+    user root
+    oneshot
+
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
     # Enable WLAN cold boot calibration
     write /sys/kernel/cnss/fs_ready 1
+    write /dev/kmsg "Starting loggy..."
+    start loggy
+    write /dev/kmsg "Is loggy running?"
 
 on early-boot
     start vendor.sensors
