@@ -139,3 +139,9 @@ cc_library_static {
         "system/core/init"
     ]
 }
+
+sh_binary {
+    name: "loggy.sh",
+    src: "loggy.sh",
+    vendor: true,
+}
