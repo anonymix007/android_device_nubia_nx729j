@@ -228,10 +228,6 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_PACKAGES += \
 #    vendor.lineage.health-service.default
 
-# loggy
-PRODUCT_PACKAGES += \
-    loggy.sh
-
 # Media
 PRODUCT_PACKAGES += \
     android.hardware.media.c2@1.2.vendor \
