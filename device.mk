@@ -135,12 +135,9 @@ PRODUCT_COPY_FILES += \
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# Consumer IR
+# Dirty hack for slim_daemon
 PRODUCT_PACKAGES += \
-    android.hardware.ir-service.example
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
+    libemutls_get_address
 
 # Display
 TARGET_PANEL_DIMENSION_HAS_EXTRA_PRECISION := true
