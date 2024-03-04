@@ -1234,7 +1234,6 @@ vendor/lib/libbase64.so
 vendor/lib/libcpion.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/libdrmutils.so
 vendor/lib/libgpt.so
 vendor/lib/libops.so
 vendor/lib/libqisl.so
@@ -1245,7 +1244,6 @@ vendor/lib/libtrustedapploader.so
 vendor/lib/mediacas/libclearkeycasplugin.so
 vendor/lib/vendor.qti.hardware.qseecom@1.0.so
 vendor/lib64/libbase64.so
-vendor/lib64/libdrmutils.so
 vendor/lib64/mediacas/libclearkeycasplugin.so
 
 # DRM (Qualcomm Secure Execution Environment)
@@ -1409,18 +1407,12 @@ vendor/lib64/vendor.qti.diaghal@1.0.so
 
 # Display
 vendor/etc/init/init.qti.display_boot.rc
-vendor/lib/libdisplayconfig.qti.so
-vendor/lib/libdisplaydebug.so
 vendor/lib64/hw/vendor.qti.hardware.wifidisplaysession@1.0-impl.so
-vendor/lib64/libdisplayconfig.qti.so
 vendor/lib64/libin_display.so
 
 # Display (HWC)
 vendor/etc/snapdragon_color_libs_config.xml
-vendor/lib/libqdutils.so
 vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
-vendor/lib64/libhistogram.so
-vendor/lib64/libqdutils.so
 vendor/lib64/libvmmem.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 
@@ -1963,7 +1955,6 @@ vendor/lib/libqcodec2_cvpfilter.so
 vendor/lib/libqcodec2_imgtxrfilter.so
 vendor/lib/libqcodec2_salmapfilter.so
 vendor/lib/libqcodec2_streaminteg_filter.so
-vendor/lib/libqdMetaData.so
 vendor/lib/libstagefright_bufferpool@2.0.1.so
 vendor/lib/libstagefright_softomx_plugin.so
 vendor/lib/libstagefrighthw.so
@@ -1976,7 +1967,6 @@ vendor/lib64/libqcodec2_cvpfilter.so
 vendor/lib64/libqcodec2_imgtxrfilter.so
 vendor/lib64/libqcodec2_salmapfilter.so
 vendor/lib64/libqcodec2_streaminteg_filter.so
-vendor/lib64/libqdMetaData.so
 vendor/lib64/libstagefright_bufferpool@2.0.1.so
 vendor/lib64/libstagefrighthw.so
 
@@ -3185,7 +3175,6 @@ vendor/lib/libcodec2_soft_common.so
 vendor/lib/libdiagjni.so
 vendor/lib/libeai_fixed_32.so
 vendor/lib/libfcell.so
-vendor/lib/libfilefinder.so
 vendor/lib/libhdcp1prov.so
 vendor/lib/libhdcp2p2prov.so
 vendor/lib/libhme.so
@@ -3228,7 +3217,6 @@ vendor/lib64/libcodec2_hidl_plugin.so
 vendor/lib64/libcodec2_soft_common.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libfcell.so
-vendor/lib64/libfilefinder.so
 vendor/lib64/libhap_power.so
 vendor/lib64/libhdcp1prov.so
 vendor/lib64/libhdcp2p2prov.so
