@@ -42,8 +42,4 @@ void property_override(char const prop[], char const value[]) {
 }
 
 void vendor_load_properties() {
-    // Override first api level for safetynet
-    if (!IsRecoveryMode()) {
-        property_override("ro.product.first_api_level", "32");
-    }
 }
