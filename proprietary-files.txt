@@ -1432,7 +1432,6 @@ vendor/lib64/libgpu_tonemapper.so|acd329710ebfd8ab062207aa16191a68249dfb26
 vendor/lib64/libhistogram.so|1f4d329998ed4978567aca3325c9d8cfc78ce689
 vendor/lib64/libintervmipc.so|4b2fc89288c6881448c8fecbb123f79cf418e6e5
 vendor/lib64/libmemutils.so|92f32b35af3c22a72b0c692c0493ba969e0d9e61
-vendor/lib64/libqrtr.so|b0296274b09c525aa94188f1db65ae1075340a65
 vendor/lib64/libqservice.so|ccc27932be3a702f3639c5c8da137c9d36d0ff3a
 vendor/lib64/libsdedrm.so|32fa2d9462c1f3c6a7c13eb5e4506fb69aec1d50
 vendor/lib64/libsdm-color.so|a0d97e7e7706928284c730f87d2acb13225310d6
@@ -2971,14 +2970,11 @@ system_ext/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
 system_ext/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
 system_ext/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 system_ext/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
-vendor/bin/hw/android.hardware.wifi@1.0-service
 vendor/bin/hw/hostapd
 vendor/bin/hw/wpa_supplicant
 vendor/etc/init/android.hardware.wifi.supplicant-service.rc
-vendor/etc/init/android.hardware.wifi@1.0-service.rc
 vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
 vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
-vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml
 vendor/lib/libwifi-hal-ctrl.so
 vendor/lib/libwifi-hal-qcom.so
 vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
