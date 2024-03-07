@@ -548,7 +548,6 @@ system_ext/lib/vendor.qti.hardware.seccam@1.0.so
 system_ext/lib64/vendor.qti.hardware.seccam@1.0.so
 vendor/bin/chiaoncameratest
 vendor/bin/hw/vendor.qti.camera.provider-service_64
-vendor/bin/qvrcameratest
 vendor/etc/camera/SceneParamFile
 vendor/etc/camera/SceneParamFile-320
 vendor/etc/camera/SceneParamFile-430
@@ -876,8 +875,6 @@ vendor/lib/libqllengine.so
 vendor/lib/libqsegnet.so
 vendor/lib/libqshcamera.so
 vendor/lib/libqti_vndfwk_detect.so
-vendor/lib/libqvrcamera_client.qti.so
-vendor/lib/libqvrcameraplayback.so
 vendor/lib/libsfeShiftExtrapolation.so
 vendor/lib/libswregistrationalgo.so
 vendor/lib/libsynx.so
@@ -1052,6 +1049,7 @@ vendor/lib64/libcamerapostproc.so
 vendor/lib64/libcamxcommonutils.so
 vendor/lib64/libcamxdefog.so
 vendor/lib64/libcamxeffect.so
+vendor/lib64/libcamxexternalformatutils.so
 vendor/lib64/libcamxfacialfeatures.so
 vendor/lib64/libcamxfdalgo.so
 vendor/lib64/libcamxfdengine.so
@@ -1059,9 +1057,7 @@ vendor/lib64/libcamxhdrautodetect.so
 vendor/lib64/libcamxhwnodecontext.so
 vendor/lib64/libcamxifestriping.so
 vendor/lib64/libcamximageformatutils.so
-vendor/lib64/libin_display.so
 vendor/lib64/libcamxmirror.so
-vendor/lib64/libcamxexternalformatutils.so
 vendor/lib64/libcamxqsatalgo.so
 vendor/lib64/libcamxselfiebokeharc.so
 vendor/lib64/libcamxsettingsmanager.so
@@ -1080,6 +1076,7 @@ vendor/lib64/libeepromutil.so
 vendor/lib64/libfnxml.so
 vendor/lib64/libhdr10plus.so
 vendor/lib64/libhdr_stub.so
+vendor/lib64/libin_display.so
 vendor/lib64/libipebpsstriping.so
 vendor/lib64/libipebpsstriping170.so
 vendor/lib64/libipebpsstriping480.so
@@ -1109,8 +1106,6 @@ vendor/lib64/libqllengine.so
 vendor/lib64/libqsegnet.so
 vendor/lib64/libqshcamera.so
 vendor/lib64/libqti_vndfwk_detect.so
-vendor/lib64/libqvrcamera_client.qti.so
-vendor/lib64/libqvrcameraplayback.so
 vendor/lib64/librmMug-lib.so
 vendor/lib64/libsfeShiftExtrapolation.so
 vendor/lib64/libswregistrationalgo.so
@@ -1407,8 +1402,16 @@ vendor/lib64/vendor.qti.diaghal@1.0.so
 
 # Display
 vendor/etc/init/init.qti.display_boot.rc
-vendor/lib64/hw/vendor.qti.hardware.wifidisplaysession@1.0-impl.so
-vendor/lib64/libin_display.so
+
+# Display (HWC)
+vendor/etc/snapdragon_color_libs_config.xml
+vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
+vendor/lib64/libvmmem.so
+vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+
+# Display (SDM)
+vendor/etc/clstc_config_library.xml
+vendor/etc/display/advanced_sf_offsets.xml
 
 # Display (pinned from 9.0.4)
 vendor/bin/hw/vendor.display.color@1.0-service|d0f21a80571c0efe99c78bbdbfe415056577bc04
@@ -1452,16 +1455,6 @@ vendor/lib64/vendor.display.color@1.5.so|ea8dd5d3667a5a240621fd11bfb42f066290375
 vendor/lib64/vendor.display.color@1.6.so|950502cf7617c316188b748a4e94b65cea3dad7b
 vendor/lib64/vendor.display.color@1.7.so|e860cc288c8b525b19f025176ae2278be5bd471a
 vendor/lib64/vendor.display.postproc@1.0.so|a6b8d3f7240ee6a4f73c59a27f5213dcbaaaa02c
-
-# Display (HWC)
-vendor/etc/snapdragon_color_libs_config.xml
-vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
-vendor/lib64/libvmmem.so
-vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
-
-# Display (SDM)
-vendor/etc/clstc_config_library.xml
-vendor/etc/display/advanced_sf_offsets.xml
 
 # Display calibration data
 vendor/etc/display/backlight_calib_r66451_amoled_cmd_mode_dsi_visionox_panel_with_DSC.xml
@@ -1711,7 +1704,6 @@ vendor/bin/mlid
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
 vendor/bin/xtwifi-client
-vendor/bin/xtwifi-inet-agent
 vendor/etc/apdr.conf
 vendor/etc/batching.conf
 vendor/etc/gnss_antenna_info.conf
@@ -1729,9 +1721,6 @@ vendor/etc/seccomp_policy/gnss@2.0-xtwifi-client.policy
 vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
 vendor/etc/vintf/manifest/vendor.qti.gnss-service.xml
 vendor/etc/xtwifi.conf
-vendor/lib/libasn1cper.so
-vendor/lib/libasn1crt.so
-vendor/lib/libasn1crtx.so
 vendor/lib/libbatching.so
 vendor/lib/libcdfw.so
 vendor/lib/libcdfw_remote_api.so
@@ -1739,6 +1728,9 @@ vendor/lib/libdataitems.so
 vendor/lib/libengineplugin.so
 vendor/lib/libgdtap.so
 vendor/lib/libgeofencing.so
+vendor/lib/libgnss.so
+vendor/lib/libgnsspps.so
+vendor/lib/libgps.utils.so
 vendor/lib/libizat_client_api.so
 vendor/lib/libizat_core.so
 vendor/lib/libjnihelper.so
@@ -1759,16 +1751,11 @@ vendor/lib/liblocationservice_glue.so
 vendor/lib/liblocdiagiface.so
 vendor/lib/liblowi_client.so
 vendor/lib/liblowi_wifihal.so
-vendor/lib/libslimclient.so
 vendor/lib/libsynergy_loc_api.so
 vendor/lib/libsys_info_cache.so
 vendor/lib/libxtadapter.so
-vendor/lib/libxtwifi_server_protocol.so
-vendor/lib/libxtwifi_server_protocol_uri_v3.so
+vendor/lib/vendor.qti.gnss-service.so
 vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
-vendor/lib64/libasn1cper.so
-vendor/lib64/libasn1crt.so
-vendor/lib64/libasn1crtx.so
 vendor/lib64/libbatching.so
 vendor/lib64/libcdfw.so
 vendor/lib64/libcdfw_remote_api.so
@@ -1801,23 +1788,29 @@ vendor/lib64/liblocdiagiface.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/liblowi_wifihal.so
 vendor/lib64/libpal_net_if.so
-vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libslimclient.so
 vendor/lib64/libsynergy_loc_api.so
 vendor/lib64/libsys_info_cache.so
 vendor/lib64/libxtadapter.so
-vendor/lib64/libxtwifi_server_protocol.so
-vendor/lib64/libxtwifi_server_protocol_uri_v3.so
 vendor/lib64/vendor.qti.gnss-V2-ndk.so
 vendor/lib64/vendor.qti.gnss-service.so
 
 # GPS
+vendor/bin/xtwifi-inet-agent
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-inet-agent.policy
-vendor/lib/libgnss.so
-vendor/lib/libgnsspps.so
-vendor/lib/libgps.utils.so
+vendor/lib/libasn1cper.so
+vendor/lib/libasn1crt.so
+vendor/lib/libasn1crtx.so
+vendor/lib/libslimclient.so
+vendor/lib/libxtwifi_server_protocol.so
+vendor/lib/libxtwifi_server_protocol_uri_v3.so
 vendor/lib/vendor.qti.gnss-V2-ndk.so
-vendor/lib/vendor.qti.gnss-service.so
+vendor/lib64/libasn1cper.so
+vendor/lib64/libasn1crt.so
+vendor/lib64/libasn1crtx.so
+vendor/lib64/libsensorndkbridge.so
+vendor/lib64/libxtwifi_server_protocol.so
+vendor/lib64/libxtwifi_server_protocol_uri_v3.so
 
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
@@ -2276,6 +2269,7 @@ vendor/lib64/libsoc_helper_jni.so
 
 # QVR
 vendor/bin/hw/qvrservice
+vendor/bin/qvrcameratest
 vendor/bin/qvrdatacapture
 vendor/bin/qvrdatalogger
 vendor/bin/qvrdatauploader
@@ -2298,6 +2292,8 @@ vendor/lib/libqvr_cam_cdsp_driver_stub.so
 vendor/lib/libqvr_cdsp_driver_stub.so
 vendor/lib/libqvr_eyetracking_plugin.so
 vendor/lib/libqvr_hostcontroller_plugin.so
+vendor/lib/libqvrcamera_client.qti.so
+vendor/lib/libqvrcameraplayback.so
 vendor/lib/libqvrservice.so
 vendor/lib/libqvrservice_client.qti.so
 vendor/lib/libqvrservice_ov7251_hvx_tuning.so
@@ -2314,6 +2310,8 @@ vendor/lib64/libqvr_cam_cdsp_driver_stub.so
 vendor/lib64/libqvr_cdsp_driver_stub.so
 vendor/lib64/libqvr_eyetracking_plugin.so
 vendor/lib64/libqvr_hostcontroller_plugin.so
+vendor/lib64/libqvrcamera_client.qti.so
+vendor/lib64/libqvrcameraplayback.so
 vendor/lib64/libqvrservice.so
 vendor/lib64/libqvrservice_client.qti.so
 vendor/lib64/libqvrservice_ov7251_hvx_tuning.so
@@ -3017,6 +3015,7 @@ vendor/etc/seccomp_policy/wfdvndservice.policy
 vendor/etc/seccomp_policy/wifidisplayhalservice.policy
 vendor/etc/vintf/manifest/vendor.qti.hardware.wifidisplaysession-service.xml
 vendor/etc/wfdconfig.xml
+vendor/lib64/hw/vendor.qti.hardware.wifidisplaysession@1.0-impl.so
 vendor/lib64/libFileMux_proprietary.so
 vendor/lib64/libmmrtpdecoder_vendor.so
 vendor/lib64/libmmrtpencoder_vendor.so
