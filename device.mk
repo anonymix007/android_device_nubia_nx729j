@@ -139,10 +139,6 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_PACKAGES += \
     libemutls_get_address
 
-# Display
-TARGET_PANEL_DIMENSION_HAS_EXTRA_PRECISION := true
-TARGET_GRALLOC_HANDLE_HAS_NO_RESERVED_SIZE := true
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.3.vendor \
