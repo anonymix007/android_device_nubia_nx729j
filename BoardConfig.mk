@@ -88,9 +88,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_nx729j
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
-    androidboot.usbcontroller=a600000.dwc3 \
-    androidboot.selinux=permissive
-
+    androidboot.usbcontroller=a600000.dwc3
 
 BOARD_KERNEL_CMDLINE := \
     kasan=off \
@@ -101,9 +99,6 @@ BOARD_KERNEL_CMDLINE := \
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
-
-# Kernel Modules
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PREBUILT_DIR)/modules.load.recovery))
 
 # Lineage Health
 #TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
@@ -160,9 +155,9 @@ TARGET_RECOVERY_UI_MARGIN_HEIGHT := 80
 TARGET_USERIMAGES_USE_F2FS := true
 
 # SELinux
-#BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-#SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
-#SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 
 # Sensors
 #SOONG_CONFIG_NAMESPACES += SENSORS_NUBIA
