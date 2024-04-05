@@ -2634,12 +2634,10 @@ vendor/lib64/libesepmconfig.so
 vendor/lib64/libesesbprovision.so
 
 # Sensors
-vendor/bin/hw/android.hardware.sensors@2.1-service.multihal
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/bin/init.qcom.sensors.sh
 vendor/bin/sensors.qti
 vendor/bin/sscrpcd
-vendor/etc/init/android.hardware.sensors@2.1-service-multihal.rc
 vendor/etc/init/init.vendor.sensors.rc
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
 vendor/etc/init/vendor.sensors.qti.rc
