@@ -1406,7 +1406,6 @@ vendor/etc/init/init.qti.display_boot.rc
 # Display (HWC)
 vendor/etc/snapdragon_color_libs_config.xml
 vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
-vendor/lib64/libvmmem.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 
 # Display (SDM)
@@ -1543,8 +1542,6 @@ vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
 # Fingerprint
 system_ext/lib/vendor.qti.hardware.fingerprint@1.0.so
 system_ext/lib64/vendor.qti.hardware.fingerprint@1.0.so
-vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
-vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/lib/libteeclientjni.so
 vendor/lib/vendor.nubia.ifaa@1.0-impl.so
 vendor/lib/vendor.nubia.ifaa@1.0.so
@@ -2865,9 +2862,6 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 
 # Trustzone
 vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
-
-# VM Mem
-vendor/lib/libvmmem.so
 
 # VM Mgr
 vendor/bin/vmmgr
