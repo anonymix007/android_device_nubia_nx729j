@@ -18,4 +18,5 @@ cc_library {
     header_libs: [
         "//hardware/nubia:nubiafingerprint_headers",
     ],
+    include_dirs: [ "hardware/nubia"],
 }

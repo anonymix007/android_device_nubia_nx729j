@@ -13,21 +13,24 @@
 #include <poll.h>
 #include <thread>
 #include <unistd.h>
+#include <cutils/uevent.h>
+
 #include <vendor/goodix/hardware/biometrics/fingerprint/2.1/IGoodixFingerprintDaemon.h>
+
+#include <sensors/UEvent.h>
+
 
 #define NOTIFY_FINGER_DOWN 1536
 #define NOTIFY_FINGER_UP 1537
 
-#define SINGLE_TAP_GESTURE "single_tap=true"
-#define DOUBLE_TAP_GESTURE "double_tap=true"
-#define AOD_AREAMEET_DOWN "aod_areameet_down=true"
-#define AREAMEET_DOWN "areameet_down=true"
-#define AREAMEET_UP "areameet_up=true"
 
-#include <cutils/uevent.h>
-
-#define NEW_TP_WAKEUP_EVENT_PATH "MODALIAS=platform:zte_touch"
-#define UEVENT_BUFFER_SIZE 4096
+#define TP_EVENT_PATH "MODALIAS=platform:zte_touch"
+#define SINGLE_TAP_GESTURE "single_tap"
+#define DOUBLE_TAP_GESTURE "double_tap"
+#define AOD_AREAMEET_DOWN "aod_areameet_down"
+#define AREAMEET_DOWN "areameet_down"
+#define AREAMEET_UP "areameet_up"
+#define UEVENT_BUFFER_SIZE 8192
 
 using ::android::sp;
 using ::android::hardware::hidl_vec;
@@ -57,20 +60,20 @@ class NubiaUdfpsHander : public UdfpsHandler {
             };
 
             while (true) {
-				int rc = poll(&ufd, 1, -1);
+                int rc = poll(&ufd, 1, -1);
                 if (rc < 0) {
                     LOG(ERROR) << "failed to poll fd, err: " << rc;
                     continue;
                 }
 
                 if (ufd.revents & POLLIN) {
-					int command = -1;
-					while(ReadUevent(fd, &command)) {
-						if (command > 0) {
-						    mGoodixFingerprintDaemon->sendCommand(command, {}, [](int, const hidl_vec<signed char>&) {});
-						}
-					}
-				}
+                    int command = -1;
+                    while(ReadUevent(fd, &command)) {
+                        if (command > 0) {
+                            mGoodixFingerprintDaemon->sendCommand(command, {}, [](int, const hidl_vec<signed char>&) {});
+                        }
+                    }
+                }
             }
         }).detach();
     }
@@ -95,54 +98,27 @@ class NubiaUdfpsHander : public UdfpsHandler {
     fingerprint_device_t *mDevice;
     sp<IGoodixFingerprintDaemon> mGoodixFingerprintDaemon;
     char buf[UEVENT_BUFFER_SIZE + 2];
-    std::map<std::string, std::string> msg;
 
-    // Inspired by tri-state-key/uevent_listener.cpp from 1+6
     int ParseUevent() {
-		msg.clear();
-		char *ptr = buf;
+        android::hardware::sensors::UEvent event(buf);
 
-		bool found = false;
+        if (!event.contains(TP_EVENT_PATH)) {
+            return -1;
+        }
+        LOG(DEBUG) << "Processing zte_touch uevent!";
 
-		while (*ptr) {
-			std::string kv(ptr);
-			ptr += kv.length() + 1;
-
-			if (kv.find(NEW_TP_WAKEUP_EVENT_PATH) != std::string::npos) {
-				found = true;
-			}
-
-			auto pos = kv.find("=");
-			if (pos == std::string::npos) {
-				LOG(DEBUG) << "WTF is this uevent:" << kv;
-			} else {
-				std::string key = kv.substr(0, pos);
-				std::string value = kv.substr(pos + 1, kv.length());
-				msg.insert({key, value});
-				LOG(DEBUG) << "Parsed uevent (from '" << kv << "'): " << key << " = " << value;
-			}
-		}
-		if (found) {
-			LOG(DEBUG) << "Processed zte_touch uevent!";
-			auto fod_down_pos = msg.find(AREAMEET_DOWN);
-			if (fod_down_pos != msg.end()) {
-				if (fod_down_pos->second == "true") {
-					return NOTIFY_FINGER_DOWN;
-				}
-			}
-			auto fod_up_pos = msg.find(AREAMEET_UP);
-			if (fod_up_pos != msg.end()) {
-				if (fod_up_pos->second == "true") {
-					return NOTIFY_FINGER_UP;
-				}
-			}
+        if (event.get(AREAMEET_DOWN, "false") == "true" || event.get(AOD_AREAMEET_DOWN, "false") == "true") {
+			return NOTIFY_FINGER_DOWN;
 		}
 
-		return -1;
-	}
+		if (event.get(AREAMEET_UP, "false") == "true") {
+			return NOTIFY_FINGER_UP;
+		}
+
+        return -1;
+    }
 
     bool ReadUevent(int fd, int *command) {
-		//readBool(fd) ? NOTIFY_FINGER_DOWN: NOTIFY_FINGER_UP
         int n = uevent_kernel_multicast_recv(fd, buf, UEVENT_BUFFER_SIZE);
         if (n <= 0) {
             if (errno != EAGAIN && errno != EWOULDBLOCK) {
@@ -163,7 +139,7 @@ class NubiaUdfpsHander : public UdfpsHandler {
         *command = ParseUevent();
 
         return true;
-	}
+    }
 };
 
 static UdfpsHandler* create() {
