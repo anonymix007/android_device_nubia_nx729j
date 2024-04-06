@@ -1546,11 +1546,14 @@ vendor/lib/libteeclientjni.so
 vendor/lib/vendor.nubia.ifaa@1.0-impl.so
 vendor/lib/vendor.nubia.ifaa@1.0.so
 vendor/lib64/hw/fingerprint.default.so
-vendor/lib64/libgf_hal.so
 vendor/lib64/libteeclientjni.so
-vendor/lib64/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so
 vendor/lib64/vendor.nubia.ifaa@1.0-impl.so
 vendor/lib64/vendor.nubia.ifaa@1.0.so
+
+# Fingerprint (pinned from 9.0.10)
+vendor/lib64/hw/fingerprint.gf95xx.default.so|6b199762779fa791c476171afba9a88bb018b8e5
+vendor/lib64/libgf_hal.so|acfb6b01b4c6a8181dcae9b61d47a4d3e3477c74
+vendor/lib64/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so|9d9be73ceaa394be9e315419980a7a5b8d077953
 
 # Firmware
 vendor/firmware/ISP70dE1002002001M1200028DE5.fluf
