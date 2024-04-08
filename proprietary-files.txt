@@ -206,6 +206,7 @@ vendor/lib64/hw/audio.primary.kalama.so
 vendor/lib64/hw/audio.r_submix.default.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
+vendor/lib64/libEvrcSwCodec.so
 vendor/lib64/libFlacSwDec.so
 vendor/lib64/libPeripheralStateUtils.so
 vendor/lib64/libadm.so
@@ -1971,8 +1972,13 @@ vendor/lib64/vendor.qti.hardware.factory@1.1.so
 # Media
 system_ext/lib/vendor.qti.hardware.vpp@1.1.so
 system_ext/lib64/vendor.qti.hardware.vpp@1.1.so
-vendor/bin/hw/android.hardware.media.omx@1.0-service
-vendor/etc/init/android.hardware.media.omx@1.0-service.rc
+vendor/bin/hw/qconfigservice
+vendor/bin/hw/vendor.qti.media.c2@1.0-service
+vendor/bin/hw/vendor.qti.media.c2audio@1.0-service
+vendor/etc/init/init.qti.media.rc
+vendor/etc/init/qconfig.rc
+vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
+vendor/etc/init/vendor.qti.media.c2audio@1.0-service.rc
 vendor/etc/media_codecs.xml
 vendor/etc/media_codecs_kalama.xml
 vendor/etc/media_codecs_kalama_vendor.xml
@@ -1982,25 +1988,49 @@ vendor/etc/media_kalama/video_system_specs.json
 vendor/etc/media_profiles.xml
 vendor/etc/media_profiles_V1_0.xml
 vendor/etc/media_profiles_kalama.xml
-vendor/lib/libOmxCore.so
-vendor/lib/libmm-omxcore.so
-vendor/lib/libplatformconfig.so
-vendor/lib/libqcodec2_cvpfilter.so
-vendor/lib/libqcodec2_imgtxrfilter.so
-vendor/lib/libqcodec2_salmapfilter.so
-vendor/lib/libqcodec2_streaminteg_filter.so
-vendor/lib/libstagefright_bufferpool@2.0.1.so
-vendor/lib/libstagefright_softomx_plugin.so
-vendor/lib/libstagefrighthw.so
+vendor/etc/seccomp_policy/c2audio.vendor.base-arm.policy
+vendor/etc/seccomp_policy/c2audio.vendor.base-arm64.policy
+vendor/etc/seccomp_policy/c2audio.vendor.ext-arm.policy
+vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy
+vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
+vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
+vendor/etc/vintf/manifest/c2_manifest_vendor.xml
+vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.qconfig@1.0-service.xml
 vendor/lib64/libCOSNet_spatial_qnn_quantized.so
 vendor/lib64/libOmxCore.so
+vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/libmm-omxcore.so
 vendor/lib64/libmmosal_vendor.so
 vendor/lib64/libplatformconfig.so
+vendor/lib64/libqc2audio_base.so
+vendor/lib64/libqc2audio_basecodec.so
+vendor/lib64/libqc2audio_core.so
+vendor/lib64/libqc2audio_hooks.so
+vendor/lib64/libqc2audio_hwaudiocodec.so
+vendor/lib64/libqc2audio_platform.so
+vendor/lib64/libqc2audio_swaudiocodec.so
+vendor/lib64/libqc2audio_utils.so
+vendor/lib64/libqc2colorconvertfilter.so
+vendor/lib64/libqc2filter.so
+vendor/lib64/libqc2vppfilter.so
+vendor/lib64/libqcodec2_base.so
+vendor/lib64/libqcodec2_basecodec.so
+vendor/lib64/libqcodec2_core.so
 vendor/lib64/libqcodec2_cvpfilter.so
+vendor/lib64/libqcodec2_filterbase.so
+vendor/lib64/libqcodec2_hooks.so
 vendor/lib64/libqcodec2_imgtxrfilter.so
+vendor/lib64/libqcodec2_mockfilter.so
+vendor/lib64/libqcodec2_mockqc2filter.so
+vendor/lib64/libqcodec2_platform.so
 vendor/lib64/libqcodec2_salmapfilter.so
 vendor/lib64/libqcodec2_streaminteg_filter.so
+vendor/lib64/libqcodec2_utils.so
+vendor/lib64/libqcodec2_v4l2codec.so
+vendor/lib64/libqconfigclient.so
+vendor/lib64/qti.video.utils.videobufferlayout.so
+vendor/lib64/vendor.qti.hardware.qconfig@1.0.so
 
 # Media configs
 vendor/etc/media_codecs_c2.xml
@@ -2887,6 +2917,9 @@ vendor/lib64/libvpphvx.so
 vendor/lib64/libvppimmotion.so
 vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
+vendor/lib64/vendor.qti.hardware.vpp@1.1.so
+vendor/lib64/vendor.qti.hardware.vpp@1.2.so
+vendor/lib64/vendor.qti.hardware.vpp@1.3.so
 vendor/lib64/vendor.qti.hardware.vpp@2.0.so
 
 # VPU firmware
@@ -2947,6 +2980,11 @@ vendor/firmware/aw8697_haptic.bin
 vendor/firmware/aw8697_osc_rtp_24K_5s.bin
 vendor/firmware/aw8697_rtp.bin
 vendor/firmware/haptic_rtp.bin
+
+# Video
+vendor/lib64/libfastcrc.so
+vendor/lib64/libvideotxr.so
+vendor/lib64/libvideoutils.so
 
 # Wi-Fi
 system_ext/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
