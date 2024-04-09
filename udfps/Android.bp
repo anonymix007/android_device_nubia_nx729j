@@ -13,6 +13,7 @@ cc_library {
         "libhidlbase",
         "libutils",
         "libcutils",
+        "liblog",
         "vendor.goodix.hardware.biometrics.fingerprint@2.1",
     ],
     header_libs: [
