@@ -182,7 +182,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.fingerprint.gf95xx.rc \
-    init.vendor.rc \
     init.target.rc \
     ueventd.nubia.rc
 
@@ -242,7 +241,8 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, vendor/nxp/opensource/commonsys/packages/apps/Nfc/nfc_system_product.mk)
 
 PRODUCT_PACKAGES += \
-    android.hardware.nfc-V1-ndk.so
+    android.hardware.nfc-V1-ndk.vendor \
+    android.hardware.nfc@1.0.vendor
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
