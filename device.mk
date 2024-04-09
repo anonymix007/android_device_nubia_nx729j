@@ -181,22 +181,9 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.dmapp.rc \
-    init.nb.rc \
-    init.nubia.fingerprint.rc \
-    init.nubia.ltm.rc \
-    init.nubia.smartfan.rc \
+    init.fingerprint.gf95xx.rc \
+    init.vendor.rc \
     init.target.rc \
-    init.multicolor.led.rc \
-    init.nfc.sec.rc \
-    init.nubia.haptic.rc \
-    init.nubia.platform.rc \
-    init.nubia.stcoem.rc \
-    init.nb.boost.rc \
-    init.nubia.battery.rc \
-    init.nubia.Light.rc \
-    init.nubia.sensors.rc \
-    init.nubia.touch.lcd.rc \
     ueventd.nubia.rc
 
 PRODUCT_COPY_FILES += \
@@ -253,6 +240,9 @@ PRODUCT_PACKAGES += \
 
 # NFC
 $(call inherit-product, vendor/nxp/opensource/commonsys/packages/apps/Nfc/nfc_system_product.mk)
+
+PRODUCT_PACKAGES += \
+    android.hardware.nfc-V1-ndk.so
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
