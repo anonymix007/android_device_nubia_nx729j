@@ -242,7 +242,9 @@ $(call inherit-product, vendor/nxp/opensource/commonsys/packages/apps/Nfc/nfc_sy
 
 PRODUCT_PACKAGES += \
     android.hardware.nfc-V1-ndk.vendor \
-    android.hardware.nfc@1.0.vendor
+    android.hardware.nfc@1.0.vendor \
+    android.hardware.nfc@1.1.vendor \
+    android.hardware.nfc@1.2.vendor \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
