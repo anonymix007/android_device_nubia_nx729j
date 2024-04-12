@@ -105,6 +105,70 @@ on post-fs-data
     # Enable WLAN cold boot calibration
     write /sys/kernel/cnss/fs_ready 1
 
+    chown system system /sys/class/leds/vibrator_r/activate
+    chown system system /sys/class/leds/vibrator_r/brightness
+    chown system system /sys/class/leds/vibrator_r/duration
+    chown system system /sys/class/leds/vibrator_r/activate_mode
+    chown system system /sys/class/leds/vibrator_r/index
+    chown system system /sys/class/leds/vibrator_r/dual_activate
+    chown system system /sys/class/leds/vibrator_r/dual_mode
+    chown system system /sys/class/leds/vibrator_r/dual_index
+    chown system system /sys/class/leds/vibrator_r/dual_duration
+    chown system system /sys/class/leds/vibrator_r/haptic_audio
+    chown system system /sys/class/leds/vibrator_r/awrw
+    chown system system /sys/class/leds/vibrator_r/cont_save
+    chown system system /sys/class/leds/vibrator_r/f0_save
+    chown system system /sys/class/leds/vibrator_r/cali
+    chown system system /sys/class/leds/vibrator_r/f0
+
+    chown system system /sys/class/leds/vibrator_l/activate
+    chown system system /sys/class/leds/vibrator_l/brightness
+    chown system system /sys/class/leds/vibrator_l/duration
+    chown system system /sys/class/leds/vibrator_l/activate_mode
+    chown system system /sys/class/leds/vibrator_l/index
+    chown system system /sys/class/leds/vibrator_l/dual_activate
+    chown system system /sys/class/leds/vibrator_l/dual_duration
+    chown system system /sys/class/leds/vibrator_l/dual_index
+    chown system system /sys/class/leds/vibrator_l/dual_mode
+    chown system system /sys/class/leds/vibrator_l/haptic_audio
+    chown system system /sys/class/leds/vibrator_l/awrw
+    chown system system /sys/class/leds/vibrator_l/cont_save
+    chown system system /sys/class/leds/vibrator_l/f0_save
+    chown system system /sys/class/leds/vibrator_l/cali
+    chown system system /sys/class/leds/vibrator_l/f0
+
+    chmod 0666 /sys/class/leds/vibrator_r/activate
+    chmod 0666 /sys/class/leds/vibrator_r/brightness
+    chmod 0666 /sys/class/leds/vibrator_r/duration
+    chmod 0666 /sys/class/leds/vibrator_r/activate_mode
+    chmod 0666 /sys/class/leds/vibrator_r/index
+    chmod 0666 /sys/class/leds/vibrator_r/dual_activate
+    chmod 0666 /sys/class/leds/vibrator_r/dual_duration
+    chmod 0666 /sys/class/leds/vibrator_r/dual_index
+    chmod 0666 /sys/class/leds/vibrator_r/dual_mode
+    chmod 0666 /sys/class/leds/vibrator_r/haptic_audio
+    chmod 0777 /sys/class/leds/vibrator_r/awrw
+    chmod 0666 /sys/class/leds/vibrator_r/cont_save
+    chmod 0666 /sys/class/leds/vibrator_r/f0_save
+    chmod 0666 /sys/class/leds/vibrator_r/cali
+    chmod 0666 /sys/class/leds/vibrator_r/f0
+
+    chmod 0666 /sys/class/leds/vibrator_l/activate
+    chmod 0666 /sys/class/leds/vibrator_l/brightness
+    chmod 0666 /sys/class/leds/vibrator_l/duration
+    chmod 0666 /sys/class/leds/vibrator_l/activate_mode
+    chmod 0666 /sys/class/leds/vibrator_l/index
+    chmod 0666 /sys/class/leds/vibrator_l/dual_activate
+    chmod 0666 /sys/class/leds/vibrator_l/dual_duration
+    chmod 0666 /sys/class/leds/vibrator_l/dual_index
+    chmod 0666 /sys/class/leds/vibrator_l/dual_mode
+    chmod 0666 /sys/class/leds/vibrator_l/haptic_audio
+    chmod 0777 /sys/class/leds/vibrator_l/awrw
+    chmod 0666 /sys/class/leds/vibrator_l/cont_save
+    chmod 0666 /sys/class/leds/vibrator_l/f0_save
+    chmod 0666 /sys/class/leds/vibrator_l/cali
+    chmod 0666 /sys/class/leds/vibrator_l/f0
+
 on early-boot
     start vendor.sensors
 
@@ -131,13 +195,13 @@ on boot
     chown system camera /sys/class/leds/led:switch_0/brightness
     chown system camera /sys/class/leds/led:switch_1/brightness
     chown system camera /sys/class/leds/led:switch_2/brightness
-    chmod 0664 /sys/class/leds/led:torch_0/brightness
-    chmod 0664 /sys/class/leds/led:torch_1/brightness
-    chmod 0664 /sys/class/leds/led:flash_0/brightness
-    chmod 0664 /sys/class/leds/led:flash_1/brightness
-    chmod 0664 /sys/class/leds/led:switch_0/brightness
-    chmod 0664 /sys/class/leds/led:switch_1/brightness
-    chmod 0664 /sys/class/leds/led:switch_2/brightness
+    chmod 0666 /sys/class/leds/led:torch_0/brightness
+    chmod 0666 /sys/class/leds/led:torch_1/brightness
+    chmod 0666 /sys/class/leds/led:flash_0/brightness
+    chmod 0666 /sys/class/leds/led:flash_1/brightness
+    chmod 0666 /sys/class/leds/led:switch_0/brightness
+    chmod 0666 /sys/class/leds/led:switch_1/brightness
+    chmod 0666 /sys/class/leds/led:switch_2/brightness
 
 on property:sys.boot_completed=1
     mkdir /mnt/vendor/persist/camera_ois 0775 system cameraserver
