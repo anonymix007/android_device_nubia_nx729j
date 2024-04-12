@@ -3117,7 +3117,6 @@ vendor/bin/diag_klog
 vendor/bin/diag_mdlog
 vendor/bin/diag_socket_log
 vendor/bin/diag_uart_log
-vendor/bin/diagcommd
 vendor/bin/dlsc
 vendor/bin/dumpsys
 vendor/bin/e_loop
@@ -3187,7 +3186,6 @@ vendor/etc/ftm_test_config_kalama-grd-snd-card
 vendor/etc/ftm_test_config_kalama-qrd-snd-card
 vendor/etc/hwid.conf
 vendor/etc/init/boringssl_self_test.rc
-vendor/etc/init/diagcommd.rc
 vendor/etc/init/dlsc.rc
 vendor/etc/init/hostapd.android.rc
 vendor/etc/init/init.vendor.wlan.rc
