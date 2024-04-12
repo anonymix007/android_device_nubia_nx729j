@@ -1725,13 +1725,8 @@ vendor/lib/vendor.qti.hardware.fm@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
 
 # Fingerprint
-system_ext/lib/vendor.qti.hardware.fingerprint@1.0.so
-system_ext/lib64/vendor.qti.hardware.fingerprint@1.0.so
-vendor/app/QFingerprintService/QFingerprintService.apk
 vendor/lib64/hw/fingerprint.gf95xx.default.so
 vendor/lib64/libgf_hal.so
-vendor/lib64/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so
-vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
 # Firmware
 vendor/firmware/aw22xxx_fw.bin
@@ -3314,7 +3309,6 @@ vendor/lib64/libminui_ftm.so
 vendor/lib64/libmiracast.so
 vendor/lib64/liboemaids_vendor.so
 vendor/lib64/libpsi.so
-vendor/lib64/libqfp-service.so
 vendor/lib64/libqsh_ble_pb.so
 vendor/lib64/librecovery_updater.so
 vendor/lib64/librecovery_updater_msm.so
