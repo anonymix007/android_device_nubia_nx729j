@@ -144,6 +144,9 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 # PowerShare
 TARGET_POWERSHARE_NODE := /sys/class/qcom-battery/reverse_chg_mode
 
+# Power
+TARGET_POWER_FEATURE_EXT_LIB := //$(DEVICE_PATH):libpowerfeature_ext_nx729j
+
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop

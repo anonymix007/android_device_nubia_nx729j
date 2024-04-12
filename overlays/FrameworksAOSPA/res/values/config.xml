@@ -10,6 +10,26 @@
         <item>/sys/class/qcom-battery/oem_charger_type;7</item>
     </string-array>
 
+    <!-- Whether to intercept inputs on screen off -->
+    <bool name="config_enableKeyHandler">false</bool>
+
+    <!-- Gestures' key codes. If the gesture is not supported set it to 0. -->
+    <!-- Set to invalid key code because this is handled using sensors -->
+    <integer name="config_doubleTapKeyCode">10000</integer>
+
+    <!-- Default settings for gestures:
+             0 - Disabled
+             1 - Wake
+             2 - Pulse
+             3 - Flashlight
+             4 - Airplane
+             5 - Play/Pause
+             6 - Next
+             7 - Previous
+             8 - Camera
+             9 - Dialer -->
+    <integer name="config_doubleTapDefault">1</integer>
+
     <!-- Fingerprint from stock ROM -->
     <string name="config_stockFingerprint" translatable="false">nubia/NX729J-UN/NX729J-UN:13/TKQ1.221013.002/eng.nubia.20230701.182215:user/release-keys</string>
 </resources>
