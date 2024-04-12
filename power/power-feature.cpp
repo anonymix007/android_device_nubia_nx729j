@@ -7,7 +7,7 @@
 #include <aidl/vendor/aospa/power/BnPowerFeature.h>
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <sys/ioctl.h>
+#include <errno.h>
 
 #define WAKEGESTURE_PATH "/proc/touchscreen/wake_gesture"
 
@@ -20,8 +20,14 @@ bool setDeviceSpecificFeature(Feature feature, bool enabled) {
     switch (feature) {
         case Feature::DOUBLE_TAP: {
             int fd = open(WAKEGESTURE_PATH, O_RDWR);
+            LOG(ERROR) << "Trying to " << (enabled ? "enable" : "disable") << " double tap gesture, fd: " << fd << ", errno: " << errno;
             char v = enabled ? '1' : '0';
-            write(fd, &v, sizeof(v));
+            if (write(fd, &v, sizeof(v)) < 0) {
+                LOG(ERROR) << (enabled ? "Enabled" : "Disabled") << " double tap gesture successfully";
+            } else {
+                LOG(ERROR) << "Errno: " << errno;
+            }
+
             close(fd);
             return true;
         }
