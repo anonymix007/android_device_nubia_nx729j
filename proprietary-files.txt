@@ -3003,23 +3003,13 @@ vendor/firmware/vpu33_4v.mbn
 vendor/firmware/vpu33_4v_unsigned.mbn
 
 # Vibrator
-vendor/bin/hw/vendor.qti.hardware.vibrator.service
-vendor/etc/init/vendor.qti.hardware.vibrator.service.rc
-vendor/etc/vintf/manifest/vendor.qti.hardware.vibrator.service.xml
+-vendor/lib64/libaacvibrator.so
 vendor/firmware/tiktap_params.bin
 vendor/firmware/tiktap_wave.bin
-vendor/lib/hw/vibrator.default.so
-vendor/lib/libvibrator.so
 vendor/lib/soundfx/libhaptic_effect.so
 vendor/lib/soundfx/libhapticgenerator.so
-vendor/lib64/hw/vibrator.default.so
-vendor/lib64/libaacvibrator.so
-vendor/lib64/libqtivibratoreffect.so
-vendor/lib64/libvibrator.so
 vendor/lib64/soundfx/libhaptic_effect.so
 vendor/lib64/soundfx/libhapticgenerator.so
-vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk_platform.so
-vendor/lib64/vendor.qti.hardware.vibrator.impl.so
 
 # Vibrator firmware
 vendor/firmware/haptic_rtp.bin
