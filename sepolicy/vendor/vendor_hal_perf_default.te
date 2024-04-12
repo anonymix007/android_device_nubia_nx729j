@@ -1,0 +1,4 @@
+allow vendor_hal_perf_default surfaceflinger:dir search;
+allow vendor_hal_perf_default surfaceflinger:file { getattr open read };
+allow vendor_hal_perf_default vendor_qms:dir search;
+allow vendor_hal_perf_default vendor_qms:file { getattr open read };

@@ -1,0 +1,6 @@
+# Vibrator
+genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/990000.i2c/i2c-6/6-005a/leds/vibrator_l u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/994000.i2c/i2c-9/9-005a/leds/vibrator_r u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/994000.i2c/i2c-8/8-005a/leds/vibrator_l u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/990000.i2c/i2c-6/6-005a/leds/vibrator_r u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/994000.i2c/i2c-9/9-005a/leds/vibrator_l u:object_r:sysfs_leds:s0

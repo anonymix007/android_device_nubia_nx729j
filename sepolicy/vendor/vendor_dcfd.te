@@ -1,0 +1,1 @@
+allow vendor_dcfd vendor_sensors_prop:file { getattr map open read };

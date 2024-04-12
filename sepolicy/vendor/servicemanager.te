@@ -1,0 +1,1 @@
+allow servicemanager vendor_hal_poweroptservice_qti:binder call;

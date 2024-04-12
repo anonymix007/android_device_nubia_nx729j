@@ -1,0 +1,4 @@
+# vendor radio aidl service
+vendor.zte.radio.IVendorRadio/slot1                               u:object_r:vendor_hal_telephony_service2:s0
+vendor.zte.radio.IVendorRadio/slot2                               u:object_r:vendor_hal_telephony_service2:s0
+vendor.zte.radio.IVendorRadio/slot3                               u:object_r:vendor_hal_telephony_service2:s0

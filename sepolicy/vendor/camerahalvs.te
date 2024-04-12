@@ -1,0 +1,8 @@
+allow camerahalvs gpu_device:chr_file { read write };
+allow camerahalvs vendor_camera_data_file:file { create open read write getattr append rename };
+init_daemon_domain(camerahalvs)
+binder_call(hal_camera_default, camerahalvs);
+#get_prop(camerahalvs, chvsfirstboot_prop);
+#set_prop(camerahalvs, chvsfirstboot_prop);
+type camerahalvs, domain;
+type camerahalvs_exec, exec_type, file_type, vendor_file_type;

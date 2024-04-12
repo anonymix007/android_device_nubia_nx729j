@@ -1,0 +1,17 @@
+# Vibrator
+/vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.nubia                            u:object_r:hal_vibrator_default_exec:s0
+
+# Fingerprint
+/mnt/vendor/persist/goodix(/.*)?                                                          u:object_r:fingerprint_vendor_data_file:s0
+/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.nubia             u:object_r:hal_fingerprint_default_exec:s0
+/dev/goodix_fp                                                                            u:object_r:fingerprint_device:s0
+
+# NFC
+/vendor/bin/hw/android\.hardware\.nfc-service\.sec                                        u:object_r:hal_nfc_default_exec:s0
+/dev/sec-nfc                                                                              u:object_r:nfc_device:s0
+
+# DTS-X
+/vendor/bin/hw/vendor\.hardware\.media\.c2@1\.0-dtscodec-service                          u:object_r:mediacodec_exec:s0
+
+# Camera HAL
+/vendor/bin/camerahalvs                                                                   u:object_r:camerahalvs_exec:s0

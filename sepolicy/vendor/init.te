@@ -1,0 +1,10 @@
+allow init debugfs_tracing_debug:dir mounton;
+allow init gpu_device:chr_file { ioctl map open read write };
+allow init hal_graphics_mapper_hwservice:hwservice_manager find;
+allow init hidl_base_hwservice:hwservice_manager add;
+allow init hwservicemanager:binder { call transfer };
+allow init same_process_hal_file:file execute;
+allow init servicemanager:binder { call transfer };
+allow init vendor_camera_data_file:file { append rename };
+allow init vendor_sysfs_mem_offline:file open;
+allow init vendor_sysfs_system_memory:file open;

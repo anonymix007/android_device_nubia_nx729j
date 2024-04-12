@@ -1,0 +1,2 @@
+allow vendor_init audio_prop:property_service set;
+allow vendor_init vendor_camera_prop:property_service set;

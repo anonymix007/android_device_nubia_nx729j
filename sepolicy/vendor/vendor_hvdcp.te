@@ -1,0 +1,2 @@
+allow vendor_hvdcp sysfs:dir { open read };
+allow vendor_hvdcp sysfs:file { open read };
