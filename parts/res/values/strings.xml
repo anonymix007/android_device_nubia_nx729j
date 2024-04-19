@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <string name="nubiaparts_title">Nubia settings</string>
+    <string name="nubiaparts_summary">Additional device specific tweaks</string>
+
+    <!-- Fan -->
+    <string name="fan_control_title">Fan control</string>
+    <string name="fan_control_mode_title">Mode</string>
+    <string name="fan_control_enable_title">Enable fan</string>
+    <string name="fan_control_summary">Control devices fan speed and mode</string>
+    <string name="fan_control_auto_title">Automatic</string>
+    <string name="fan_control_auto_summary">Automatically handle fan according to temperatures</string>
+    <string name="fan_control_manual_title">Manual</string>
+    <string name="fan_control_manual_summary">Set fan to a fixed value</string>
+    <string name="fan_control_intensity_title">Speed</string>
+
+    <!-- Triggers -->
+    <string name="trigger_buttons_title">Trigger buttons</string>
+    <string name="trigger_buttons_summary">Enable or disable trigger buttons</string>
+    <string name="trigger_buttons_disable_title">Disable trigger buttons</string>
+    <string name="trigger_buttons_disable_summary">Avoid trigger buttons to cause unwanted behavior</string>
+</resources>
