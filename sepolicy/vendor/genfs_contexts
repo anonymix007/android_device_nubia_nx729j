@@ -4,3 +4,74 @@ genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/994000.i2c/i2
 genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/994000.i2c/i2c-8/8-005a/leds/vibrator_l u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/990000.i2c/i2c-6/6-005a/leds/vibrator_r u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/994000.i2c/i2c-9/9-005a/leds/vibrator_l u:object_r:sysfs_leds:s0
+
+# Touchpanel
+genfscon proc /touchscreen/screen_state_interface         u:object_r:syna_proc:s0
+genfscon proc /touchscreen/integrate_device_mode          u:object_r:syna_proc:s0
+genfscon proc /touchscreen/rotation_limit_level           u:object_r:syna_proc:s0
+genfscon proc /touchscreen/forcetouch_vendor              u:object_r:syna_proc:s0
+genfscon proc /goodix_ts/tp_capacitance_data              u:object_r:syna_proc:s0
+genfscon proc /touchscreen/follow_hand_level              u:object_r:syna_proc:s0
+genfscon proc /touchscreen/tp_report_rate                 u:object_r:syna_proc:s0
+genfscon proc /touchscreen/wake_gesture                   u:object_r:syna_proc:s0
+genfscon proc /touchscreen/tp_palm_mode                   u:object_r:syna_proc:s0
+genfscon proc /touchscreen/ts_main_ctrl                   u:object_r:syna_proc:s0
+genfscon proc /touchscreen/smart_cover                    u:object_r:syna_proc:s0
+genfscon proc /touchscreen/sensibility                    u:object_r:syna_proc:s0
+genfscon proc /sar/disable_sar_in_call                    u:object_r:syna_proc:s0
+genfscon proc /touchscreen/glove_mode                     u:object_r:syna_proc:s0
+genfscon proc /touchscreen/single_tap                     u:object_r:syna_proc:s0
+genfscon proc /touchscreen/single_aod                     u:object_r:syna_proc:s0
+genfscon proc /touchscreen/fake_sleep                     u:object_r:syna_proc:s0
+genfscon proc /touchscreen/fold_state                     u:object_r:syna_proc:s0
+genfscon proc /touchscreen/tp_switch                      u:object_r:syna_proc:s0
+genfscon proc /touchscreen/get_noise                      u:object_r:syna_proc:s0
+genfscon proc /touchscreen/aod_blind                      u:object_r:syna_proc:s0
+genfscon proc /touchscreen/play_game                      u:object_r:syna_proc:s0
+genfscon proc /gloved_finger_switch                       u:object_r:syna_proc:s0
+genfscon proc /touchscreen/one_key                        u:object_r:syna_proc:s0
+genfscon proc /touchscreen/edge_report_limit              u:object_r:sys_proc:s0
+genfscon proc /touchscreen/ts_information                 u:object_r:sys_proc:s0
+genfscon proc /touchscreen/headset_state                  u:object_r:sys_proc:s0
+
+# Display
+genfscon proc /driver/lcd_thermal_max_brightness          u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_fod_unlock_status               u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_second_irq_fps                  u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_color_gamut                     u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_global_hbm                      u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_dbi_status                      u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_bl_limit                        u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_aod_bl                          u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_elvdd                           u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_lspot                           u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_hbm                             u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_hdr                             u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_fps                             u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_fgp                             u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_acl                             u:object_r:proc_ztelcd_set:s0
+genfscon proc /driver/lcd_spr                             u:object_r:proc_ztelcd_set:s0
+genfscon proc /panel_hue_0_set                            u:object_r:proc_hue_set:s0
+genfscon proc /panel_hue_1_set                            u:object_r:proc_hue_set:s0
+genfscon proc /panel_partial_display_set                  u:object_r:proc_hue_set:s0
+genfscon proc /panel_hue_dll_01_switch                    u:object_r:proc_hue_0:s0
+genfscon proc /panel_hue_dll_11_switch                    u:object_r:proc_hue_0:s0
+genfscon proc /panel_hue_dll_0_switch                     u:object_r:proc_hue_0:s0
+genfscon proc /panel_hue_dll_1_switch                     u:object_r:proc_hue_0:s0
+genfscon proc /panel_hue_0_switch                         u:object_r:proc_hue_0:s0
+genfscon proc /panel_hue_1_switch                         u:object_r:proc_hue_1:s0
+
+# ZTE Test
+genfscon proc /driver/debug/wakeup_sources                u:object_r:proc_wakeup_sources:s0
+genfscon proc /driver/debug/tcp_output_debug/enable_debug u:object_r:proc_tcpip_debug:s0
+genfscon proc /driver/custom_gain_set                     u:object_r:ndt_proc:s0
+genfscon proc /driver/press_test                          u:object_r:ndt_proc:s0
+genfscon proc /driver/ndt_debug                           u:object_r:ndt_proc:s0
+genfscon proc /driver/smarttest                           u:object_r:sys_proc:s0
+genfscon proc /driver/lcd_state                           u:object_r:sys_proc:s0
+genfscon proc /driver/board_id                            u:object_r:sys_proc:s0
+genfscon proc /driver/chg_name                            u:object_r:sys_proc:s0
+genfscon proc /driver/emmc_id                             u:object_r:sys_proc:s0
+genfscon proc /driver/smartpa                             u:object_r:sys_proc:s0
+genfscon proc /driver/ddr_id                              u:object_r:sys_proc:s0
+genfscon proc /driver/lcd_id                              u:object_r:sys_proc:s0
