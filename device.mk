@@ -262,6 +262,7 @@ PRODUCT_PACKAGES += \
     NX729JCarrierConfigResNubia \
     NX729JFrameworks \
     NX729JFrameworksAOSPA \
+    NX729JSecureElement \
     NX729JSettings \
     NX729JSettingsAOSPA \
     NX729JSettingsProvider \
