@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <bool name="config_wifiBridgedSoftApSupported">true</bool>
-    <bool name="config_wifiMultiStaLocalOnlyConcurrencyEnabled">true</bool>
-    <bool name="config_wifiMultiStaNetworkSwitchingMakeBeforeBreakEnabled">true</bool>
-    <bool name="config_wifiMultiStaRestrictedConcurrencyEnabled">true</bool>
-    <bool name="config_wifiSaeUpgradeOffloadEnabled">true</bool>
-    <bool name="config_wifiSoftapIeee80211beSupported">true</bool>
-</resources>

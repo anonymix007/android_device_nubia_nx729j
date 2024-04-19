@@ -6,5 +6,11 @@
 
 runtime_resource_overlay {
     name: "NX729JWifiRes",
-    product_specific: true,
+    device_specific: true,
+}
+
+runtime_resource_overlay {
+    name: "NX729JWifiResMainline",
+    manifest: "AndroidGoogleManifest.xml",
+    device_specific: true,
 }

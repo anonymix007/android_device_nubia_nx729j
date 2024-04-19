@@ -268,8 +268,7 @@ PRODUCT_PACKAGES += \
     NX729JSystemUI \
     NX729JSystemUIAOSPA \
     NX729JWifiRes \
-    NX729JWifiResTarget \
-    NX729JWifiResTarget_spf
+    NX729JWifiResMainline
 
 # Perf
 PRODUCT_COPY_FILES += \
