@@ -168,6 +168,8 @@ on post-fs-data
     chmod 0666 /sys/class/leds/vibrator_l/f0_save
     chmod 0666 /sys/class/leds/vibrator_l/cali
     chmod 0666 /sys/class/leds/vibrator_l/f0
+    chown system system /proc/touchscreen/wake_gesture
+    chmod 664 /proc/touchscreen/wake_gesture
 
 on early-boot
     start vendor.sensors
