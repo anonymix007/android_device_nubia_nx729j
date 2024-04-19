@@ -145,18 +145,6 @@ vendor/etc/init/android.hardware.audio.service_64.rc
 vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
-vendor/lib/hw/android.hardware.audio.effect@2.0-impl.so
-vendor/lib/hw/android.hardware.audio.effect@4.0-impl.so
-vendor/lib/hw/android.hardware.audio.effect@5.0-impl.so
-vendor/lib/hw/android.hardware.audio.effect@6.0-impl.so
-vendor/lib/hw/android.hardware.audio.effect@7.0-impl.so
-vendor/lib/hw/android.hardware.audio@2.0-impl.so
-vendor/lib/hw/android.hardware.audio@4.0-impl.so
-vendor/lib/hw/android.hardware.audio@5.0-impl.so
-vendor/lib/hw/android.hardware.audio@6.0-impl.so
-vendor/lib/hw/android.hardware.audio@7.0-impl.so
-vendor/lib/hw/android.hardware.audio@7.1-impl.so
-vendor/lib/hw/audio.primary.default.so
 vendor/lib/hw/audio.primary.kalama.so
 vendor/lib/hw/audio.r_submix.default.so
 vendor/lib/libadm.so
@@ -187,17 +175,6 @@ vendor/lib/libsndcardparser.so
 vendor/lib/libvui_dmgr.so
 vendor/lib/vendor.qti.hardware.pal@1.0-impl.so
 vendor/lib/vendor.qti.hardware.pal@1.0.so
-vendor/lib64/hw/android.hardware.audio.effect@2.0-impl.so
-vendor/lib64/hw/android.hardware.audio.effect@4.0-impl.so
-vendor/lib64/hw/android.hardware.audio.effect@5.0-impl.so
-vendor/lib64/hw/android.hardware.audio.effect@6.0-impl.so
-vendor/lib64/hw/android.hardware.audio.effect@7.0-impl.so
-vendor/lib64/hw/android.hardware.audio@2.0-impl.so
-vendor/lib64/hw/android.hardware.audio@4.0-impl.so
-vendor/lib64/hw/android.hardware.audio@5.0-impl.so
-vendor/lib64/hw/android.hardware.audio@6.0-impl.so
-vendor/lib64/hw/android.hardware.audio@7.0-impl.so
-vendor/lib64/hw/android.hardware.audio@7.1-impl.so
 vendor/lib64/hw/audio.primary.default.so
 vendor/lib64/hw/audio.primary.kalama.so
 vendor/lib64/hw/audio.r_submix.default.so
@@ -2177,12 +2154,15 @@ vendor/etc/seccomp_policy/modemManager.policy
 
 # NFC
 vendor/bin/hw/android.hardware.nfc-service.sec
+vendor/bin/sec_nfc_test
+vendor/etc/init/nfc-service-sec.rc
 vendor/etc/libnfc-SN220_19_2MHZ.conf
 vendor/etc/libnfc-SN220_38_4MHZ.conf
 vendor/etc/libnfc-mtp-SN100.conf
 vendor/etc/libnfc-mtp-SN100_38_4MHZ.conf
 vendor/etc/libnfc-qrd-SN100.conf
 vendor/etc/libnfc-qrd-SN100_38_4MHZ.conf
+vendor/etc/vintf/manifest/nfc-service-sec.xml
 vendor/lib/libvui_dmgr_client.so
 vendor/lib/nfc_nci_sec.so
 vendor/lib64/nfc_nci_sec.so
@@ -2607,9 +2587,6 @@ vendor/lib/vendor.qti.ims.rcsuce@1.2.so
 vendor/lib/vendor.qti.imsrtpservice@3.0.so
 vendor/lib/vendor.qti.imsrtpservice@3.1-service-Impl.so
 vendor/lib/vendor.qti.imsrtpservice@3.1.so
-vendor/lib64/android.hardware.tetheroffload.config@1.0.so
-vendor/lib64/android.hardware.tetheroffload.control@1.0.so
-vendor/lib64/android.hardware.tetheroffload.control@1.1.so
 vendor/lib64/deviceInfoServiceModuleNr.so
 vendor/lib64/lib-imsdcservice.so
 vendor/lib64/lib-qhcpservice.so
@@ -2706,10 +2683,6 @@ vendor/lib64/vendor.zte.radio-V1-ndk.so
 # RemoteFS
 vendor/bin/rmt_storage
 vendor/etc/init/vendor.qti.rmt_storage.rc
-
-# RenderScript
-vendor/lib/hw/android.hardware.renderscript@1.0-impl.so
-vendor/lib64/hw/android.hardware.renderscript@1.0-impl.so
 
 # SCVE
 vendor/lib64/libscveCommon.so
@@ -2865,12 +2838,7 @@ vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.soter@1.0.so
 
 # Soundtrigger
-vendor/lib/hw/android.hardware.soundtrigger@2.1-impl.so
-vendor/lib/hw/android.hardware.soundtrigger@2.2-impl.so
-vendor/lib/hw/android.hardware.soundtrigger@2.3-impl.so
 vendor/lib/vendor.qti.voiceprint@1.0.so
-vendor/lib64/hw/android.hardware.soundtrigger@2.2-impl.so
-vendor/lib64/hw/android.hardware.soundtrigger@2.3-impl.so
 vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # TFTP
@@ -3152,7 +3120,6 @@ vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qsh_wifi_test
 vendor/bin/rkp_factory_extraction_tool
 vendor/bin/rpmbClient
-vendor/bin/sec_nfc_test
 vendor/bin/sigma_dut
 vendor/bin/soter_client
 vendor/bin/ssdaemon_vendor
@@ -3189,9 +3156,7 @@ vendor/etc/init/boringssl_self_test.rc
 vendor/etc/init/dlsc.rc
 vendor/etc/init/hostapd.android.rc
 vendor/etc/init/init.vendor.wlan.rc
-vendor/etc/init/nfc-service-sec.rc
 vendor/etc/init/ssdaemon_vendor.rc
-vendor/etc/init/tlpd.rc
 vendor/etc/init/vendor.qti.battery_stats.rc
 vendor/etc/init/vendor.qti.hardware.lights.service.rc
 vendor/etc/init/vndservicemanager.rc
@@ -3224,7 +3189,6 @@ vendor/etc/res/images/default/charger/battery_scale.png
 vendor/etc/sec_s3nrn4v_hwreg.bin
 vendor/etc/sec_s3nrn4v_swreg.bin
 vendor/etc/smomo_setting.xml
-vendor/etc/vintf/manifest/nfc-service-sec.xml
 vendor/etc/vintf/manifest/power.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
 vendor/firmware/GT9916_test_sensor_255.tporder
