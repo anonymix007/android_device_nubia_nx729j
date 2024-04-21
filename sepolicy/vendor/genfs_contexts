@@ -61,6 +61,12 @@ genfscon proc /panel_hue_dll_1_switch                     u:object_r:proc_hue_0:
 genfscon proc /panel_hue_0_switch                         u:object_r:proc_hue_0:s0
 genfscon proc /panel_hue_1_switch                         u:object_r:proc_hue_1:s0
 
+# Power Supply
+genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/zte_power_supply/zte_battery/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/zte_power_supply/zte_usb/wakeup     u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:charger_policy_service/power_supply/policy/wakeup                                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:charger_policy_service/wakeup                                                                u:object_r:sysfs_wakeup:s0
+
 # ZTE Test
 genfscon proc /driver/debug/wakeup_sources                u:object_r:proc_wakeup_sources:s0
 genfscon proc /driver/debug/tcp_output_debug/enable_debug u:object_r:proc_tcpip_debug:s0

@@ -1,2 +1,5 @@
 # Camera
 ro.camerahalvs.firstboot                                                 u:object_r:chvsfirstboot_prop:s0
+persist.camera.debug.chvs                                                u:object_r:chvsdebug_prop:s0
+
+persist.sys.ztelog.enable                                                u:object_r:logd_prop:s0

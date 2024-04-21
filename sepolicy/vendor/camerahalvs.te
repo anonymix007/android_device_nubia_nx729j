@@ -1,8 +1,18 @@
-allow camerahalvs gpu_device:chr_file { read write };
+allow camerahalvs gpu_device:chr_file { ioctl map open read write };
 allow camerahalvs vendor_camera_data_file:file { create open read write getattr append rename };
+allow camerahalvs vendor_camera_data_file:dir { add_name getattr open read remove_name search write };
+allow camerahalvs vendor_camera_data_file:file unlink;
+allow camerahalvs hal_graphics_mapper_hwservice:hwservice_manager find;
 init_daemon_domain(camerahalvs)
 binder_call(hal_camera_default, camerahalvs);
-#get_prop(camerahalvs, chvsfirstboot_prop);
+get_prop(camerahalvs, graphics_config_prop);
+get_prop(camerahalvs, graphics_config_writable_prop);
+get_prop(camerahalvs, hwservicemanager_prop);
+
+get_prop(camerahalvs, chvsfirstboot_prop);
 #set_prop(camerahalvs, chvsfirstboot_prop);
+
 type camerahalvs, domain;
 type camerahalvs_exec, exec_type, file_type, vendor_file_type;
+
+hal_client_domain(camerahalvs, vendor_hal_qspmhal);

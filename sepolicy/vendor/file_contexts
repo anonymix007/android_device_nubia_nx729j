@@ -1,7 +1,24 @@
 # Vibrator
 /vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.nubia                            u:object_r:hal_vibrator_default_exec:s0
 
+# Fan
+/sys/kernel/fan(/.*)?                                                                                 u:object_r:sysfs_nb_fan:s0
+/sys/devices/platform/soc/[a-f0-9][a-f0-9][a-f0-9]000.i2c/i2c-[0-9]+/[0-9]+-00+[0-9]a/leds/fan(/.*)?  u:object_r:sysfs_nb_fan:s0
+
+# LED
+/sys/class/leds/aw22xxx_led(/.*)?                                                                                u:object_r:sysfs_multicolor_led:s0
+/sys/devices/platform/soc/ac0000.qcom,qupv3_1_geni_se/a80000.i2c/i2c-11/11-006a/leds/aw22xxx_led(/.*)?           u:object_r:sysfs_multicolor_led:s0
+/sys/devices/platform/soc/ac0000.qcom,qupv3_1_geni_se/a80000.i2c/i2c-10/10-006a/leds/aw22xxx_led(/.*)?           u:object_r:sysfs_multicolor_led:s0
+/sys/devices/platform/soc/ac0000.qcom,quqv3_1_geni_se/a80000.i2c/i2c-[0-12]+/[0-12]+-006a/leds/aw22xxx_led(/.*)? u:object_r:sysfs_multicolor_led:s0
+
+# Touch keys
+/sys/class/leds/sar0(/.*)?                                                                                 u:object_r:sysfs_touch_lcd:s0
+/sys/class/leds/sar1(/.*)?                                                                                 u:object_r:sysfs_touch_lcd:s0
+/sys/devices/platform/soc/9c0000.qcom,qupv3_i2c_geni_se/98c000.i2c/i2c-[0-9]+/[0-9]+-0013/leds/sar0(/.*)?  u:object_r:sysfs_touch_lcd:s0
+/sys/devices/platform/soc/8c0000.qcom,qupv3_2_geni_se/880000.i2c/i2c-[0-9]+/[0-9]+-0012/leds/sar1(/.*)?    u:object_r:sysfs_touch_lcd:s0
+
 # Fingerprint
+/data/vendor/goodix/gf_data(/.*)?                                                         u:object_r:vendor_goodix_gf_data_file:s0
 /mnt/vendor/persist/goodix(/.*)?                                                          u:object_r:fingerprint_vendor_data_file:s0
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.nubia             u:object_r:hal_fingerprint_default_exec:s0
 /dev/goodix_fp                                                                            u:object_r:fingerprint_device:s0
