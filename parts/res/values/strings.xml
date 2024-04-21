@@ -33,4 +33,15 @@
     <string name="trigger_buttons_summary">Enable or disable trigger buttons</string>
     <string name="trigger_buttons_disable_title">Disable trigger buttons</string>
     <string name="trigger_buttons_disable_summary">Avoid trigger buttons to cause unwanted behavior</string>
+
+    <!-- Game Key -->
+    <string name="gamekey_title">Game Key Behaviour</string>
+    <string name="gamekey_summary">Configure game key actions</string>
+    <string name="gamekey_enable_title">Enable game key actions</string>
+    <string name="gamekey_action_up_title">Select key up action</string>
+    <string name="gamekey_action_down_title">Select key down action</string>
+    <string name="gamekey_action_silent">Silent</string>
+    <string name="gamekey_action_vibrate">Vibrate</string>
+    <string name="gamekey_action_ring">Ring</string>
+
 </resources>

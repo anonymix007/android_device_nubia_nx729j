@@ -31,4 +31,11 @@
         android:icon="@drawable/triggers"
         android:summary="@string/trigger_buttons_summary"
         android:title="@string/trigger_buttons_title" />
+
+    <PreferenceScreen
+        android:key="gamekey"
+        android:fragment="co.aospa.settings.gamekey.GameKeyActivity"
+        android:icon="@drawable/gamekey"
+        android:summary="@string/gamekey_summary"
+        android:title="@string/gamekey_title" />
 </PreferenceScreen>

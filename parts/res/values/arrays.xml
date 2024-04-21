@@ -23,4 +23,17 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <string-array name="gamekey_ringer_entries" translatable="false">
+        <item>@string/gamekey_action_silent</item>
+        <item>@string/gamekey_action_vibrate</item>
+        <item>@string/gamekey_action_ring</item>
+    </string-array>
+
+    <string-array name="gamekey_ringer_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

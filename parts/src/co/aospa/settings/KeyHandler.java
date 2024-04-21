@@ -27,6 +27,9 @@ import android.util.Log;
 
 import com.android.internal.os.DeviceKeyHandler;
 
+import co.aospa.settings.gamekey.GameKeyFragment;
+import co.aospa.settings.utils.SettingsUtils;
+
 public class KeyHandler implements DeviceKeyHandler {
     private static final String TAG = KeyHandler.class.getSimpleName();
 
@@ -48,10 +51,17 @@ public class KeyHandler implements DeviceKeyHandler {
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
         if (!mInputManager.getInputDevice(event.getDeviceId()).getName().equals("gpio-keys_nubia")) {
+            Log.d(TAG, "Got event " + event + " event from " + mInputManager.getInputDevice(event.getDeviceId()));
+            return event;
+        }
+
+        if (!SettingsUtils.getBoolean(mContext, GameKeyFragment.KEY_GAMEKEY_ENABLE, true)) {
+            Log.d(TAG, "Got gamekey event " + event + ", but it's disabled");
             return event;
         }
 
         if (event.getKeyCode() != KeyEvent.KEYCODE_F8) {
+            Log.e(TAG, "Got unknown event: " + event);
             return event;
         }
 
@@ -59,10 +69,10 @@ public class KeyHandler implements DeviceKeyHandler {
 
         switch(event.getAction()) {
             case KeyEvent.ACTION_DOWN:
-                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
+                mAudioManager.setRingerModeInternal(SettingsUtils.getInt(mContext, GameKeyFragment.KEY_GAMEKEY_ACTION_DOWN, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_DOWN));
                 break;
             case KeyEvent.ACTION_UP:
-                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
+                mAudioManager.setRingerModeInternal(SettingsUtils.getInt(mContext, GameKeyFragment.KEY_GAMEKEY_ACTION_DOWN, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_UP));
                 break;
             default:
                 return event;

@@ -215,6 +215,12 @@ on post-fs-data
     chmod 664 /sys/kernel/fan/fan_speed_level
     chmod 664 /sys/kernel/fan/fan_speed_pwm
 
+    restorecon /sys/kernel/fan
+    restorecon /sys/kernel/fan/fan_enable
+    restorecon /sys/kernel/fan/fan_speed_pwm
+    restorecon /sys/kernel/fan/fan_speed_level
+    restorecon /sys/kernel/fan/fan_speed_count
+
 on early-boot
     start vendor.sensors
 

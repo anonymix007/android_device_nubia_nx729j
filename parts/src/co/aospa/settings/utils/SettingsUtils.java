@@ -50,4 +50,10 @@ public class SettingsUtils {
         SharedPreferences settings = context.getSharedPreferences(PREFERENCES, 0);
         return settings.getInt(name, def);
     }
+
+    public static boolean getBoolean(Context context, String name, boolean def) {
+        SharedPreferences settings = context.getSharedPreferences(PREFERENCES, 0);
+        return settings.getBoolean(name, def);
+    }
+
 };

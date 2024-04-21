@@ -65,9 +65,9 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         } else {
             AudioManager audioManager = context.getSystemService(AudioManager.class);
             if (gamekeyStatus.equals("1")) {
-                audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
-            } else if (gamekeyStatus.equals("1")) {
-                audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
+                //audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
+            } else if (gamekeyStatus.equals("0")) {
+                //audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
             } else {
                 Log.e(TAG, "Unknown gameswitch status: " + gamekeyStatus);
             }

@@ -69,6 +69,11 @@
             android:label="@string/trigger_buttons_title">
         </activity>
 
+        <activity
+            android:name=".gamekey.GameKeyActivity"
+            android:label="@string/gamekey_title">
+        </activity>
+
         <activity android:name=".KeyHandler" />
 
     </application>
