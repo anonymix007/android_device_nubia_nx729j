@@ -10,11 +10,13 @@ android_app {
     srcs: ["src/**/*.java"],
     resource_dirs: ["res"],
     certificate: "platform",
+    system_ext_specific: true,
     platform_apis: true,
     privileged: true,
 
     static_libs: [
-        "org.lineageos.settings.resources",
+        "co.aospa.resources",
+        "SettingsLib",
     ],
 
     optimize: {

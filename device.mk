@@ -271,6 +271,13 @@ PRODUCT_PACKAGES += \
     NX729JWifiRes \
     NX729JWifiResMainline
 
+# Parts
+PRODUCT_PACKAGES += \
+    NubiaParts
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/parts/privapp-permissions-parts.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-parts.xml
+
 # Perf
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf

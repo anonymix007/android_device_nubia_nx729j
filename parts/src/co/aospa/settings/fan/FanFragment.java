@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2020 The LineageOS Project
+ *               2024 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.fan;
+package co.aospa.settings.fan;
 
 import android.content.res.Resources;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.widget.Switch;
 import android.widget.CompoundButton;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
@@ -31,20 +33,21 @@ import androidx.preference.SeekBarPreference;
 import androidx.preference.DropDownPreference;
 
 import com.android.settingslib.widget.MainSwitchPreference;
+import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
-import org.lineageos.settings.R;
+import com.android.settingslib.widget.R;
 
-import org.lineageos.settings.utils.FileUtils;
-import org.lineageos.settings.utils.SettingsUtils;
+import co.aospa.settings.utils.FileUtils;
+import co.aospa.settings.utils.SettingsUtils;
 
 public class FanFragment extends PreferenceFragment implements
-        CompoundButton.OnCheckedChangeListener, Preference.OnPreferenceChangeListener,
+        OnMainSwitchChangeListener, Preference.OnPreferenceChangeListener,
         SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String KEY_FAN_ENABLE = "fan_control_enable";
     public static final String KEY_FAN_MODE = "fan_control_mode";
     public static final String KEY_FAN_MANUAL = "fan_control_manual_slider";
 
-    public static final String SMART_FAN = "/sys/kernel/fan/fan_smart";
+    public static final String ENABLE = "/sys/kernel/fan/fan_enable";
     public static final String SPEED_LEVEL = "/sys/kernel/fan/fan_speed_level";
 
     public static final int FAN_AUTO_VALUE = 1;
@@ -105,25 +108,25 @@ public class FanFragment extends PreferenceFragment implements
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean enabled) {
-        SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, enabled);
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, isChecked);
         int fanModeValue = Integer.parseInt((String) mFanControlMode.getValue());
         String manualFanValue;
 
-        if (enabled) {
-            SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, enabled);
+        if (isChecked) {
+            SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, isChecked);
             if (fanModeValue == FAN_AUTO_VALUE) {
-                FileUtils.writeLine(SMART_FAN, "1");
+                FileUtils.writeLine(ENABLE, "1");
             } else if (fanModeValue == FAN_MANUAL_VALUE) {
                 manualFanValue = String.valueOf(SettingsUtils.getInt(getActivity(), KEY_FAN_MANUAL, 1));
                 FileUtils.writeLine(SPEED_LEVEL, manualFanValue);
+                FileUtils.writeLine(ENABLE, "1");
             }
         } else {
             FileUtils.writeLine(SPEED_LEVEL, "0");
-            FileUtils.writeLine(SMART_FAN, "0");
+            FileUtils.writeLine(ENABLE, "0");
         }
     }
-
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
         final String key = preference.getKey();
@@ -150,12 +153,12 @@ public class FanFragment extends PreferenceFragment implements
                 summary = getResources().getString(R.string.fan_control_auto_summary);
                 mFanManualBar.setVisible(false);
                 FileUtils.writeLine(SPEED_LEVEL, "0");
-                FileUtils.writeLine(SMART_FAN, "1");
+                FileUtils.writeLine(ENABLE, "1");
             } else if (intValue == FAN_MANUAL_VALUE) {
                 String manualFanValue = String.valueOf(SettingsUtils.getInt(getContext(), KEY_FAN_MANUAL, 1));
                 summary = getResources().getString(R.string.fan_control_manual_summary);
                 mFanManualBar.setVisible(true);
-                FileUtils.writeLine(SMART_FAN, "0");
+                FileUtils.writeLine(ENABLE, "0");
                 FileUtils.writeLine(SPEED_LEVEL, manualFanValue);
             }
             mFanControlMode.setSummary(summary);

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2023 The LineageOS Project
+ *               2024 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +15,12 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.buttons;
+package co.aospa.settings.buttons;
 
 import android.os.Bundle;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.widget.R;
 
 public class TriggersActivity extends CollapsingToolbarBaseActivity {
 
@@ -28,7 +30,7 @@ public class TriggersActivity extends CollapsingToolbarBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
-        .replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame, new TriggersFragment(), TAG_BUTTONS)
+        .replace(R.id.content_frame, new TriggersFragment(), TAG_BUTTONS)
         .commit();
     }
 }

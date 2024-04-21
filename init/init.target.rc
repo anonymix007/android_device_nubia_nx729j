@@ -168,8 +168,52 @@ on post-fs-data
     chmod 0666 /sys/class/leds/vibrator_l/f0_save
     chmod 0666 /sys/class/leds/vibrator_l/cali
     chmod 0666 /sys/class/leds/vibrator_l/f0
+
+    chown system system /sys/class/leds/sar0/mode_operation
+    chown system system /sys/class/leds/sar0/diff
+    chown system system /sys/class/leds/sar0/sensy_config
+    chown system system /sys/class/leds/sar0/parasitic_data
+    chown system system /sys/class/leds/sar0/aot_cali
+    chown system system /sys/class/leds/sar0/baseline
+    chown system system /sys/class/leds/sar0
+
+    chown system system /sys/class/leds/sar1/mode_operation
+    chown system system /sys/class/leds/sar1/diff
+    chown system system /sys/class/leds/sar1/sensy_config
+    chown system system /sys/class/leds/sar1/parasitic_data
+    chown system system /sys/class/leds/sar1/aot_cali
+    chown system system /sys/class/leds/sar1/baseline
+    chown system system /sys/class/leds/sar1
+
+    chmod 666 /sys/class/leds/sar0
+    chmod 666 /sys/class/leds/sar0/mode_operation
+    chmod 666 /sys/class/leds/sar0/baseline
+    chmod 666 /sys/class/leds/sar0/parasitic_data
+    chmod 666 /sys/class/leds/sar0/diff
+    chmod 666 /sys/class/leds/sar0/sensy_config
+    chmod 666 /sys/class/leds/sar0/aot_cali
+
+    chmod 666 /sys/class/leds/sar1
+    chmod 666 /sys/class/leds/sar1/mode_operation
+    chmod 666 /sys/class/leds/sar1/baseline
+    chmod 666 /sys/class/leds/sar1/parasitic_data
+    chmod 666 /sys/class/leds/sar1/diff
+    chmod 666 /sys/class/leds/sar1/sensy_config
+    chmod 666 /sys/class/leds/sar1/aot_cali
+
+
     chown system system /proc/touchscreen/wake_gesture
     chmod 664 /proc/touchscreen/wake_gesture
+
+    chown system system /sys/kernel/fan/fan_enable
+    chown system system /sys/kernel/fan/fan_speed_count
+    chown system system /sys/kernel/fan/fan_speed_level
+    chown system system /sys/kernel/fan/fan_speed_pwm
+
+    chmod 664 /sys/kernel/fan/fan_enable
+    chmod 664 /sys/kernel/fan/fan_speed_count
+    chmod 664 /sys/kernel/fan/fan_speed_level
+    chmod 664 /sys/kernel/fan/fan_speed_pwm
 
 on early-boot
     start vendor.sensors

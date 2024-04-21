@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2023 The LineageOS Project
+ *               2024 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.buttons;
+package co.aospa.settings.buttons;
 
 import android.content.res.Resources;
 import android.content.SharedPreferences;
@@ -28,15 +29,27 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
-import org.lineageos.settings.R;
+import co.aospa.settings.R;
 
-import org.lineageos.settings.utils.FileUtils;
-import org.lineageos.settings.utils.SettingsUtils;
+import co.aospa.settings.utils.FileUtils;
+import co.aospa.settings.utils.SettingsUtils;
 
 public class TriggersFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String KEY_TRIGGERS_DISABLE = "triggers_disable";
-    public static final String KEY_TRIGGERS_MODE_FILE1 = "/sys/devices/platform/soc/988000.i2c/i2c-1/1-0010/mode";
-    public static final String KEY_TRIGGERS_MODE_FILE2 = "/sys/devices/platform/soc/990000.i2c/i2c-2/2-0010/mode";
+
+    public static final String UP_TOUCH_KEY_DIFF = "/sys/class/leds/sar0/diff";
+    public static final String DN_TOUCH_KEY_DIFF = "/sys/class/leds/sar1/diff";
+
+    public static final String UP_TOUCH_KEY_PARASITIC = "/sys/class/leds/sar0/parasitic_data";
+    public static final String DN_TOUCH_KEY_PARASITIC = "/sys/class/leds/sar1/parasitic_data";
+
+    public static final String UP_TOUCH_KEY_MODE_OPERATION = "/sys/class/leds/sar0/mode_operation";
+    public static final String DN_TOUCH_KEY_MODE_OPERATION = "/sys/class/leds/sar1/mode_operation";
+
+    public static final String MODE_ENABLE = "1";
+    public static final String MODE_DISABLE = "2";
+
+
 
     private SharedPreferences mPrefs;
     @Override
@@ -64,8 +77,8 @@ public class TriggersFragment extends PreferenceFragment implements SharedPrefer
         if (KEY_TRIGGERS_DISABLE.equals(key)) {
             final boolean value = mPrefs.getBoolean(key, false);
             mPrefs.edit().putBoolean(KEY_TRIGGERS_DISABLE, value).apply();
-            FileUtils.writeLine(KEY_TRIGGERS_MODE_FILE1, value ? "0" : "1");
-            FileUtils.writeLine(KEY_TRIGGERS_MODE_FILE2, value ? "0" : "1");
+            FileUtils.writeLine(UP_TOUCH_KEY_MODE_OPERATION, value ? MODE_DISABLE : MODE_ENABLE);
+            FileUtils.writeLine(DN_TOUCH_KEY_MODE_OPERATION, value ? MODE_DISABLE : MODE_ENABLE);
         }
     }
 }

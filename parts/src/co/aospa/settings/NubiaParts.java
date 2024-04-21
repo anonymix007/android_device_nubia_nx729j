@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2020 The LineageOS Project
+ *               2024 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings;
+package co.aospa.settings;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -31,8 +32,9 @@ import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
-import org.lineageos.settings.buttons.TriggersActivity;
-import org.lineageos.settings.fan.FanActivity;
+import co.aospa.settings.buttons.TriggersActivity;
+import co.aospa.settings.fan.FanActivity;
+import com.android.settingslib.widget.R;
 
 public class NubiaParts extends CollapsingToolbarBaseActivity {
     @Override
@@ -44,7 +46,7 @@ public class NubiaParts extends CollapsingToolbarBaseActivity {
         if (fragment == null) {
             mNubiaPartsFragment = new NubiaPartsFragment();
             getFragmentManager().beginTransaction()
-                    .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, mNubiaPartsFragment)
+                    .add(R.id.content_frame, mNubiaPartsFragment)
                     .commit();
         }
     }

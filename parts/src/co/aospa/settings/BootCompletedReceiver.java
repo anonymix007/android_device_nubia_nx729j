@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
  *               2017-2019 The LineageOS Project
+ *               2024 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +16,9 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings;
+package co.aospa.settings;
 
+import android.media.AudioManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,10 +26,11 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import org.lineageos.settings.fan.FanFragment;
-import org.lineageos.settings.buttons.TriggersFragment;
-import org.lineageos.settings.utils.FileUtils;
-import org.lineageos.settings.utils.SettingsUtils;
+
+import co.aospa.settings.fan.FanFragment;
+import co.aospa.settings.buttons.TriggersFragment;
+import co.aospa.settings.utils.FileUtils;
+import co.aospa.settings.utils.SettingsUtils;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
@@ -42,17 +45,32 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         if (SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_ENABLE)) {
             if (intValue == FanFragment.FAN_AUTO_VALUE) {
-                FileUtils.writeLine(FanFragment.SMART_FAN, "1");
+                FileUtils.writeLine(FanFragment.ENABLE, "1");
             } else if (intValue == FanFragment.FAN_MANUAL_VALUE) {
                 String fanSpeed = String.valueOf(SettingsUtils.getInt(context, FanFragment.KEY_FAN_MANUAL, 1));
                 FileUtils.writeLine(FanFragment.SPEED_LEVEL, fanSpeed);
             }
         }
 
-        Boolean enabled = sharedPreferences.getBoolean(TriggersFragment.KEY_TRIGGERS_DISABLE, true);
-        if (enabled) {
-            FileUtils.writeLine(TriggersFragment.KEY_TRIGGERS_MODE_FILE1, "0");
-            FileUtils.writeLine(TriggersFragment.KEY_TRIGGERS_MODE_FILE2, "0");
+        Boolean disabled = sharedPreferences.getBoolean(TriggersFragment.KEY_TRIGGERS_DISABLE, true);
+        if (!disabled) {
+            FileUtils.writeLine(TriggersFragment.UP_TOUCH_KEY_MODE_OPERATION, TriggersFragment.MODE_ENABLE);
+            FileUtils.writeLine(TriggersFragment.DN_TOUCH_KEY_MODE_OPERATION, TriggersFragment.MODE_ENABLE);
+        }
+
+        String gamekeyStatus = FileUtils.readOneLine(KeyHandler.GAMEKEY_STATUS_PATH);
+
+        if (gamekeyStatus == null) {
+            Log.e(TAG, "Cannot get gameswitch status");
+        } else {
+            AudioManager audioManager = context.getSystemService(AudioManager.class);
+            if (gamekeyStatus.equals("1")) {
+                audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
+            } else if (gamekeyStatus.equals("1")) {
+                audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
+            } else {
+                Log.e(TAG, "Unknown gameswitch status: " + gamekeyStatus);
+            }
         }
     }
 }

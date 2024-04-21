@@ -20,14 +20,14 @@
 
     <PreferenceScreen
         android:key="fan"
-        android:fragment="org.lineageos.settings.fan.FanActivity"
+        android:fragment="co.aospa.settings.fan.FanActivity"
         android:icon="@drawable/fan"
         android:summary="@string/fan_control_summary"
         android:title="@string/fan_control_title" />
 
     <PreferenceScreen
         android:key="triggers"
-        android:fragment="org.lineageos.settings.buttons.TriggersActivity"
+        android:fragment="co.aospa.settings.buttons.TriggersActivity"
         android:icon="@drawable/triggers"
         android:summary="@string/trigger_buttons_summary"
         android:title="@string/trigger_buttons_title" />

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2020 The LineageOS Project
+ *               2024 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +15,10 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings;
+package co.aospa.settings;
 
 import android.content.Context;
+import android.hardware.input.InputManager;
 import android.media.AudioManager;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -28,28 +30,38 @@ import com.android.internal.os.DeviceKeyHandler;
 public class KeyHandler implements DeviceKeyHandler {
     private static final String TAG = KeyHandler.class.getSimpleName();
 
-    private static final int KEY_GAMESWITCH_OFF = 250;
-    private static final int KEY_GAMESWITCH_ON = 251;
+    public static final String GAMEKEY_STATUS_PATH = "/sys/devices/platform/soc/soc:gpio_keys_nubia/GamekeyStatus";
 
     private final Context mContext;
     private final AudioManager mAudioManager;
+    private final InputManager mInputManager;
     private final Vibrator mVibrator;
 
     public KeyHandler(Context context) {
+        Log.e(TAG, "Creating new gameswitch key handler");
         mContext = context;
 
         mAudioManager = mContext.getSystemService(AudioManager.class);
+        mInputManager = mContext.getSystemService(InputManager.class);
         mVibrator = mContext.getSystemService(Vibrator.class);
     }
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
-        int scanCode = event.getScanCode();
+        if (!mInputManager.getInputDevice(event.getDeviceId()).getName().equals("gpio-keys_nubia")) {
+            return event;
+        }
 
-        switch(scanCode) {
-            case KEY_GAMESWITCH_OFF:
+        if (event.getKeyCode() != KeyEvent.KEYCODE_F8) {
+            return event;
+        }
+
+        Log.e(TAG, "Got gameswitch event: " + event);
+
+        switch(event.getAction()) {
+            case KeyEvent.ACTION_DOWN:
                 mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
                 break;
-            case KEY_GAMESWITCH_ON:
+            case KeyEvent.ACTION_UP:
                 mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
                 break;
             default:
@@ -68,4 +80,4 @@ public class KeyHandler implements DeviceKeyHandler {
         }
     }
 }
- 
+
