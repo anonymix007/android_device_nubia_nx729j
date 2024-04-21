@@ -1096,6 +1096,13 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.qesdhalaidl</name>
+        <interface>
+            <name>IQesdhal</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.qspmhal</name>
         <version>1.0</version>
