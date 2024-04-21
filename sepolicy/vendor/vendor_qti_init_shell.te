@@ -1,2 +1,4 @@
 allow vendor_qti_init_shell kmsg_device:chr_file { open write };
-allow vendor_qti_init_shell sysfs:file setattr;
+allow vendor_qti_init_shell sysfs:file { write setattr };
+allow vendor_qti_init_shell vendor_sysfs_scsi_target:file write;
+

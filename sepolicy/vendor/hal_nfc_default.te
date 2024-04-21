@@ -1,0 +1,2 @@
+get_prop(hal_nfc_default, nfc_prop)
+set_prop(hal_nfc_default, nfc_prop)

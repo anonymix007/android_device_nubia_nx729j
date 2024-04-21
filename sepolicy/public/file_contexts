@@ -1,0 +1,1 @@
+/sys/devices/platform/soc/soc:gpio_keys_nubia/GamekeyStatus   u:object_r:gamekey_sysfs:s0
