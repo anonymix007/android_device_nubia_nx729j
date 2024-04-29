@@ -1,4 +1,4 @@
-# Unpinned blobs from NX729J-user 13 TKQ1.221013.002 eng.nubia.20230701.184053 release-keys
+# Unpinned blobs from NX729J-user 14 UKQ1.230917.001 eng.nubia.20240327.173327 release-keys
 
 # ACDB
 vendor/etc/acdbdata/IDP_UPD/IDP_UPD_acdb_cal.acdb
@@ -2257,10 +2257,6 @@ vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so
 # QCV
 vendor/bin/init.qti.qcv.sh
 vendor/etc/init/init.qti.qcv.rc
-
-# QESD
-system_ext/lib/vendor.qti.qesdhalaidl-V1-ndk.so
-system_ext/lib64/vendor.qti.qesdhalaidl-V1-ndk.so
 
 # QESDK
 vendor/bin/qesdk-manager
