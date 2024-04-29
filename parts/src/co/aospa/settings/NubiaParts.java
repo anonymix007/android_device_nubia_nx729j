@@ -34,6 +34,7 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
 import co.aospa.settings.buttons.TriggersActivity;
 import co.aospa.settings.fan.FanActivity;
+import co.aospa.settings.gamekey.GameKeyActivity;
 import com.android.settingslib.widget.R;
 
 public class NubiaParts extends CollapsingToolbarBaseActivity {
@@ -72,6 +73,16 @@ public class NubiaParts extends CollapsingToolbarBaseActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getContext(), TriggersActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+            });
+
+            Preference mGameKeyPref = findPreference("gamekey");
+            mGameKeyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent(getContext(), GameKeyActivity.class);
                     startActivity(intent);
                     return true;
                 }

@@ -58,7 +58,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             FileUtils.writeLine(TriggersFragment.DN_TOUCH_KEY_MODE_OPERATION, TriggersFragment.MODE_ENABLE);
         }
 
-        String gamekeyStatus = FileUtils.readOneLine(KeyHandler.GAMEKEY_STATUS_PATH);
+        /*String gamekeyStatus = FileUtils.readOneLine(KeyHandler.GAMEKEY_STATUS_PATH);
 
         if (gamekeyStatus == null) {
             Log.e(TAG, "Cannot get gameswitch status");
@@ -71,6 +71,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             } else {
                 Log.e(TAG, "Unknown gameswitch status: " + gamekeyStatus);
             }
-        }
+        }*/
     }
 }

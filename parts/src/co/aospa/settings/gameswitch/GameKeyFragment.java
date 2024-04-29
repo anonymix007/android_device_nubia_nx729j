@@ -37,7 +37,9 @@ import co.aospa.settings.R;
 import co.aospa.settings.utils.FileUtils;
 import co.aospa.settings.utils.SettingsUtils;
 
-public class GameKeyFragment extends PreferenceFragment {
+import android.util.Log;
+
+public class GameKeyFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = "GameKeyFragment";
 
     public static final String KEY_GAMEKEY_ENABLE = "gamekey_enable";
@@ -63,18 +65,48 @@ public class GameKeyFragment extends PreferenceFragment {
         mDownAction = (DropDownPreference) findPreference(KEY_GAMEKEY_ACTION_DOWN);
         mUpAction = (DropDownPreference) findPreference(KEY_GAMEKEY_ACTION_UP);
 
-        mDownAction.setValue(String.valueOf(SettingsUtils.getInt(getActivity(), KEY_GAMEKEY_ACTION_DOWN, KEY_GAMEKEY_DEFAULT_ACTION_DOWN)));
-        mUpAction.setValue(String.valueOf(SettingsUtils.getInt(getActivity(), KEY_GAMEKEY_ACTION_UP, KEY_GAMEKEY_DEFAULT_ACTION_UP)));
+        int downAction = SettingsUtils.getInt(getActivity(), KEY_GAMEKEY_ACTION_DOWN, KEY_GAMEKEY_DEFAULT_ACTION_DOWN);
+        int upAction = SettingsUtils.getInt(getActivity(), KEY_GAMEKEY_ACTION_UP, KEY_GAMEKEY_DEFAULT_ACTION_UP);
 
+        mDownAction.setValue(String.valueOf(downAction));
+        mUpAction.setValue(String.valueOf(upAction));
+
+        mDownAction.setSummary(getActionSummaryFromValue(downAction));
+        mUpAction.setSummary(getActionSummaryFromValue(upAction));
+    }
+
+    private String getActionSummaryFromValue(int action) {
+        switch (action) {
+            case AudioManager.RINGER_MODE_SILENT: return getResources().getString(R.string.gamekey_action_silent);
+            case AudioManager.RINGER_MODE_NORMAL: return getResources().getString(R.string.gamekey_action_ring);
+            case AudioManager.RINGER_MODE_VIBRATE: return getResources().getString(R.string.gamekey_action_vibrate);
+            default: return null;
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mPrefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
+        if (KEY_GAMEKEY_ACTION_DOWN.equals(key)) {
+            int downAction = Integer.parseInt(mDownAction.getValue());
+            SettingsUtils.putInt(getActivity(), KEY_GAMEKEY_ACTION_DOWN, downAction);
+            mDownAction.setSummary(getActionSummaryFromValue(downAction));
+        } else if (KEY_GAMEKEY_ACTION_UP.equals(key)) {
+            int upAction = Integer.parseInt(mUpAction.getValue());
+            SettingsUtils.putInt(getActivity(), KEY_GAMEKEY_ACTION_UP, upAction);
+            mUpAction.setSummary(getActionSummaryFromValue(upAction));
+        }
     }
 }
