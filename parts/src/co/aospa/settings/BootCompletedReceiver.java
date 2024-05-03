@@ -26,9 +26,10 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-
-import co.aospa.settings.fan.FanFragment;
 import co.aospa.settings.buttons.TriggersFragment;
+import co.aospa.settings.fan.FanFragment;
+import co.aospa.settings.gamekey.GameKeyFragment;
+
 import co.aospa.settings.utils.FileUtils;
 import co.aospa.settings.utils.SettingsUtils;
 
@@ -58,19 +59,19 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             FileUtils.writeLine(TriggersFragment.DN_TOUCH_KEY_MODE_OPERATION, TriggersFragment.MODE_ENABLE);
         }
 
-        /*String gamekeyStatus = FileUtils.readOneLine(KeyHandler.GAMEKEY_STATUS_PATH);
+        String gamekeyStatus = FileUtils.readOneLine(KeyHandler.GAMEKEY_STATUS_PATH);
 
         if (gamekeyStatus == null) {
             Log.e(TAG, "Cannot get gameswitch status");
-        } else {
+        } else if (SettingsUtils.getEnabled(context, GameKeyFragment.KEY_GAMEKEY_ENABLE)) {
             AudioManager audioManager = context.getSystemService(AudioManager.class);
             if (gamekeyStatus.equals("1")) {
-                //audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
+                audioManager.setRingerModeInternal(SettingsUtils.getInt(context, GameKeyFragment.KEY_GAMEKEY_ACTION_UP, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_UP));
             } else if (gamekeyStatus.equals("0")) {
-                //audioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
+                audioManager.setRingerModeInternal(SettingsUtils.getInt(context, GameKeyFragment.KEY_GAMEKEY_ACTION_DOWN, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_DOWN));
             } else {
                 Log.e(TAG, "Unknown gameswitch status: " + gamekeyStatus);
             }
-        }*/
+        }
     }
 }
