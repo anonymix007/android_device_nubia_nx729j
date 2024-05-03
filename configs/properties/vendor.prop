@@ -14,6 +14,11 @@ ro.total.camera.number=4
 ro.vendor.camera.total.number=4
 ro.vendor.game.switch.enable=1
 
+# Fingerprint
+ro.vendor.feature.fingerprint_sensorui_position_center_r=94
+ro.vendor.feature.fingerprint_sensorui_position_center_x=558
+ro.vendor.feature.fingerprint_sensorui_position_center_y=1858
+
 # LED
 ro.vendor.poweroff_breath_type=1
 ro.vendor.poweroff_outchannel=4864
