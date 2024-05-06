@@ -31,8 +31,9 @@
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
-#define LOG_TAG "vendor.qti.vibrator"
+#define LOG_TAG "vendor.qti.vibrator.nubia"
 
+#include <cutils/properties.h>
 #include <dirent.h>
 #include <inttypes.h>
 #include <linux/input.h>
@@ -43,16 +44,14 @@
 #include <sys/ioctl.h>
 #include <sys/epoll.h>
 #include <sys/poll.h>
+#include <sys/stat.h>
+#include <pwd.h>
 #include <thread>
 
 #include "include/Vibrator.h"
 #ifdef USE_EFFECT_STREAM
 #include "effect.h"
 #endif
-
-extern "C" {
-#include "libsoc_helper.h"
-}
 
 namespace aidl {
 namespace android {
@@ -68,9 +67,18 @@ namespace vibrator {
 #define PRIMITIVE_ID_MASK       0x8000
 #define MAX_PATTERN_ID          32767
 
+#define MSM_CPU_KALAMA          519
+#define APQ_CPU_KALAMA          536
+#define MSM_CPU_KALAMA_SG       600
+#define APQ_CPU_KALAMA_SG       601
+#define MSM_CPU_PINEAPPLE       557
+#define APQ_CPU_PINEAPPLE       577
+
+
 #define test_bit(bit, array)    ((array)[(bit)/8] & (1<<((bit)%8)))
 
-static const char LED_DEVICE[] = "/sys/class/leds/vibrator";
+static const char LED_DEVICE[] = "/sys/class/leds/vibrator_l";
+static const char LED_DEVICE2[] = "/sys/class/leds/vibrator_r";
 static const char HAPTICS_SYSFS[] = "/sys/class/qcom-haptics";
 
 static constexpr int32_t ComposeDelayMaxMs = 1000;
@@ -89,7 +97,7 @@ InputFFDevice::InputFFDevice()
     const char *INPUT_DIR = "/dev/input/";
     char name[NAME_BUF_SIZE];
     int fd, ret;
-    soc_info_v0_1_t soc;
+    int soc = property_get_int32("ro.vendor.qti.soc_id", -1);
 
     mVibraFd = INVALID_VALUE;
     mSupportGain = false;
@@ -148,9 +156,8 @@ InputFFDevice::InputFFDevice()
             if (test_bit(FF_GAIN, ffBitmask))
                 mSupportGain = true;
 
-            get_soc_info(&soc);
-            ALOGD("msm CPU SoC ID: %d\n", soc.msm_cpu);
-            switch (soc.msm_cpu) {
+            ALOGD("msm CPU SoC ID: %d\n", soc);
+            switch (soc) {
             case MSM_CPU_KALAMA:
             case MSM_CPU_PINEAPPLE:
                 mSupportExternalControl = true;
@@ -359,6 +366,8 @@ int InputFFDevice::playPrimitive(int primitiveId, float amplitude, long *playLen
     return ret;
 }
 
+
+
 LedVibratorDevice::LedVibratorDevice() {
     char devicename[PATH_MAX];
     int fd;
@@ -367,12 +376,25 @@ LedVibratorDevice::LedVibratorDevice() {
 
     snprintf(devicename, sizeof(devicename), "%s/%s", LED_DEVICE, "activate");
     fd = TEMP_FAILURE_RETRY(open(devicename, O_RDWR));
+
+    if (fd < 0) {
+        snprintf(devicename, sizeof(devicename), "%s/%s", LED_DEVICE, "activate_aw");
+        fd = TEMP_FAILURE_RETRY(open(devicename, O_RDWR));
+        ALOGD("Opening %s vibrator device: %d (errno %d)", devicename, fd, errno);
+    }
+
     if (fd < 0) {
         ALOGE("open %s failed, errno = %d", devicename, errno);
         return;
     }
 
     mDetected = true;
+    close(fd);
+
+    // TODO: implement LedVibratorDevice::read_CaliData
+    // But do we really need it? These files do not exist
+    //read_CaliData("/mnt/vendor/persist/sensors/vibrate_data.txt", LED_DEVICE);
+    //read_CaliData("/mnt/vendor/persist/sensors/vibrate2_data.txt", LED_DEVICE2);
 }
 
 int LedVibratorDevice::write_value(const char *file, const char *value) {
@@ -409,19 +431,38 @@ int LedVibratorDevice::on(int32_t timeoutMs) {
     char value[32];
     int ret;
 
-    snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "state");
-    ret = write_value(file, "1");
+    snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "activate_mode");
+    ret = write_value(file, "5");
+    if (ret < 0)
+       goto error;
+
+    snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "index");
+    ret = write_value(file, "4");
     if (ret < 0)
        goto error;
 
     snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "duration");
     snprintf(value, sizeof(value), "%u\n", timeoutMs);
     ret = write_value(file, value);
+
+    if (ret < 0) {
+         snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "duration_aw");
+         snprintf(value, sizeof(value), "%u\n", timeoutMs);
+         ret = write_value(file, value);
+    }
+
     if (ret < 0)
        goto error;
 
     snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "activate");
     ret = write_value(file, "1");
+
+    if (ret < 0) {
+         snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "activate_aw");
+         snprintf(value, sizeof(value), "%u\n", timeoutMs);
+         ret = write_value(file, value);
+    }
+
     if (ret < 0)
        goto error;
 
@@ -439,6 +480,12 @@ int LedVibratorDevice::off()
 
     snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "activate");
     ret = write_value(file, "0");
+
+    if (ret < 0) {
+        snprintf(file, sizeof(file), "%s/%s", LED_DEVICE, "activate_aw");
+        ret = write_value(file, "0");
+    }
+
     return ret;
 }
 
@@ -498,7 +545,7 @@ ndk::ScopedAStatus Vibrator::getCapabilities(int32_t* _aidl_return) {
 
     if (ledVib.mDetected) {
         *_aidl_return |= IVibrator::CAP_PERFORM_CALLBACK;
-        ALOGD("QTI Vibrator reporting capabilities: %d", *_aidl_return);
+        ALOGD("QTI Vibrator reporting capabilities (LED): %d", *_aidl_return);
         return ndk::ScopedAStatus::ok();
     }
 
@@ -511,7 +558,7 @@ ndk::ScopedAStatus Vibrator::getCapabilities(int32_t* _aidl_return) {
     if (ff.mSupportExternalControl)
         *_aidl_return |= IVibrator::CAP_EXTERNAL_CONTROL;
 
-    ALOGD("QTI Vibrator reporting capabilities: %d", *_aidl_return);
+    ALOGD("QTI Vibrator reporting capabilities (FF): %d", *_aidl_return);
     return ndk::ScopedAStatus::ok();
 }
 
@@ -519,7 +566,7 @@ ndk::ScopedAStatus Vibrator::off() {
     int ret;
     int composeEven = STOP_COMPOSE;
 
-    ALOGD("QTI Vibrator off");
+    ALOGD("QTI Vibrator off, LED detected: %d", ledVib.mDetected);
     if (ledVib.mDetected)
         ret = ledVib.off();
     else
@@ -542,7 +589,7 @@ ndk::ScopedAStatus Vibrator::on(int32_t timeoutMs,
                                 const std::shared_ptr<IVibratorCallback>& callback) {
     int ret;
 
-    ALOGD("Vibrator on for timeoutMs: %d", timeoutMs);
+    ALOGD("Vibrator on for timeoutMs: %d, LED detected: %d", timeoutMs, ledVib.mDetected);
     if (ledVib.mDetected)
         ret = ledVib.on(timeoutMs);
     else
@@ -740,6 +787,9 @@ ndk::ScopedAStatus Vibrator::getPrimitiveDuration(CompositePrimitive primitive,
                                                   int32_t* durationMs) {
     uint32_t primitive_id = static_cast<uint32_t>(primitive);
     int ret = 0;
+
+
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
 
 #ifdef USE_EFFECT_STREAM
     primitive_id |= PRIMITIVE_ID_MASK ;

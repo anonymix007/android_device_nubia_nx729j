@@ -27,22 +27,31 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define LOG_TAG "vendor.qti.hardware.vibrator.service"
+#define LOG_TAG "vendor.qti.hardware.vibrator.service.nubia"
+
+#include <log/log.h>
 
 #include <android-base/logging.h>
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
 
 #include "Vibrator.h"
+#include "RichtapVibrator.h"
+
 
 using aidl::android::hardware::vibrator::Vibrator;
+using aidl::vendor::aac::hardware::richtap::vibrator::RichtapVibrator;
 
 int main() {
     ABinderProcess_setThreadPoolMaxThreadCount(0);
     std::shared_ptr<Vibrator> vib = ndk::SharedRefBase::make<Vibrator>();
+    ndk::SpAIBinder vibBinder = vib->asBinder();
+
+    /*std::shared_ptr<RichtapVibrator> cvib = ndk::SharedRefBase::make<RichtapVibrator>();
+    CHECK(STATUS_OK == AIBinder_setExtension(vibBinder.get(), cvib->asBinder().get()));*/
 
     const std::string instance = std::string() + Vibrator::descriptor + "/default";
-    binder_status_t status = AServiceManager_addService(vib->asBinder().get(), instance.c_str());
+    binder_status_t status = AServiceManager_addService(vibBinder.get(), instance.c_str());
     CHECK(status == STATUS_OK);
 
     ABinderProcess_joinThreadPool();
