@@ -20,6 +20,7 @@ package co.aospa.settings;
 import android.content.Context;
 import android.hardware.input.InputManager;
 import android.media.AudioManager;
+import android.os.SystemProperties;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.KeyEvent;
@@ -55,7 +56,7 @@ public class KeyHandler implements DeviceKeyHandler {
             return event;
         }
 
-        if (!SettingsUtils.getBoolean(mContext, GameKeyFragment.KEY_GAMEKEY_ENABLE, true)) {
+        if (!SystemProperties.getBoolean(GameKeyFragment.SYSPROP_GAMEKEY_ENABLE, true)) {
             Log.d(TAG, "Got gamekey event " + event + ", but it's disabled");
             return event;
         }
@@ -69,10 +70,10 @@ public class KeyHandler implements DeviceKeyHandler {
 
         switch(event.getAction()) {
             case KeyEvent.ACTION_DOWN:
-                mAudioManager.setRingerModeInternal(SettingsUtils.getInt(mContext, GameKeyFragment.KEY_GAMEKEY_ACTION_DOWN, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_DOWN));
+                mAudioManager.setRingerModeInternal(SystemProperties.getInt(GameKeyFragment.SYSPROP_GAMEKEY_ACTION_DOWN, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_DOWN));
                 break;
             case KeyEvent.ACTION_UP:
-                mAudioManager.setRingerModeInternal(SettingsUtils.getInt(mContext, GameKeyFragment.KEY_GAMEKEY_ACTION_DOWN, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_UP));
+                mAudioManager.setRingerModeInternal(SystemProperties.getInt(GameKeyFragment.SYSPROP_GAMEKEY_ACTION_UP, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_UP));
                 break;
             default:
                 return event;

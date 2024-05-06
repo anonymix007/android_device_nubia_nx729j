@@ -64,6 +64,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (gamekeyStatus == null) {
             Log.e(TAG, "Cannot get gameswitch status");
         } else if (SettingsUtils.getEnabled(context, GameKeyFragment.KEY_GAMEKEY_ENABLE)) {
+            GameKeyFragment.loadGameKeySysPropsFromPrefs(context);
             AudioManager audioManager = context.getSystemService(AudioManager.class);
             if (gamekeyStatus.equals("1")) {
                 audioManager.setRingerModeInternal(SettingsUtils.getInt(context, GameKeyFragment.KEY_GAMEKEY_ACTION_UP, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_UP));
