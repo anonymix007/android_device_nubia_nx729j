@@ -1,2 +1,12 @@
 allow vendor_init audio_prop:property_service set;
 allow vendor_init vendor_camera_prop:property_service set;
+allow vendor_init sysfs:file relabelto;
+allow vendor_init sysfs:lnk_file relabelto;
+allow vendor_init sysfs:dir relabelto;
+allow vendor_init sysfs_nb_fan:dir relabelto;
+allow vendor_init sysfs_nb_fan:file relabelto;
+allow vendor_init sysfs:dir relabelfrom;
+allow vendor_init sysfs:file relabelfrom;
+allow vendor_init sysfs:lnk_file setattr;
+
+allow vendor_qti_init_shell vendor_sysfs_qcom_battery:file setattr;

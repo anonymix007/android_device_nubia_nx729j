@@ -9,6 +9,9 @@ get_prop(camerahalvs, graphics_config_prop);
 get_prop(camerahalvs, graphics_config_writable_prop);
 get_prop(camerahalvs, hwservicemanager_prop);
 
+allow camerahalvs init:unix_stream_socket connectto;
+allow camerahalvs property_socket:sock_file write;
+
 get_prop(camerahalvs, chvsfirstboot_prop);
 #set_prop(camerahalvs, chvsfirstboot_prop);
 

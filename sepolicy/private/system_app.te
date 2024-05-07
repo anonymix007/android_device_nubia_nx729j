@@ -1,0 +1,4 @@
+allow system_app gamekey_sysfs:file { open read };
+allow system_app sysfs_nb_fan:file { open read write getattr };
+allow system_app sysfs_touch_lcd:file { open read write };
+allow system_app sysfs_leds:dir search;
