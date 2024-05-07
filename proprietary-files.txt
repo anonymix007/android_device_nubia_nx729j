@@ -359,16 +359,6 @@ vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
 vendor/lib64/vendor.qti.hardware.btconfigstore@2.0.so
 vendor/lib64/vendor.qti.hardware.fm@1.0.so
 
-# Boot
-vendor/bin/hw/android.hardware.boot@1.2-service
-vendor/etc/init/android.hardware.boot@1.2-service.rc
-vendor/etc/vintf/manifest/android.hardware.boot@1.2.xml
-
-# CAS
-vendor/bin/hw/android.hardware.cas@1.2-service
-vendor/etc/init/android.hardware.cas@1.2-service.rc
-vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml
-
 # CDSP
 vendor/bin/cdsprpcd
 vendor/etc/init/vendor.qti.cdsprpc-service.rc
@@ -1706,6 +1696,7 @@ vendor/lib64/hw/fingerprint.gf95xx.default.so
 vendor/lib64/libgf_hal.so
 
 # Firmware
+vendor/firmware/GT9916_test_sensor_255.tporder
 vendor/firmware/aw22xxx_fw.bin
 vendor/firmware/aw22xxx_fw_nx669j_v1e.bin
 vendor/firmware/aw9620x_bt_0.bin
@@ -1805,6 +1796,8 @@ vendor/firmware/awinic_haptic_params.bin
 vendor/firmware/factory_test.bin
 vendor/firmware/fan_led_off.bin
 vendor/firmware/fan_led_on.bin
+vendor/firmware/goodix_cfg_group_9916r.bin
+vendor/firmware/goodix_firmware_9916r.bin
 vendor/firmware/haptic_ram.bin
 vendor/firmware/left_red_off_noinit.bin
 vendor/firmware/left_red_on_noinit.bin
@@ -1813,12 +1806,12 @@ vendor/firmware/right_blue_off_noinit.bin
 vendor/firmware/right_blue_on_noinit.bin
 vendor/firmware/sec_s3nrn4v_firmware.bin
 vendor/firmware/tfa98xx.cnt
+vendor/firmware/vpu30_4v.mbn.back
 
 # GNSS
 vendor/bin/edgnss-daemon
 vendor/bin/engine-service
 vendor/bin/garden_app
-vendor/bin/hw/android.hardware.gnss-aidl-service-qti
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
 vendor/bin/mlid
@@ -1829,7 +1822,6 @@ vendor/etc/apdr.conf
 vendor/etc/batching.conf
 vendor/etc/gnss_antenna_info.conf
 vendor/etc/gps.conf
-vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
 vendor/etc/init/loc-launcher.rc
 vendor/etc/izat.conf
 vendor/etc/lowi.conf
@@ -1840,32 +1832,25 @@ vendor/etc/seccomp_policy/gnss@2.0-edgnss-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtra-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-client.policy
-vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
 vendor/etc/vintf/manifest/vendor.qti.gnss-service.xml
 vendor/etc/xtwifi.conf
-vendor/lib/libbatching.so
 vendor/lib/libcdfw.so
 vendor/lib/libcdfw_remote_api.so
 vendor/lib/libdataitems.so
 vendor/lib/libengineplugin.so
 vendor/lib/libgdtap.so
-vendor/lib/libgeofencing.so
-vendor/lib/libgnss.so
 vendor/lib/libgnsspps.so
-vendor/lib/libgps.utils.so
 vendor/lib/libizat_client_api.so
 vendor/lib/libizat_core.so
 vendor/lib/libjnihelper.so
 vendor/lib/liblbs_core.so
 vendor/lib/libloc_api_v02.so
 vendor/lib/libloc_api_wds.so
-vendor/lib/libloc_core.so
 vendor/lib/libloc_eng_hub.so
 vendor/lib/libloc_qwes_iface.so
 vendor/lib/libloc_ril_client.so
 vendor/lib/libloc_socket.so
 vendor/lib/libloc_util.so
-vendor/lib/liblocation_api.so
 vendor/lib/liblocation_api_msg.so
 vendor/lib/liblocation_client_api.so
 vendor/lib/liblocation_integration_api.so
@@ -1881,8 +1866,6 @@ vendor/lib/libsys_info_cache.so
 vendor/lib/libxtadapter.so
 vendor/lib/vendor.qti.gnss-V4-ndk.so
 vendor/lib/vendor.qti.gnss-service.so
-vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
-vendor/lib64/libbatching.so
 vendor/lib64/libcdfw.so
 vendor/lib64/libcdfw_remote_api.so
 vendor/lib64/libdataitems.so
@@ -1890,22 +1873,17 @@ vendor/lib64/libengineplugin.so
 vendor/lib64/libgarden.so
 vendor/lib64/libgarden_haltests_e2e.so
 vendor/lib64/libgdtap.so
-vendor/lib64/libgeofencing.so
-vendor/lib64/libgnss.so
 vendor/lib64/libgnsspps.so
-vendor/lib64/libgps.utils.so
 vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
 vendor/lib64/liblbs_core.so
 vendor/lib64/libloc_api_v02.so
 vendor/lib64/libloc_api_wds.so
-vendor/lib64/libloc_core.so
 vendor/lib64/libloc_eng_hub.so
 vendor/lib64/libloc_qwes_iface.so
 vendor/lib64/libloc_ril_client.so
 vendor/lib64/libloc_socket.so
 vendor/lib64/libloc_util.so
-vendor/lib64/liblocation_api.so
 vendor/lib64/liblocation_api_msg.so
 vendor/lib64/liblocation_client_api.so
 vendor/lib64/liblocation_integration_api.so
@@ -1948,11 +1926,6 @@ vendor/firmware/a740_zap.elf
 vendor/firmware/a740_zap.mbn
 vendor/firmware/a740_zap.mdt
 vendor/firmware/gmu_gen70200.bin
-
-# Health
-vendor/bin/hw/android.hardware.health-service.qti
-vendor/etc/init/android.hardware.health-service.qti.rc
-vendor/etc/vintf/manifest/android.hardware.health-service.qti.xml
 
 # IMS
 vendor/bin/ims_rtp_daemon
@@ -2208,23 +2181,6 @@ vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 vendor/bin/pd-mapper
 vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
-
-# Perf
-vendor/bin/hw/vendor.qti.hardware.perf-hal-service
-vendor/etc/init/vendor.qti.hardware.perf-hal-service.rc
-vendor/etc/perf/avcsysnodesconfigs.xml
-vendor/etc/perf/commonresourceconfigs.xml
-vendor/etc/perf/commonsysnodesconfigs.xml
-vendor/etc/perf/perfboostsconfig.xml
-vendor/etc/perf/perfconfigstore.xml
-vendor/etc/perf/targetavcsysnodesconfigs.xml
-vendor/etc/perf/targetconfig.xml
-vendor/etc/perf/targetresourceconfigs.xml
-vendor/etc/perf/targetsysnodesconfigs.xml
-vendor/etc/perf/testcommonresourceconfigs.xml
-vendor/etc/perf/testtargetresourceconfigs.xml
-vendor/etc/powerhint.xml
-vendor/etc/vintf/manifest/vendor.qti.hardware.perf.xml
 
 # Peripheral Manager
 vendor/bin/pm_ioctl_app
@@ -2834,9 +2790,6 @@ vendor/bin/tftp_server
 vendor/etc/init/vendor.qti.tftp.rc
 
 # Thermal
-vendor/bin/hw/android.hardware.thermal@2.0-service.qti-v2
-vendor/etc/init/android.hardware.thermal@2.0-service.qti-v2.rc
-vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml
 vendor/lib/libthermalclient.so
 
 # Thermal Engine
@@ -2876,8 +2829,12 @@ vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 # Trusted UI
 system_ext/lib/vendor.qti.hardware.trustedui@1.0.so
 system_ext/lib64/vendor.qti.hardware.trustedui@1.0.so
+vendor/app/TrustedUIService/TrustedUIService.apk
+vendor/bin/TrustedUISampleTAClient
 vendor/bin/TrustedUISampleTest
+vendor/lib/libloadtrusteduiapp.so
 vendor/lib/vendor.qti.hardware.systemhelper@1.0.so
+vendor/lib64/libloadtrusteduiapp.so
 vendor/lib64/vendor.qti.hardware.systemhelper@1.0.so
 
 # Trusted User Interface
@@ -2955,6 +2912,7 @@ vendor/firmware/vpu33_4v_unsigned.mbn
 
 # Vibrator
 -vendor/lib64/libaacvibrator.so
+odm/etc/aac_richtap.config
 vendor/firmware/tiktap_params.bin
 vendor/firmware/tiktap_wave.bin
 vendor/lib/soundfx/libhaptic_effect.so
@@ -2969,17 +2927,8 @@ vendor/firmware/haptic_rtp.bin
 vendor/lib64/libvideotxr.so
 vendor/lib64/libvideoutils.so
 
-# Wi-Fi
-system_ext/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
-system_ext/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
-system_ext/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
-system_ext/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
-vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib64/vendor.qti.hardware.wifi.supplicant-V1-ndk.so
-vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
-
 # Wi-Fi configs
-etc/wifi/wifi_config.xml
+system/etc/wifi/wifi_config.xml
 vendor/etc/wifi/kiwi/WCNSS_qcom_cfg.ini
 vendor/etc/wifi/qca6490/WCNSS_qcom_cfg.ini
 
@@ -3040,9 +2989,7 @@ vendor/lib64/liboemcrypto.so
 vendor/lib64/libwvaidl.so
 
 # Miscellaneous
-odm/etc/aac_richtap.config
 vendor/app/ThermalBridge_prebuild/ThermalBridge_prebuild.apk
-vendor/app/TrustedUIService/TrustedUIService.apk
 vendor/app/TxPwrAdmin/TxPwrAdmin.apk
 vendor/app/com.qualcomm.qti.gpudrivers.kalama.api33/com.qualcomm.qti.gpudrivers.kalama.api33.apk
 vendor/bin/COSNet_spatial_8bit_quantized.serialized.bin
@@ -3050,7 +2997,6 @@ vendor/bin/KmInstallKeybox
 vendor/bin/PalTest
 vendor/bin/PktRspTest
 vendor/bin/StoreKeybox
-vendor/bin/TrustedUISampleTAClient
 vendor/bin/apdpswitch
 vendor/bin/ar_util_in_test_example
 vendor/bin/audiodsd2pcmtest
@@ -3087,7 +3033,6 @@ vendor/bin/ftmdaemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/hw/capabilityconfigstoretest
-vendor/bin/hw/vendor.hardware.zte.wifi@1.0-service
 vendor/bin/hw/vendor.qti.hardware.lights.service
 vendor/bin/iwpriv
 vendor/bin/ltm
@@ -3179,16 +3124,11 @@ vendor/etc/sec_s3nrn4v_swreg.bin
 vendor/etc/smomo_setting.xml
 vendor/etc/vintf/manifest/power.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
-vendor/firmware/GT9916_test_sensor_255.tporder
-vendor/firmware/goodix_cfg_group_9916r.bin
-vendor/firmware/goodix_firmware_9916r.bin
-vendor/firmware/vpu30_4v.mbn.back
 vendor/lib/drm-vts-test-libs/libvtswidevine.so
 vendor/lib/ftm_fm_lib.so
 vendor/lib/lib-framework.so
 vendor/lib/libTxPwrJni.so
 vendor/lib/libaudioloop.so
-vendor/lib/libboot_control_qti.so
 vendor/lib/libchvs-bc.so
 vendor/lib/libchvs-util.so
 vendor/lib/libcodec2_hidl_plugin.so
@@ -3199,13 +3139,10 @@ vendor/lib/libfcell.so
 vendor/lib/libhdcp1prov.so
 vendor/lib/libhdcp2p2prov.so
 vendor/lib/libhme.so
-vendor/lib/libloadtrusteduiapp.so
 vendor/lib/libmapdata_api.so
 vendor/lib/liboemaids_vendor.so
 vendor/lib/libpsi.so
 vendor/lib/libqsh_ble_pb.so
-vendor/lib/librecovery_updater.so
-vendor/lib/librecovery_updater_msm.so
 vendor/lib/libsensorapi_vendor.so
 vendor/lib/libsensorcal_vendor_vendor.so
 vendor/lib/libsfplugin_ccodec_utils.so
@@ -3239,7 +3176,6 @@ vendor/lib64/libapp-framework.so
 vendor/lib64/libarcsoft_object_tracking.so
 vendor/lib64/libaudioloop.so
 vendor/lib64/libbinderdebug.so
-vendor/lib64/libboot_control_qti.so
 vendor/lib64/libchvs-bc.so
 vendor/lib64/libchvs-util.so
 vendor/lib64/libcodec2_hidl_plugin.so
@@ -3252,7 +3188,6 @@ vendor/lib64/libhdcp2p2prov.so
 vendor/lib64/libhme.so
 vendor/lib64/libhvxopr_skel.so
 vendor/lib64/libhvxopr_stub.so
-vendor/lib64/libloadtrusteduiapp.so
 vendor/lib64/libmapdata_api.so
 vendor/lib64/libmfnr_network.so
 vendor/lib64/libminui_ftm.so
@@ -3260,8 +3195,6 @@ vendor/lib64/libmiracast.so
 vendor/lib64/liboemaids_vendor.so
 vendor/lib64/libpsi.so
 vendor/lib64/libqsh_ble_pb.so
-vendor/lib64/librecovery_updater.so
-vendor/lib64/librecovery_updater_msm.so
 vendor/lib64/libreffeature.so
 vendor/lib64/libremosaic_wrapper.so
 vendor/lib64/libremosaiclib.so
@@ -3297,7 +3230,6 @@ vendor/lib64/libworker_pool.so
 vendor/lib64/libwvhidl.so
 vendor/lib64/libzcv.so
 vendor/lib64/libzte_variantflag_shared_vendor.so
-vendor/lib64/vendor.hardware.zte.wifi@1.0.so
 vendor/lib64/vendor.zte.modem@1.0.so
 vendor/lib64/vendor.zte.subsys@1.0.so
 vendor/lib64/vendor.zte.subsys@2.0.so
