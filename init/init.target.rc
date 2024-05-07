@@ -201,6 +201,8 @@ on post-fs-data
     chmod 666 /sys/class/leds/sar1/sensy_config
     chmod 666 /sys/class/leds/sar1/aot_cali
 
+    chown system system /sys/class/qcom-battery/battery_charging_enabled
+    chmod 0664 /sys/class/qcom-battery/battery_charging_enabled
 
     chown system system /proc/touchscreen/wake_gesture
     chmod 664 /proc/touchscreen/wake_gesture
