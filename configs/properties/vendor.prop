@@ -31,7 +31,6 @@ ro.vendor.poweroff_store_log=/persist
 ro.vendor.poweroff_led_red_brightness=/sys/clas/leds/red/brightness
 ro.vendor.poweroff_led_green_brightness=/sys/clas/leds/green/brightness
 
-
 # Display
 ro.vendor.display.sensortype=2
 
@@ -56,6 +55,7 @@ ro.incremental.enable=yes
 ro.hardware.keystore_desede=true
 
 # Media
+debug.stagefright.c2inputsurface=-1
 media.stagefright.enable-aac=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-http=true
@@ -64,6 +64,7 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.mediaserver.64b.enable=true
+vendor.media.omx=0
 
 # NFC
 
