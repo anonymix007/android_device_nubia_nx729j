@@ -147,6 +147,11 @@ PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
     libdrm.vendor
 
+# DTS Ultra
+
+PRODUCT_PACKAGES += \
+    DtsUltra
+
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
