@@ -88,8 +88,7 @@ BOARD_BOOTCONFIG := \
 BOARD_KERNEL_CMDLINE := \
     kasan=off \
     disable_dma32=on \
-    mtdoops.fingerprint=$(AOSPA_VERSION) \
-    androidboot.selinux=permissive
+    mtdoops.fingerprint=$(AOSPA_VERSION)
 
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
