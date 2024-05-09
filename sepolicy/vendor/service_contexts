@@ -4,4 +4,4 @@ vendor.zte.radio.IVendorRadio/slot2                               u:object_r:ven
 vendor.zte.radio.IVendorRadio/slot3                               u:object_r:vendor_hal_telephony_service2:s0
 
 # Camera Transfer
-vendor.zte.hardware.camera.transfer.ITransfer/vendor_zte/0        u:object_r:hal_camera_default:s0
+vendor.zte.hardware.camera.transfer.ITransfer/vendor_zte/0        u:object_r:hal_camera_transfer_service:s0
