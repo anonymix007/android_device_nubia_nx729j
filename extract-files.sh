@@ -64,7 +64,7 @@ function blob_fixup() {
         vendor/bin/slim_daemon)
             "${PATCHELF}" --add-needed libemutls_get_address.so "${2}"
             ;;
-        /vendor/bin/xtra-daemon | /vendor/bin/qsap_location)
+        vendor/bin/xtra-daemon | vendor/bin/qsap_location)
             "${PATCHELF}" --add-needed libgpsutilshim.so "${2}"
             ;;
         vendor/lib64/libgf_hal.so | vendor/lib64/hw/fingerprint.gf95xx.default.so)
