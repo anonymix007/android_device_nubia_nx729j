@@ -2,3 +2,6 @@
 system_public_prop(chvsfirstboot_prop)
 system_public_prop(chvsdebug_prop)
 system_public_prop(ztelog_prop)
+
+# DTS
+vendor_public_prop(vendor_audio_offload_prop)

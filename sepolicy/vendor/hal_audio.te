@@ -1,0 +1,6 @@
+allow hal_audio_default vendor_configs_file:file { read open getattr lock };
+allow hal_audio_default debugfs:dir { search open read };
+allow hal_audio_default vendor_audio_data_file:file { read write open getattr };
+allow hal_audio_default vendor_audio_data_file:dir { read write open search getattr };
+get_prop(hal_audio_default, vendor_audio_prop)
+get_prop(hal_audio_default, vendor_audio_offload_prop)

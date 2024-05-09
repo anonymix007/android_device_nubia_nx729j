@@ -4,5 +4,7 @@ persist.camera.debug.chvs                                                u:objec
 
 persist.sys.ztelog.enable                                                u:object_r:logd_prop:s0
 
+audio.offload.disable                                                    u:object_r:vendor_audio_offload_prop:s0
+
 # NFC properties
 nfc.                                                                     u:object_r:nfc_prop:s0

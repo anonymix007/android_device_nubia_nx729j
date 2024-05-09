@@ -4,18 +4,20 @@ allow camerahalvs vendor_camera_data_file:dir { add_name getattr open read remov
 allow camerahalvs vendor_camera_data_file:file unlink;
 allow camerahalvs hal_graphics_mapper_hwservice:hwservice_manager find;
 init_daemon_domain(camerahalvs)
-binder_call(hal_camera_default, camerahalvs);
-get_prop(camerahalvs, graphics_config_prop);
-get_prop(camerahalvs, graphics_config_writable_prop);
-get_prop(camerahalvs, hwservicemanager_prop);
+binder_call(hal_camera_default, camerahalvs)
+get_prop(camerahalvs, graphics_config_prop)
+get_prop(camerahalvs, graphics_config_writable_prop)
+get_prop(camerahalvs, hwservicemanager_prop)
 
 allow camerahalvs init:unix_stream_socket connectto;
 allow camerahalvs property_socket:sock_file write;
 
-get_prop(camerahalvs, chvsfirstboot_prop);
-#set_prop(camerahalvs, chvsfirstboot_prop);
+get_prop(camerahalvs, chvsfirstboot_prop)
+#set_prop(camerahalvs, chvsfirstboot_prop)
 
 type camerahalvs, domain;
 type camerahalvs_exec, exec_type, file_type, vendor_file_type;
 
-hal_client_domain(camerahalvs, vendor_hal_qspmhal);
+hal_client_domain(camerahalvs, vendor_hal_qspmhal)
+hal_client_domain(camerahalvs, hal_configstore)
+hal_client_domain(camerahalvs, hal_graphics_allocator)
