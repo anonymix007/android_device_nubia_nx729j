@@ -2,3 +2,4 @@ type gamekey_sysfs, fs_type, sysfs_type;
 type sysfs_nb_fan, fs_type, sysfs_type;
 type sysfs_touch_lcd, fs_type, sysfs_type;
 type sysfs_multicolor_led, fs_type, sysfs_type;
+type sysfs_healthd, fs_type, sysfs_type;
