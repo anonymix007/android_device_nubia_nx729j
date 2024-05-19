@@ -138,8 +138,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Dirty hack for slim_daemon and others
 PRODUCT_PACKAGES += \
-    libemutls_get_address \
-    libgpsutilshim
+    libemutls_get_address
 
 # DRM
 PRODUCT_PACKAGES += \

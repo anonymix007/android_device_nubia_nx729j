@@ -9,12 +9,3 @@ cc_library_shared {
     srcs: ["emutls.c"],
     vendor: true,
 }
-
-cc_library_shared {
-    name: "libgpsutilshim",
-    srcs: ["gpsutilshim.c"],
-    vendor: true,
-    shared_libs: [
-        "libgps.utils",
-    ],
-}
