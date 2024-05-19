@@ -133,9 +133,7 @@ vendor/etc/init/android.hardware.audio.service_64.rc
 vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
-vendor/lib64/hw/audio.primary.default.so
 vendor/lib64/hw/audio.primary.kalama.so
-vendor/lib64/hw/audio.r_submix.default.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libEvrcSwCodec.so
@@ -257,7 +255,6 @@ vendor/lib64/btaudio_offload_if.so
 vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
 vendor/lib64/hw/android.hardware.bluetooth.audio-impl-qti.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
-vendor/lib64/hw/audio.bluetooth.default.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.1-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
@@ -1578,9 +1575,6 @@ vendor/etc/vintf/manifest/manifest_non_qmaa.xml
 vendor/etc/vintf/manifest/manifest_non_qmaa_extn.xml
 vendor/lib64/hw/sound_trigger.primary.kalama.so
 
-# Local time
-vendor/lib64/hw/local_time.default.so
-
 # MMI
 vendor/bin/hw/vendor.qti.hardware.factory@1.0-service
 vendor/bin/mmid
@@ -2266,7 +2260,6 @@ vendor/lib64/liboemcrypto.so
 vendor/lib64/libwvaidl.so
 
 # Miscellaneous
-vendor/app/ThermalBridge_prebuild/ThermalBridge_prebuild.apk
 vendor/app/TxPwrAdmin/TxPwrAdmin.apk
 vendor/app/com.qualcomm.qti.gpudrivers.kalama.api33/com.qualcomm.qti.gpudrivers.kalama.api33.apk
 vendor/bin/COSNet_spatial_8bit_quantized.serialized.bin
