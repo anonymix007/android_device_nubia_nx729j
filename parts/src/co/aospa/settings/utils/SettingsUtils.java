@@ -39,6 +39,10 @@ public class SettingsUtils {
         return getInt(context, string, 0) == 1;
     }
 
+    public static boolean getEnabled(Context context, String string, boolean def) {
+        return getInt(context, string, def ? 1 : 0) == 1;
+    }
+
     public static boolean putInt(Context context, String name, int value) {
         SharedPreferences settings = context.getSharedPreferences(PREFERENCES, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -50,10 +54,4 @@ public class SettingsUtils {
         SharedPreferences settings = context.getSharedPreferences(PREFERENCES, 0);
         return settings.getInt(name, def);
     }
-
-    public static boolean getBoolean(Context context, String name, boolean def) {
-        SharedPreferences settings = context.getSharedPreferences(PREFERENCES, 0);
-        return settings.getBoolean(name, def);
-    }
-
 };

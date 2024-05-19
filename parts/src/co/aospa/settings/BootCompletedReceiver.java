@@ -20,14 +20,18 @@ package co.aospa.settings;
 
 import android.media.AudioManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 import co.aospa.settings.buttons.TriggersFragment;
 import co.aospa.settings.fan.FanFragment;
+import co.aospa.settings.fan.FanTileService;
+import co.aospa.settings.fan.FanChargingService;
 import co.aospa.settings.gamekey.GameKeyFragment;
 
 import co.aospa.settings.utils.FileUtils;
@@ -35,25 +39,19 @@ import co.aospa.settings.utils.SettingsUtils;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
     private static final String TAG = "NubiaParts";
+    private static ComponentName mFanChargingService = null;
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        int intValue = Integer.parseInt(sharedPreferences.getString(FanFragment.KEY_FAN_MODE, String.valueOf(FanFragment.FAN_AUTO_VALUE)));
 
-        if (SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_ENABLE)) {
-            if (intValue == FanFragment.FAN_AUTO_VALUE) {
-                FileUtils.writeLine(FanFragment.ENABLE, "1");
-            } else if (intValue == FanFragment.FAN_MANUAL_VALUE) {
-                String fanSpeed = String.valueOf(SettingsUtils.getInt(context, FanFragment.KEY_FAN_MANUAL, 1));
-                FileUtils.writeLine(FanFragment.SPEED_LEVEL, fanSpeed);
-            }
-        }
+        FanFragment.setFanSpeed(context, SettingsUtils.getInt(context, FanFragment.KEY_FAN_MANUAL, 4));
+        FanFragment.setFanStatus(context, SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_ENABLE));
 
-        Boolean disabled = sharedPreferences.getBoolean(TriggersFragment.KEY_TRIGGERS_DISABLE, true);
+        boolean disabled = sharedPreferences.getBoolean(TriggersFragment.KEY_TRIGGERS_DISABLE, true);
         if (!disabled) {
             FileUtils.writeLine(TriggersFragment.UP_TOUCH_KEY_MODE_OPERATION, TriggersFragment.MODE_ENABLE);
             FileUtils.writeLine(TriggersFragment.DN_TOUCH_KEY_MODE_OPERATION, TriggersFragment.MODE_ENABLE);
@@ -64,7 +62,12 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (gamekeyStatus == null) {
             Log.e(TAG, "Cannot get gameswitch status");
         } else if (SettingsUtils.getEnabled(context, GameKeyFragment.KEY_GAMEKEY_ENABLE)) {
-            GameKeyFragment.loadGameKeySysPropsFromPrefs(context);
+            if (DEBUG) Log.d(TAG, "Gameswitch status: " + gamekeyStatus);
+            try {
+                GameKeyFragment.loadGameKeySysPropsFromPrefs(context);
+            } catch (Exception e) {
+                Log.e(TAG, "loadGameKeySysPropsFromPrefs exception:", e);
+            }
             AudioManager audioManager = context.getSystemService(AudioManager.class);
             if (gamekeyStatus.equals("1")) {
                 audioManager.setRingerModeInternal(SettingsUtils.getInt(context, GameKeyFragment.KEY_GAMEKEY_ACTION_UP, GameKeyFragment.KEY_GAMEKEY_DEFAULT_ACTION_UP));
@@ -73,6 +76,14 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             } else {
                 Log.e(TAG, "Unknown gameswitch status: " + gamekeyStatus);
             }
+        } else if (DEBUG) {
+            Log.d(TAG, "Gameswitch is disabled");
+        }
+
+        if (mFanChargingService == null) {
+            if (DEBUG) Log.d(TAG, "Starting FanChargingService");
+            mFanChargingService = context.startServiceAsUser(new Intent(context, FanChargingService.class), UserHandle.CURRENT);
+            Log.i(TAG, "FanChargingService: " + mFanChargingService);
         }
     }
 }

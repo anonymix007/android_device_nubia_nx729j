@@ -5,3 +5,7 @@ ro.media.recorder-max-base-layer-fps=60
 
 # NFC
 ro.nfc.port=I2C
+
+persist.gamekey.settings.gamekey_enable=true
+persist.gamekey.settings.gamekey_action_up=0
+persist.gamekey.settings.gamekey_action_down=2

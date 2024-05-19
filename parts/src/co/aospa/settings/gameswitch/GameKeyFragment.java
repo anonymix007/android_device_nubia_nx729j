@@ -72,7 +72,7 @@ public class GameKeyFragment extends PreferenceFragment implements SharedPrefere
         mPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         mGamekeyEnable = (MainSwitchPreference) findPreference(KEY_GAMEKEY_ENABLE);
-        mGamekeyEnable.setChecked(SettingsUtils.getInt(getActivity(), KEY_GAMEKEY_ENABLE, 1) == 1);
+        mGamekeyEnable.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_GAMEKEY_ENABLE, true));
         mGamekeyEnable.addOnSwitchChangeListener(this);
 
         mDownAction = (DropDownPreference) findPreference(KEY_GAMEKEY_ACTION_DOWN);
@@ -110,7 +110,7 @@ public class GameKeyFragment extends PreferenceFragment implements SharedPrefere
     }
 
     public static void loadGameKeySysPropsFromPrefs(Context context) {
-        saveGameKeySysProps(SettingsUtils.getBoolean(context, KEY_GAMEKEY_ENABLE, true),
+        saveGameKeySysProps(SettingsUtils.getEnabled(context, KEY_GAMEKEY_ENABLE, true),
                             SettingsUtils.getInt(context, KEY_GAMEKEY_ACTION_DOWN, KEY_GAMEKEY_DEFAULT_ACTION_DOWN),
                             SettingsUtils.getInt(context, KEY_GAMEKEY_ACTION_UP, KEY_GAMEKEY_DEFAULT_ACTION_UP));
     }

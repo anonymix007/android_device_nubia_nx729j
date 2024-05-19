@@ -19,23 +19,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/fan_control_title">
 
-    <com.android.settingslib.widget.MainSwitchPreference
+    <SwitchPreference
         android:defaultValue="false"
         android:key="fan_control_enable"
         android:title="@string/fan_control_enable_title" />
-
-    <DropDownPreference
-        android:key="fan_control_mode"
-        android:title="@string/fan_control_mode_title"
-        android:entries="@array/fan_control_mode_entries"
-        android:entryValues="@array/fan_control_mode_values"
-        android:dependency="fan_control_enable" />
 
     <SeekBarPreference
         android:key="fan_control_manual_slider"
         android:title="@string/fan_control_intensity_title"
         android:max="5"
-        android:persistent="false"
-        android:dependency="fan_control_enable" />
+        android:persistent="false" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="fan_control_enable_fast_charge"
+        android:title="@string/fan_control_enable_fast_charge_title" />
 
 </PreferenceScreen>

@@ -76,5 +76,23 @@
 
         <activity android:name=".KeyHandler" />
 
+        <service
+            android:name=".fan.FanTileService"
+            android:exported="true"
+            android:icon="@drawable/fan"
+            android:label="@string/fan_control_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".fan.FanChargingService"
+            android:exported="true"
+            android:permission="FanChargingService"
+        />
+
+
     </application>
 </manifest>

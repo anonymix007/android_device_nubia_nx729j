@@ -13,17 +13,6 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Values for the charging control modes -->
-    <string-array name="fan_control_mode_entries" translatable="false">
-        <item>@string/fan_control_auto_title</item>
-        <item>@string/fan_control_manual_title</item>
-    </string-array>
-
-    <string-array name="fan_control_mode_values" translatable="false">
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
     <string-array name="gamekey_ringer_entries" translatable="false">
         <item>@string/gamekey_action_silent</item>
         <item>@string/gamekey_action_vibrate</item>
