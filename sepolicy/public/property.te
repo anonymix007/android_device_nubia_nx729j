@@ -1,0 +1,5 @@
+# Game Switch
+system_public_prop(gamekey_settings_prop)
+
+# Audio
+system_public_prop(audio_offload_prop)

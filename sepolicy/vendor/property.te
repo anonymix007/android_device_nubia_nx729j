@@ -5,6 +5,5 @@ system_public_prop(ztelog_prop)
 
 # DTS
 #vendor_public_prop(vendor_audio_offload_prop)
-system_public_prop(vendor_audio_offload_prop)
 
 system_public_prop(vendor_jsonweb_system_prop)

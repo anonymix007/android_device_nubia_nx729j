@@ -2,7 +2,7 @@
 vendor.dts.audio.                u:object_r:vendor_audio_prop:s0
 ro.vendor.dts.                   u:object_r:vendor_audio_prop:s0
 # defining audio.offload.disable is only needed when offload support is enabled
-audio.offload.disable            u:object_r:vendor_audio_offload_prop:s0
+# audio.offload.disable            u:object_r:vendor_audio_offload_prop:s0
 # DTS_AUDIO END
 
 ro.vendor.product.ztename        u:object_r:vendor_jsonweb_system_prop:s0

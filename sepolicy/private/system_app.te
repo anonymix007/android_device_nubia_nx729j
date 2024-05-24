@@ -7,3 +7,6 @@ allow system_app sysfs_touch_lcd:dir { open read search };
 allow system_app sysfs_leds:dir { open read search };
 allow system_app sysfs_healthd:dir { open read search };
 allow system_app sysfs_healthd:file { open read getattr };
+
+set_prop(system_app, gamekey_settings_prop)
+get_prop(system_app, gamekey_settings_prop)
