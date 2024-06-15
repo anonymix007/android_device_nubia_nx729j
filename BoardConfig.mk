@@ -5,7 +5,6 @@
 #
 
 DEVICE_PATH := device/nubia/nx729j
-KERNEL_PREBUILT_DIR := device/nubia/nx729j-kernel
 
 # A/B
 AB_OTA_UPDATER := true
