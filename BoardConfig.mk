@@ -70,7 +70,8 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/configs/vintf/framework_matrix_nubia.xml
 
 DEVICE_MANIFEST_FILE += \
-    $(DEVICE_PATH)/configs/vintf/manifest_kalama.xml
+    $(DEVICE_PATH)/configs/vintf/manifest_kalama.xml \
+    $(DEVICE_PATH)/configs/vintf/manifest_nx729j.xml
 
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_nx729j
