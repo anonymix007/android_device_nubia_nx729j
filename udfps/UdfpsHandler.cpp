@@ -14,32 +14,14 @@
 #include <poll.h>
 #include <thread>
 #include <unistd.h>
-#include <cstring>
 
-typedef struct fingerprint_device_gf95xx{
-    hw_device_t common;
-    fingerprint_notify_t notify;
-    int (*set_notify)(struct fingerprint_device *dev, fingerprint_notify_t notify);
-    uint64_t (*pre_enroll)(struct fingerprint_device *dev);
-    int (*enroll)(struct fingerprint_device *dev, const hw_auth_token_t *hat, uint32_t gid, uint32_t timeout_sec);
-    int (*post_enroll)(struct fingerprint_device *dev);
-    uint64_t (*get_authenticator_id)(struct fingerprint_device *dev);
-    int (*cancel)(struct fingerprint_device *dev);
-    int (*enumerate)(struct fingerprint_device *dev);
-    int (*remove)(struct fingerprint_device *dev, uint32_t gid, uint32_t fid);
-    int (*set_active_group)(struct fingerprint_device *dev, uint32_t gid, const char *store_path);
-    int (*authenticate)(struct fingerprint_device *dev, uint64_t operation_id, uint32_t gid);
-    int (*sendCustomizedCommand)(fingerprint_device_gf95xx *device, uint32_t cmd, uint32_t extras, const char *msg, ssize_t len);
-    void *reserved[4];
-} fingerprint_device_gf95xx_t;
 
-#define CUSTOMIZED_COMMAND "FingerService"
-#define CUSTOMIZED_COMMAND_LEN strlen("FingerService")
+#include "fingerprint_device_nx729j.h"
 
 class NubiaUdfpsHander : public UdfpsHandler {
   public:
     void init(fingerprint_device_t *device) {
-        mDevice = reinterpret_cast<fingerprint_device_gf95xx_t *>(device);
+        mDevice = reinterpret_cast<fingerprint_device_gf95xx *>(device);
     }
 
     void onFingerDown(uint32_t x, uint32_t y, float /*minor*/, float /*major*/) {
@@ -63,7 +45,7 @@ class NubiaUdfpsHander : public UdfpsHandler {
     }
 
   private:
-    fingerprint_device_gf95xx_t *mDevice;
+    fingerprint_device_gf95xx *mDevice;
 };
 
 static UdfpsHandler* create() {

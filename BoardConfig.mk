@@ -62,6 +62,10 @@ TARGET_SCREEN_DENSITY := 400
 # Biometrics
 TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/nubia:libudfps_extension.nubia
 
+SOONG_CONFIG_NAMESPACES += nubia_fingerprint
+SOONG_CONFIG_nubia_fingerprint += fingerprint_engine
+SOONG_CONFIG_nubia_fingerprint_fingerprint_engine := //$(DEVICE_PATH):libfingerprintengine_nx729j
+
 # DTB
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
