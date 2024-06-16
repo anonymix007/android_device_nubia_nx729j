@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2023 The LineageOS Project
+                   2024 Paranoid Android
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,6 +14,7 @@
      limitations under the License.
 -->
 <resources>
+
     <string-array name="gamekey_ringer_entries" translatable="false">
         <item>@string/gamekey_action_silent</item>
         <item>@string/gamekey_action_vibrate</item>

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package co.aospa.settings.buttons;
+package co.aospa.settings.triggers;
 
 import android.os.Bundle;
 

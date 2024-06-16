@@ -32,7 +32,7 @@ import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
-import co.aospa.settings.buttons.TriggersActivity;
+import co.aospa.settings.triggers.TriggersActivity;
 import co.aospa.settings.fan.FanActivity;
 import co.aospa.settings.gamekey.GameKeyActivity;
 import com.android.settingslib.widget.R;

@@ -28,7 +28,7 @@ import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import co.aospa.settings.buttons.TriggersFragment;
+import co.aospa.settings.triggers.TriggersFragment;
 import co.aospa.settings.fan.FanFragment;
 import co.aospa.settings.fan.FanTileService;
 import co.aospa.settings.fan.FanChargingService;
