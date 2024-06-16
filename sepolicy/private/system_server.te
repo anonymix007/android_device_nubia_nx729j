@@ -1,0 +1,2 @@
+set_prop(system_server, gamekey_settings_prop)
+get_prop(system_server, gamekey_settings_prop)
