@@ -31,11 +31,11 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
 
 import co.aospa.settings.triggers.TriggersActivity;
 import co.aospa.settings.fan.FanActivity;
 import co.aospa.settings.gamekey.GameKeyActivity;
-import com.android.settingslib.widget.R;
 
 public class NubiaParts extends CollapsingToolbarBaseActivity {
     @Override

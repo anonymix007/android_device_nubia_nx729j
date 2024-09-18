@@ -26,15 +26,13 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.widget.Switch;
+import android.widget.CompoundButton;
 import android.media.AudioManager;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.DropDownPreference;
 
 import com.android.settingslib.widget.MainSwitchPreference;
-import com.android.settingslib.widget.OnMainSwitchChangeListener;
-
 
 import co.aospa.settings.R;
 
@@ -43,7 +41,7 @@ import co.aospa.settings.utils.SettingsUtils;
 
 import android.util.Log;
 
-public class GameKeyFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, OnMainSwitchChangeListener {
+public class GameKeyFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, CompoundButton.OnCheckedChangeListener {
     private static final String TAG = "GameKeyFragment";
 
     private static final String GAMEKEY_SYSPROP_PREFIX = "persist.gamekey.settings.";
@@ -138,7 +136,8 @@ public class GameKeyFragment extends PreferenceFragment implements SharedPrefere
         }
     }
 
-    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+    @Override
+    public void onCheckedChanged(CompoundButton switchView, boolean isChecked) {
         SettingsUtils.setEnabled(getActivity(), KEY_GAMEKEY_ENABLE, isChecked);
         SystemProperties.set(SYSPROP_GAMEKEY_ENABLE, isChecked ? "true" : "false");
     }

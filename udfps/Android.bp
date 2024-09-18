@@ -33,8 +33,8 @@ cc_library_static {
         "libcutils",
         "libhardware",
         "liblog",
-        "android.hardware.biometrics.fingerprint-V3-ndk",
-        "android.hardware.biometrics.common-V3-ndk",
+        "android.hardware.biometrics.fingerprint-V4-ndk",
+        "android.hardware.biometrics.common-V4-ndk",
         "android.hardware.biometrics.common.util",
     ],
     header_libs: [
