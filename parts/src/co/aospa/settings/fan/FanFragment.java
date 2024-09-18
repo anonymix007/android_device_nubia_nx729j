@@ -33,7 +33,7 @@ import androidx.preference.SwitchPreference;
 import androidx.preference.SeekBarPreference;
 import android.util.Log;
 
-import com.android.settingslib.widget.R;
+import com.android.settingslib.collapsingtoolbar.R;
 
 import co.aospa.settings.utils.FileUtils;
 import co.aospa.settings.utils.SettingsUtils;

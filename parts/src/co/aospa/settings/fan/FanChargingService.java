@@ -32,7 +32,7 @@ import android.widget.Switch;
 import android.util.Log;
 
 import com.android.settingslib.fuelgauge.BatteryStatus;
-import com.android.settingslib.widget.R;
+import com.android.settingslib.collapsingtoolbar.R;
 
 import co.aospa.settings.utils.FileUtils;
 import co.aospa.settings.utils.SettingsUtils;

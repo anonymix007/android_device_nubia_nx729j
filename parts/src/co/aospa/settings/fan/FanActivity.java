@@ -20,7 +20,7 @@ package co.aospa.settings.fan;
 import android.os.Bundle;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
-import com.android.settingslib.widget.R;
+import com.android.settingslib.collapsingtoolbar.R;
 
 public class FanActivity extends CollapsingToolbarBaseActivity {
 
