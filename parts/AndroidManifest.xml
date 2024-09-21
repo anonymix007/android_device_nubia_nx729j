@@ -66,7 +66,7 @@
         </activity>
 
         <activity
-            android:name=".buttons.TriggersActivity"
+            android:name=".triggers.TriggersActivity"
             android:label="@string/trigger_buttons_title">
         </activity>
 
