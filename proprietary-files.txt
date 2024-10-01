@@ -1,4 +1,4 @@
-# Unpinned blobs from NX729J-user 14 UKQ1.230917.001 eng.nubia.20240327.173327 release-keys
+# Unpinned blobs from NX729J-UN-user 14 UKQ1.230917.001 20240807.115337 release-keys
 
 # ACDB
 vendor/etc/acdbdata/IDP_UPD/IDP_UPD_acdb_cal.acdb
@@ -244,7 +244,6 @@ vendor/lib64/lib_bt_bundle.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
 vendor/lib64/libqti_vndfwk_detect_vendor.so
-vendor/lib64/libsoc_helper.so
 vendor/lib64/vendor.qti.hardware.bluetooth.audio-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.bttpi-V2-ndk.so
 
@@ -984,21 +983,20 @@ vendor/lib64/vendor.qti.hardware.dpmservice@1.0.so
 vendor/lib64/vendor.qti.hardware.dpmservice@1.1.so
 
 # DRM
-vendor/bin/hw/android.hardware.drm-service.clearkey
-vendor/bin/qseecom_sample_client
-vendor/etc/init/android.hardware.drm-service.clearkey.rc
-vendor/etc/vintf/manifest/android.hardware.drm-service.clearkey.xml
-vendor/lib64/libbase64.so
-vendor/lib64/mediacas/libclearkeycasplugin.so
-
-# DRM (Qualcomm Secure Execution Environment)
 system_ext/lib64/vendor.qti.hardware.qseecom-V1-ndk.so
-
-# DRM (Qualcomm Trusted Execution Environment)
 system_ext/lib64/vendor.qti.hardware.qteeconnector-V1-ndk.so
+vendor/bin/qseecom_sample_client
+vendor/lib64/libbase64.so
 
 # DRM (Widevine)
-vendor/lib64/mediadrm/libdrmclearkeyplugin.so
+vendor/bin/hw/android.hardware.drm-service.widevine
+vendor/etc/init/android.hardware.drm-service.widevine.rc
+vendor/etc/vintf/manifest/manifest_android.hardware.drm-service.widevine.xml
+vendor/lib64/drm-vts-test-libs/libvtswidevine.so
+vendor/lib64/libhdcpsrm.so
+vendor/lib64/liboemcrypto.so
+vendor/lib64/libwvaidl.so
+vendor/lib64/libwvhidl.so
 
 # DSP
 vendor/bin/dspservice
@@ -1381,7 +1379,6 @@ vendor/firmware/left_red_on_noinit.bin
 vendor/firmware/m_led_off.bin
 vendor/firmware/right_blue_off_noinit.bin
 vendor/firmware/right_blue_on_noinit.bin
-vendor/firmware/sec_s3nrn4v_firmware.bin
 vendor/firmware/tfa98xx.cnt
 vendor/firmware/vpu30_4v.mbn.back
 
@@ -1548,9 +1545,6 @@ vendor/etc/init/ipacm.rc
 vendor/lib64/libipanat.so
 vendor/lib64/liboffloadhal.so
 
-# IRQ Balance
-vendor/etc/msm_irqbalance.conf
-
 # Identity Service
 vendor/bin/hw/android.hardware.identity-service-qti
 vendor/etc/init/android.hardware.identity-service-qti.rc
@@ -1569,6 +1563,11 @@ vendor/lib64/libkeymasterutils.so
 vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libqtikeymint.so
 vendor/lib64/libspcom.so
+
+# Lights
+vendor/bin/hw/vendor.qti.hardware.lights.service
+vendor/etc/init/vendor.qti.hardware.lights.service.rc
+vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
 
 # Limits
 vendor/bin/hw/vendor.qti.hardware.limits@1.2-service
@@ -1653,11 +1652,6 @@ vendor/lib64/libqconfigclient.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
 vendor/lib64/vendor.qti.hardware.qconfig@1.0.so
 
-# Memtrack
-vendor/bin/hw/vendor.qti.hardware.memtrack-service
-vendor/etc/init/memtrack_qti.rc
-vendor/etc/vintf/manifest/memtrack_qti.xml
-
 # Modem Manager
 vendor/bin/modemManager
 vendor/etc/init/modemManager.rc
@@ -1667,32 +1661,34 @@ vendor/etc/seccomp_policy/modemManager.policy
 vendor/bin/hw/android.hardware.nfc-service.sec
 vendor/bin/sec_nfc_test
 vendor/etc/init/nfc-service-sec.rc
+vendor/etc/vintf/manifest/nfc-service-sec.xml
+vendor/lib64/nfc_nci_sec.so
+
+# NFC Configs
 vendor/etc/libnfc-SN220_19_2MHZ.conf
 vendor/etc/libnfc-SN220_38_4MHZ.conf
 vendor/etc/libnfc-mtp-SN100.conf
 vendor/etc/libnfc-mtp-SN100_38_4MHZ.conf
 vendor/etc/libnfc-qrd-SN100.conf
 vendor/etc/libnfc-qrd-SN100_38_4MHZ.conf
-vendor/etc/vintf/manifest/nfc-service-sec.xml
-vendor/lib64/nfc_nci_sec.so
-
-# NFC configs
-vendor/etc/libnfc-nci.conf
 vendor/etc/libnfc-sec-vendor.conf
 
-# Native public libraries
+# NFC Firmware
+vendor/etc/sec_s3nrn4v_hwreg.bin
+vendor/etc/sec_s3nrn4v_swreg.bin
+vendor/firmware/sec_s3nrn4v_firmware.bin
+
+# Native Public Libraries
 vendor/etc/public.libraries.txt
 
 # Neural Networks
-vendor/lib64/libQnnHtpNetRunExtensions.so
-vendor/lib64/libQnnHtpProfilingReader.so
-vendor/lib64/libQnnSaver.so
-
-# Neural networks
 vendor/lib64/libQnnCpu.so
 vendor/lib64/libQnnHtp.so
+vendor/lib64/libQnnHtpNetRunExtensions.so
 vendor/lib64/libQnnHtpPrepare.so
+vendor/lib64/libQnnHtpProfilingReader.so
 vendor/lib64/libQnnHtpV73Stub.so
+vendor/lib64/libQnnSaver.so
 vendor/lib64/libQnnSystem.so
 vendor/lib64/libqnnengine.so
 
@@ -1829,6 +1825,7 @@ vendor/lib64/libssd.so
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
 
 # QTI
+vendor/lib64/libsoc_helper.so
 vendor/lib64/libsoc_helper_jni.so
 
 # RIL
@@ -2010,15 +2007,42 @@ vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
 vendor/etc/init/vendor.sensors.qti.rc
 vendor/etc/init/vendor.sensors.sscrpcd.rc
 vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
+vendor/lib64/hw/sensors.dynamic_sensor_hal.so
+vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
+vendor/lib64/libhidparser.so
+vendor/lib64/libsensorcal.so
+vendor/lib64/libsns_api.so
+vendor/lib64/libsns_device_mode_stub.so
+vendor/lib64/libsns_dynamic_loader_stub.so
+vendor/lib64/libsns_registry_skel.so
+vendor/lib64/libsns_remote_proc_state_stub.so
+vendor/lib64/libsnsdiaglog.so
+vendor/lib64/libssc_default_listener.so
+vendor/lib64/sensors.ssc.so
+
+# Sensors configs
 vendor/etc/sensors/config/kailua_ak991x_0.json
+vendor/etc/sensors/config/kailua_akmlib.json
+vendor/etc/sensors/config/kailua_aw9610x_0.json
+vendor/etc/sensors/config/kailua_aw9610x_0_sar_register_a.json
+vendor/etc/sensors/config/kailua_aw9610x_0_sar_register_b.json
+vendor/etc/sensors/config/kailua_aw9610x_0_sar_register_c.json
+vendor/etc/sensors/config/kailua_aw9610x_1.json
+vendor/etc/sensors/config/kailua_aw9610x_1_sar_register_a.json
+vendor/etc/sensors/config/kailua_aw9610x_1_sar_register_b.json
+vendor/etc/sensors/config/kailua_aw9610x_1_sar_register_c.json
 vendor/etc/sensors/config/kailua_default_sensors.json
 vendor/etc/sensors/config/kailua_dynamic_sensors.json
 vendor/etc/sensors/config/kailua_dynamic_sensors_template.json
+vendor/etc/sensors/config/kailua_icm4x6xx.json
 vendor/etc/sensors/config/kailua_irq.json
 vendor/etc/sensors/config/kailua_lps22df_0.json
+vendor/etc/sensors/config/kailua_lsm6dso_0.json
 vendor/etc/sensors/config/kailua_mtp_ak991x_0.json
+vendor/etc/sensors/config/kailua_mtp_icm4x6xx.json
 vendor/etc/sensors/config/kailua_power_0.json
 vendor/etc/sensors/config/kailua_qsh_ble_0.json
+vendor/etc/sensors/config/kailua_stk3a7x_0.json
 vendor/etc/sensors/config/qsh_ble.json
 vendor/etc/sensors/config/qsh_camera.json
 vendor/etc/sensors/config/sns_amd.json
@@ -2064,33 +2088,6 @@ vendor/etc/sensors/config/sns_tilt_to_wake.json
 vendor/etc/sensors/config/sns_transport_ppe.json
 vendor/etc/sensors/config/sns_wrist_pedo.json
 vendor/etc/sensors/sns_reg_config
-vendor/lib64/hw/sensors.dynamic_sensor_hal.so
-vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
-vendor/lib64/libhidparser.so
-vendor/lib64/libsensorcal.so
-vendor/lib64/libsns_api.so
-vendor/lib64/libsns_device_mode_stub.so
-vendor/lib64/libsns_dynamic_loader_stub.so
-vendor/lib64/libsns_registry_skel.so
-vendor/lib64/libsns_remote_proc_state_stub.so
-vendor/lib64/libsnsdiaglog.so
-vendor/lib64/libssc_default_listener.so
-vendor/lib64/sensors.ssc.so
-
-# Sensors configs
-vendor/etc/sensors/config/kailua_akmlib.json
-vendor/etc/sensors/config/kailua_aw9610x_0.json
-vendor/etc/sensors/config/kailua_aw9610x_0_sar_register_a.json
-vendor/etc/sensors/config/kailua_aw9610x_0_sar_register_b.json
-vendor/etc/sensors/config/kailua_aw9610x_0_sar_register_c.json
-vendor/etc/sensors/config/kailua_aw9610x_1.json
-vendor/etc/sensors/config/kailua_aw9610x_1_sar_register_a.json
-vendor/etc/sensors/config/kailua_aw9610x_1_sar_register_b.json
-vendor/etc/sensors/config/kailua_aw9610x_1_sar_register_c.json
-vendor/etc/sensors/config/kailua_icm4x6xx.json
-vendor/etc/sensors/config/kailua_lsm6dso_0.json
-vendor/etc/sensors/config/kailua_mtp_icm4x6xx.json
-vendor/etc/sensors/config/kailua_stk3a7x_0.json
 
 # Snapdragon Computer Vision Engine
 vendor/lib64/libfastcvopt.so
@@ -2110,12 +2107,8 @@ vendor/etc/init/vendor.qti.tftp.rc
 
 # Thermal Engine
 vendor/bin/thermal-engine-v2
-
-# Thermal Engine (Config)
-vendor/etc/thermal-engine.conf
-
-# Thermal engine
 vendor/etc/init/init_thermal-engine-v2.rc
+vendor/etc/thermal-engine.conf
 vendor/lib64/libthermalclient.so
 
 # Time services
@@ -2207,18 +2200,6 @@ vendor/firmware/haptic_rtp.bin
 vendor/lib64/libvideotxr.so
 vendor/lib64/libvideoutils.so
 
-# Wi-Fi configs
-system/etc/wifi/wifi_config.xml
-vendor/etc/wifi/kiwi/WCNSS_qcom_cfg.ini
-vendor/etc/wifi/qca6490/WCNSS_qcom_cfg.ini
-
-# WiFi
-vendor/etc/wifi/icm.conf
-vendor/etc/wifi/kiwi_v2/WCNSS_qcom_cfg.ini
-vendor/etc/wifi/p2p_supplicant_overlay.conf
-vendor/etc/wifi/vendor_cmd.xml
-vendor/etc/wifi/wpa_supplicant_overlay.conf
-
 # WiFi Display
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice
@@ -2258,14 +2239,6 @@ vendor/lib64/libwfdutils_proprietary.so
 vendor/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
 vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
 vendor/lib64/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so
-
-# Widevine DRM
-vendor/bin/hw/android.hardware.drm-service.widevine
-vendor/etc/init/android.hardware.drm-service.widevine.rc
-vendor/etc/vintf/manifest/manifest_android.hardware.drm-service.widevine.xml
-vendor/lib64/libhdcpsrm.so
-vendor/lib64/liboemcrypto.so
-vendor/lib64/libwvaidl.so
 
 # Miscellaneous
 vendor/app/TxPwrAdmin/TxPwrAdmin.apk
@@ -2311,7 +2284,6 @@ vendor/bin/ftmdaemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/hw/capabilityconfigstoretest
-vendor/bin/hw/vendor.qti.hardware.lights.service
 vendor/bin/iwpriv
 vendor/bin/ltm
 vendor/bin/mcs_test
@@ -2339,7 +2311,6 @@ vendor/bin/tlpd
 vendor/bin/toybox_oem
 vendor/bin/tpdtest
 vendor/bin/variantid
-vendor/bin/vendordiag
 vendor/bin/vppcommonlibraryunittest
 vendor/bin/vppipcunittest
 vendor/bin/vpplibraryfunctionaltest
@@ -2349,7 +2320,6 @@ vendor/bin/wdsdaemon
 vendor/bin/zte_diag_callback
 vendor/bin/zte_ftm
 vendor/etc/898-898-no-exp-2574099444.pfm
-vendor/etc/IPACM_Filter_cfg.xml
 vendor/etc/QWESAttestationCert.pfm
 vendor/etc/default_audio_logmask.cfg
 vendor/etc/default_common_logmask.cfg
@@ -2362,49 +2332,21 @@ vendor/etc/excluded-input-devices.xml
 vendor/etc/ftm_test_config
 vendor/etc/ftm_test_config_kalama-grd-snd-card
 vendor/etc/ftm_test_config_kalama-qrd-snd-card
-vendor/etc/hwid.conf
 vendor/etc/init/boringssl_self_test.rc
 vendor/etc/init/dlsc.rc
 vendor/etc/init/hostapd.android.rc
 vendor/etc/init/init.vendor.wlan.rc
 vendor/etc/init/ssdaemon_vendor.rc
 vendor/etc/init/vendor.qti.battery_stats.rc
-vendor/etc/init/vendor.qti.hardware.lights.service.rc
 vendor/etc/init/vndservicemanager.rc
-vendor/etc/lm/AdaptLaunchFeature.xml
-vendor/etc/lm/AppClassifierFeature.xml
-vendor/etc/lm/LightningLaunchesFeature.xml
-vendor/etc/lm/PreKillFeature.xml
-vendor/etc/lm/PrefAppsFeature.xml
-vendor/etc/lm/ProCompFeature.xml
-vendor/etc/lm/QAPE.xml
-vendor/etc/lm/QGPE.xml
-vendor/etc/lm/QGPEActionMap.xml
-vendor/etc/lm/SilkyScrollsFeature.xml
-vendor/etc/lm/prekill/prekill_2GB.data
-vendor/etc/lm/prekill/prekill_4GB.data
-vendor/etc/lm/prekill/prekill_6GB.data
-vendor/etc/lm/sPLHFeature.xml
 vendor/etc/mkshrc
 vendor/etc/oem_4_prj_ZTELTM8550_1663777224350.pfm
 vendor/etc/pinner_file_list.xml
-vendor/etc/pwr/AODPowerOptFeature.xml
-vendor/etc/pwr/PSMPowerOptFeature.xml
-vendor/etc/pwr/PowerFeatureConfig.xml
-vendor/etc/pwr/StandbyFeature.xml
-vendor/etc/pwr/VideoPowerOptFeature.xml
 vendor/etc/qvirtmgr-vndr.json
 vendor/etc/recovery-resource.dat
 vendor/etc/res/images/default/charger/battery_fail.png
 vendor/etc/res/images/default/charger/battery_scale.png
-vendor/etc/sec_s3nrn4v_hwreg.bin
-vendor/etc/sec_s3nrn4v_swreg.bin
 vendor/etc/smomo_setting.xml
-vendor/etc/vintf/manifest/power.xml
-vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
-vendor/lib/libeai_fixed_32.so
-vendor/lib/libvpx.so
-vendor/lib64/drm-vts-test-libs/libvtswidevine.so
 vendor/lib64/ftm_fm_lib.so
 vendor/lib64/lib-framework.so
 vendor/lib64/libCud.so
@@ -2470,9 +2412,7 @@ vendor/lib64/libvndfwk_detect_jni.qti.so
 vendor/lib64/libvndfwk_detect_jni.qti_vendor.so
 vendor/lib64/libwlanapi_vendor.so
 vendor/lib64/libworker_pool.so
-vendor/lib64/libwvhidl.so
 vendor/lib64/libzcv.so
-vendor/lib64/libzte_variantflag_shared_vendor.so
 vendor/lib64/vendor.zte.modem@1.0.so
 vendor/lib64/vendor.zte.subsys@1.0.so
 vendor/lib64/vendor.zte.subsys@2.0.so

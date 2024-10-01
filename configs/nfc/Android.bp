@@ -1,0 +1,6 @@
+prebuilt_etc {
+    name: "libnfc-nci.conf-sec",
+    src: "libnfc-nci.conf",
+    filename: "libnfc-nci.conf",
+    vendor: true,
+}

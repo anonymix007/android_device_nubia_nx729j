@@ -140,6 +140,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_PACKAGES += \
     libemutls_get_address
 
+# Display
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.memtrack-service
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.3.vendor \
@@ -245,6 +249,7 @@ PRODUCT_PACKAGES += \
 # NFC
 PRODUCT_PACKAGES += \
     NfcNci \
+    libnfc-nci.conf-sec \
     android.hardware.nfc-V1-ndk.vendor \
     android.hardware.nfc@1.0.vendor \
     android.hardware.nfc@1.1.vendor \
