@@ -20,7 +20,7 @@
 <!--
 Changes from Qualcomm Innovation Center are provided under the following license:
 
-Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted (subject to the limitations in the
@@ -87,7 +87,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <attachedDevices>
                 <item>Earpiece</item>
                 <item>Speaker</item>
-                <item>Light</item>
                 <item>Telephony Tx</item>
                 <item>Built-In Mic</item>
                 <item>Built-In Back Mic</item>
@@ -102,7 +101,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
                 <mixPort name="raw" role="source" recommendedMuteDurationMs="63"
-                        flags="AUDIO_OUTPUT_FLAG_FAST">
+                        flags="AUDIO_OUTPUT_FLAG_FAST AUDIO_OUTPUT_FLAG_RAW">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
@@ -112,17 +111,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </mixPort>
                 <mixPort name="deep_buffer" role="source"
                         flags="AUDIO_OUTPUT_FLAG_DEEP_BUFFER">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                    <profile name="" format="AUDIO_FORMAT_PCM_8_24_BIT"
-                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                    <profile name="" format="AUDIO_FORMAT_PCM_24_BIT_PACKED"
-                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                    <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
-                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                </mixPort>
-                <mixPort name="loop_back" role="source"
-                        flags="AUDIO_OUTPUT_FLAG_LOOP_BACK">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                     <profile name="" format="AUDIO_FORMAT_PCM_8_24_BIT"
@@ -162,7 +150,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                              samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000 64000 88200 96000 128000 176400 192000 352800 384000"
                              channelMasks="AUDIO_CHANNEL_OUT_MONO AUDIO_CHANNEL_OUT_STEREO AUDIO_CHANNEL_OUT_2POINT1 AUDIO_CHANNEL_OUT_QUAD AUDIO_CHANNEL_OUT_PENTA AUDIO_CHANNEL_OUT_5POINT1 AUDIO_CHANNEL_OUT_6POINT1 AUDIO_CHANNEL_OUT_7POINT1"/>
                 </mixPort>
-                <mixPort name="compressed_offload" role="source"
+                <mixPort name="compressed_offload" role="source" recommendedMuteDurationMs="190"
                          flags="AUDIO_OUTPUT_FLAG_DIRECT AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD AUDIO_OUTPUT_FLAG_NON_BLOCKING AUDIO_OUTPUT_FLAG_GAPLESS_OFFLOAD">
                     <profile name="" format="AUDIO_FORMAT_MP3"
                              samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000"
@@ -215,9 +203,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                              samplingRates="8000 16000 48000" channelMasks="AUDIO_CHANNEL_OUT_MONO AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
                 <mixPort name="voip_rx" role="source"
-                         flags="AUDIO_OUTPUT_FLAG_DIRECT AUDIO_OUTPUT_FLAG_VOIP_RX">
+                         flags="AUDIO_OUTPUT_FLAG_VOIP_RX">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="8000 16000 32000 48000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+                             samplingRates="8000 16000 32000 48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
                 <mixPort name="incall_music_uplink" role="source"
                         flags="AUDIO_OUTPUT_FLAG_INCALL_MUSIC">
@@ -228,6 +216,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
                 <mixPort name="primary input" role="sink" maxOpenCount="2" maxActiveCount="2">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO AUDIO_CHANNEL_IN_FRONT_BACK"/>
+                </mixPort>
+                <mixPort name="compress-input" role="sink"
+                         flags="AUDIO_INPUT_FLAG_DIRECT" >
+                    <profile name="compress-capture-AAC-LC" format="AUDIO_FORMAT_AAC_LC"
                              samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000"
                              channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO AUDIO_CHANNEL_IN_FRONT_BACK"/>
                 </mixPort>
@@ -303,10 +297,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
                 <devicePort tagName="Wired Headphones" type="AUDIO_DEVICE_OUT_WIRED_HEADPHONE" role="sink">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                </devicePort>
-                <devicePort tagName="Light" role="sink" type="AUDIO_DEVICE_OUT_AUX_LINE" address="">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
@@ -436,41 +426,41 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <!-- route declaration, i.e. list all available sources for a given sink -->
             <routes>
                 <route type="mix" sink="Earpiece"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
                 <route type="mix" sink="Speaker"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
-                <route type="mix" sink="Light"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
                 <route type="mix" sink="Wired Headset"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
                 <route type="mix" sink="Wired Headphones"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
                 <route type="mix" sink="Line"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
                 <route type="mix" sink="HDMI"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,haptics output"/>
                 <route type="mix" sink="Proxy"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,haptics output"/>
+                       sources="primary output,deep_buffer,direct_pcm,compressed_offload,haptics output"/>
                 <route type="mix" sink="FM"
                        sources="primary output"/>
                 <route type="mix" sink="BT SCO"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
                 <route type="mix" sink="BT SCO Headset"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
                 <route type="mix" sink="BT BLE Out"
-                       sources="primary output,raw,mmap_no_irq_out,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
+                       sources="primary output,raw,mmap_no_irq_out,deep_buffer,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
                 <route type="mix" sink="BT SCO Car Kit"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,haptics output,spatial output"/>
                 <route type="mix" sink="USB Device Out"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,hifi_playback,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,hifi_playback,haptics output"/>
                 <route type="mix" sink="USB Headset Out"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,hifi_playback,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,hifi_playback,haptics output"/>
                 <route type="mix" sink="Telephony Tx"
                        sources="voice_tx,incall_music_uplink"/>
                 <route type="mix" sink="voice_rx"
                        sources="Telephony Rx"/>
                 <route type="mix" sink="primary input"
                        sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,FM Tuner,Telephony Rx,A2DP In,Echo Reference,BLE In"/>
+                <route type="mix" sink="compress-input"
+                       sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,Wired Headset Mic,USB Device In,USB Headset In,BLE In"/>
                 <route type="mix" sink="usb_surround_sound"
                        sources="USB Device In,USB Headset In"/>
                 <route type="mix" sink="fast input"
@@ -484,15 +474,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <route type="mix" sink="mmap_no_irq_in"
                        sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In,Wired Headset Mic"/>
                 <route type="mix" sink="BT A2DP Out"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output,spatial output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output,spatial output"/>
                 <route type="mix" sink="BT A2DP Headphones"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output,spatial output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output,spatial output"/>
                 <route type="mix" sink="BT A2DP Speaker"
-                       sources="primary output,raw,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output"/>
                 <route type="mix" sink="BT BLE Speaker"
-                       sources="primary output,raw,mmap_no_irq_out,deep_buffer,loop_back,direct_pcm,compressed_offload,voip_rx,haptics output"/>
+                       sources="primary output,raw,mmap_no_irq_out,deep_buffer,direct_pcm,compressed_offload,voip_rx,haptics output"/>
                 <route type="mix" sink="BT BLE Broadcast"
-                       sources="primary output,deep_buffer,loop_back,direct_pcm,compressed_offload"/>
+                       sources="primary output,deep_buffer,direct_pcm,compressed_offload"/>
                 <route type="mix" sink="hifi_input" sources="USB Device In,USB Headset In" />
             </routes>
 
@@ -544,7 +534,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <xi:include href="/vendor/etc/r_submix_audio_policy_configuration.xml"/>
 
         <!-- Bluetooth Audio HAL for hearing aid -->
-        <xi:include href="/vendor/etc/bluetooth_qti_hearing_aid_audio_policy_configuration.xml"/>
+        <xi:include href="/vendor/etc/bluetooth_qti_audio_policy_configuration.xml"/>
 
     </modules>
     <!-- End of Modules section -->
