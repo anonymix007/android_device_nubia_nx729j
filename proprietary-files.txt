@@ -116,10 +116,6 @@ vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 vendor/lib/rfsa/adsp/libvpp_vqa_networks.so
 vendor/lib/rfsa/adsp/libvpt_action_recognition.so
 
-# AGM
--vendor/lib64/libagm.so
--vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
-
 # ANT+
 vendor/lib64/com.dsi.ant@1.0.so
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so
@@ -132,19 +128,12 @@ vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libEvrcSwCodec.so
 vendor/lib64/libFlacSwDec.so
-vendor/lib64/libPeripheralStateUtils.so
+-vendor/lib64/libPeripheralStateUtils.so
 vendor/lib64/lib_bt_aptx.so
 vendor/lib64/lib_bt_ble.so
 vendor/lib64/lib_bt_bundle.so
 vendor/lib64/libadm.so
-vendor/lib64/libalsautils.so
-vendor/lib64/libar-acdb.so
-vendor/lib64/libar-gpr.so
-vendor/lib64/libar-gsl.so
--vendor/lib64/libar-pal.so
-vendor/lib64/libats.so
 vendor/lib64/libaudio_log_utils.so
-vendor/lib64/libaudiochargerlistener.so
 vendor/lib64/libbatterylistener.so
 vendor/lib64/libcapiv2svacnnvendor.so
 vendor/lib64/libcapiv2svarnnvendor.so
@@ -153,17 +142,11 @@ vendor/lib64/libcapiv2uvvendor.so
 vendor/lib64/libdsd2pcm.so
 vendor/lib64/libeai_fixed.so
 vendor/lib64/libeai_float.so
-vendor/lib64/libjson.so
 vendor/lib64/liblistensoundmodel2vendor.so
-vendor/lib64/liblx-ar_util.so
-vendor/lib64/liblx-osal.so
 vendor/lib64/libmcs.so
-vendor/lib64/libmediautils_vendor.so
 vendor/lib64/libqtigefar.so
-vendor/lib64/libsndcardparser.so
 vendor/lib64/libvui_dmgr.so
 vendor/lib64/libvui_dmgr_client.so
--vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
 
 # Audio (FX modules)
 vendor/lib64/soundfx/libdynproc.so
@@ -1674,15 +1657,14 @@ vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # PD
 vendor/bin/pd-mapper
+vendor/lib64/libjson.so
 vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
 
 # Peripheral Manager
-vendor/bin/pm_ioctl_app
-
-# Peripheral manager
 vendor/bin/pm-proxy
 vendor/bin/pm-service
+vendor/bin/pm_ioctl_app
 vendor/lib64/libperipheral_client.so
 
 # QCC
