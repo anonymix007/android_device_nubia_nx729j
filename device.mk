@@ -161,8 +161,9 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.nubia \
-    libudfpshandler
+    android.hardware.biometrics.fingerprint-service.nubia \
+    vendor.goodix.hardware.biometrics.fingerprint@2.1.vendor
+
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml

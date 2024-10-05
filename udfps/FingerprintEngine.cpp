@@ -66,7 +66,7 @@ void FingerprintEngine::enrollImpl(ISessionCallback* cb, const keymaster::Hardwa
 }
 
 void FingerprintEngine::authenticateImpl(ISessionCallback* cb, int64_t operationId) {
-    ALOGI("authenticateImpl");
+    ALOGI("authenticateImpl(%lu)", operationId);
 
     int error = mDevice->authenticate(mDevice, operationId, mUserId);
     if (error) {
@@ -113,7 +113,7 @@ void FingerprintEngine::invalidateAuthenticatorIdImpl(ISessionCallback* cb) {
     mAuthId = 0;
 }
 
-void FingerprintEngine::onPointerDownImpl(int32_t /*pointerId*/, int32_t /*x*/, int32_t /*y*/, float /*minor*/, float /*major*/) {
+void FingerprintEngine::onPointerDownImpl(ISessionCallback* /*cb*/, int32_t /*pointerId*/, int32_t /*x*/, int32_t /*y*/, float /*minor*/, float /*major*/) {
     ALOGI("onPointerDownImpl");
     if (mDevice->sendCustomizedCommand) {
         mDevice->sendCustomizedCommand(mDevice, 10, 1, CUSTOMIZED_COMMAND, CUSTOMIZED_COMMAND_LEN);
@@ -122,18 +122,17 @@ void FingerprintEngine::onPointerDownImpl(int32_t /*pointerId*/, int32_t /*x*/, 
     }
 }
 
-void FingerprintEngine::onPointerUpImpl(int32_t /*pointerId*/) {
+void FingerprintEngine::onPointerUpImpl(ISessionCallback* /*cb*/, int32_t /*pointerId*/) {
     ALOGI("onPointerUpImpl");
     if (mDevice->sendCustomizedCommand) {
         mDevice->sendCustomizedCommand(mDevice, 10, 0, CUSTOMIZED_COMMAND, CUSTOMIZED_COMMAND_LEN);
     } else {
-        ALOGW("onPointerDownImpl: sendCustomizedCommand is nullptr");
+        ALOGW("onPointerUpImpl: sendCustomizedCommand is nullptr");
     }
 }
 
-void FingerprintEngine::onUiReadyImpl() {
+void FingerprintEngine::onUiReadyImpl(ISessionCallback* cb) {
     ALOGI("onUiReadyImpl: stub");
-    // TODO: stub
 }
 
 ndk::ScopedAStatus FingerprintEngine::cancelImpl(ISessionCallback* cb) {

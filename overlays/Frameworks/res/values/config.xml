@@ -19,14 +19,6 @@
     <!-- Specifies the maximum burn-in offset vertically. -->
     <integer name="config_burnInProtectionMaxVerticalOffset">40</integer>
 
-    <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
-         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
-         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
-         and Strength as defined in Authenticators.java -->
-    <string-array name="config_biometric_sensors" translatable="false">
-        <item>1:2:15</item> <!-- ID0:Fingerprint:Strong -->
-    </string-array>
-
     <!-- Type of the tap sensor. Empty if tap is not supported. -->
     <string name="config_dozeTapSensorType" translatable="false">co.aospa.sensor.single_tap</string>
 
@@ -35,11 +27,4 @@
 
     <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
     <string name="config_dozeUdfpsLongPressSensorType" translatable="false">co.aospa.sensor.udfps</string>
-
-    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
-    <integer-array name="config_udfps_sensor_props" translatable="false" >
-        <item>558</item>  <!-- <item>sensorLocationX</item> -->
-        <item>1858</item> <!-- <item>sensorLocationY</item> -->
-        <item>94</item>   <!-- <item>sensorRadius</item> -->
-    </integer-array>
 </resources>
