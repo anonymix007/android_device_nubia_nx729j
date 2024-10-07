@@ -28,9 +28,6 @@ cc_library_static {
     vendor: true,
     srcs: ["FingerprintEngine.cpp"],
     defaults: [
-        "//hardware/nubia:nubia_fingerprint_defaults",
-    ],
-    shared_libs: [
-        "libhardware",
+        "//hardware/nubia:nubia_hwfingerprint_defaults",
     ],
 }
