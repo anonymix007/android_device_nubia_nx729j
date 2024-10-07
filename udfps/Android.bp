@@ -27,18 +27,10 @@ cc_library_static {
     name: "libfingerprintengine_nx729j",
     vendor: true,
     srcs: ["FingerprintEngine.cpp"],
+    defaults: [
+        "//hardware/nubia:nubia_fingerprint_defaults",
+    ],
     shared_libs: [
-        "libbase",
-        "libbinder_ndk",
-        "libcutils",
         "libhardware",
-        "liblog",
-        "android.hardware.biometrics.fingerprint-V3-ndk",
-        "android.hardware.biometrics.common-V3-ndk",
-        "android.hardware.biometrics.common.util",
     ],
-    header_libs: [
-        "//hardware/nubia:nubiafingerprintengine_headers",
-    ],
-    include_dirs: [ "hardware/nubia/"],
 }
