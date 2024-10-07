@@ -1,27 +1,8 @@
 //
-// Copyright (C) 2023 The LineageOS Project
-//               2024 Paranoid Android
+// Copyright (C) 2024 Paranoid Android
 //
 // SPDX-License-Identifier: Apache-2.0
 //
-
-cc_library {
-    name: "libudfpshandler",
-    vendor: true,
-    srcs: ["UdfpsHandler.cpp"],
-    shared_libs: [
-        "libbase",
-        "libhidlbase",
-        "libutils",
-        "libcutils",
-        "liblog",
-        "vendor.goodix.hardware.biometrics.fingerprint@2.1",
-    ],
-    header_libs: [
-        "//hardware/nubia:nubiafingerprint_headers",
-    ],
-    include_dirs: [ "hardware/nubia"],
-}
 
 cc_library_static {
     name: "libfingerprintengine_nx729j",
