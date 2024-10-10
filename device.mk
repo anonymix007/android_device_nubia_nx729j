@@ -64,7 +64,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     av \
     bt \
     display \
-    gps \
     init \
     overlay \
     perf \
@@ -172,6 +171,10 @@ TARGET_USES_FOD_ZPOS := true
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
+
+# GPS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss-V2-ndk.vendor
 
 # Health
 PRODUCT_PACKAGES += \
