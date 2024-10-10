@@ -1,3 +1,6 @@
+# Battery
+/sys/class/qcom-battery(/.*)?              u:object_r:sysfs_healthd:s0
+
 # Vibrator
 /vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.nubia                            u:object_r:hal_vibrator_default_exec:s0
 

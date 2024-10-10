@@ -192,6 +192,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.fingerprint.gf95xx.rc \
     init.target.rc \
+    init.vendor.rc \
     ueventd.nubia.rc
 
 PRODUCT_COPY_FILES += \

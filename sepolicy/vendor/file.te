@@ -8,4 +8,3 @@ type syna_proc, fs_type, proc_type;
 type sys_proc, fs_type, proc_type;
 type ndt_proc, fs_type, proc_type;
 type vendor_goodix_gf_data_file, file_type, data_file_type;
-type vendor_sysfs_qcom_battery, fs_type, sysfs_type;
