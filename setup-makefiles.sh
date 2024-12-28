@@ -25,9 +25,12 @@ source "${HELPER}"
 
 function vendor_imports() {
     cat <<EOF >>"$1"
+        "device/nubia/nx729j",
+        "hardware/nubia",
 		"vendor/qcom/common/system/telephony",
 		"vendor/qcom/common/vendor/adreno-t",
 		"vendor/qcom/common/vendor/display/5.15",
+        "vendor/qcom/common/vendor/perf",
 EOF
 }
 
@@ -38,9 +41,165 @@ function lib_to_package_fixup_vendor_variants() {
 
     case "$1" in
         com.qualcomm.qti.dpm.api@1.0 | \
-            vendor.qti.imsrtpservice@3.0)
-            echo "$1-vendor"
+        com.qualcomm.qti.imscmservice@1.0 | \
+        com.qualcomm.qti.imscmservice@2.0 | \
+        com.qualcomm.qti.imscmservice@2.1 | \
+        com.qualcomm.qti.imscmservice@2.2 | \
+        com.qualcomm.qti.uceservice@2.0 | \
+        com.qualcomm.qti.uceservice@2.1 | \
+        com.qualcomm.qti.uceservice@2.2 | \
+        com.qualcomm.qti.uceservice@2.3 | \
+        libmpbase | \
+        libskia | \
+        libtensorflowlite_jni | \
+        vendor.qti.data.factory@2.0 | \
+        vendor.qti.data.factory@2.1 | \
+        vendor.qti.data.factory@2.2 | \
+        vendor.qti.data.factory@2.3 | \
+        vendor.qti.data.factory@2.4 | \
+        vendor.qti.data.factory@2.5 | \
+        vendor.qti.data.factory@2.6 | \
+        vendor.qti.data.factory@2.7 | \
+        vendor.qti.data.mwqem@1.0 | \
+        vendor.qti.data.slm@1.0 | \
+        vendor.qti.diaghal@1.0 | \
+        vendor.qti.hardware.data.cne.internal.api@1.0 | \
+        vendor.qti.hardware.data.cne.internal.constants@1.0 | \
+        vendor.qti.hardware.data.cne.internal.server@1.0 | \
+        vendor.qti.hardware.data.cne.internal.server@1.1 | \
+        vendor.qti.hardware.data.cne.internal.server@1.2 | \
+        vendor.qti.hardware.data.cne.internal.server@1.3 | \
+        vendor.qti.hardware.data.connection@1.0 | \
+        vendor.qti.hardware.data.connection@1.1 | \
+        vendor.qti.hardware.data.connectionfactory-V1-ndk | \
+        vendor.qti.hardware.data.dataactivity-V1-ndk | \
+        vendor.qti.hardware.data.dynamicdds@1.0 | \
+        vendor.qti.hardware.data.dynamicdds@1.1 | \
+        vendor.qti.hardware.data.flow@1.0 | \
+        vendor.qti.hardware.data.flow@1.1 | \
+        vendor.qti.hardware.data.iwlan@1.0 | \
+        vendor.qti.hardware.data.iwlan@1.1 | \
+        vendor.qti.hardware.data.ka-V1-ndk | \
+        vendor.qti.hardware.data.latency@1.0 | \
+        vendor.qti.hardware.data.lce@1.0 | \
+        vendor.qti.hardware.data.qmi@1.0 | \
+        vendor.qti.hardware.dpmservice@1.0 | \
+        vendor.qti.hardware.dpmservice@1.1 | \
+        vendor.qti.hardware.embmssl@1.0 | \
+        vendor.qti.hardware.embmssl@1.1 | \
+        vendor.qti.hardware.factory@1.0 | \
+        vendor.qti.hardware.factory@1.1 | \
+        vendor.qti.hardware.limits@1.0 | \
+        vendor.qti.hardware.limits@1.1 | \
+        vendor.qti.hardware.limits@1.2 | \
+        vendor.qti.hardware.mwqemadapter@1.0 | \
+        vendor.qti.hardware.radio.am@1.0 | \
+        vendor.qti.hardware.radio.am-V1-ndk | \
+        vendor.qti.hardware.radio.atcmdfwd@1.0 | \
+        vendor.qti.hardware.radio.atcmdfwd-V1-ndk | \
+        vendor.qti.hardware.radio.ims@1.0 | \
+        vendor.qti.hardware.radio.ims@1.1 | \
+        vendor.qti.hardware.radio.ims@1.2 | \
+        vendor.qti.hardware.radio.ims@1.3 | \
+        vendor.qti.hardware.radio.ims@1.4 | \
+        vendor.qti.hardware.radio.ims@1.5 | \
+        vendor.qti.hardware.radio.ims@1.6 | \
+        vendor.qti.hardware.radio.ims@1.7 | \
+        vendor.qti.hardware.radio.ims@1.8 | \
+        vendor.qti.hardware.radio.ims-V9-ndk | \
+        vendor.qti.hardware.radio.internal.deviceinfo@1.0 | \
+        vendor.qti.hardware.radio.internal.deviceinfo-V1-ndk | \
+        vendor.qti.hardware.radio.lpa@1.0 | \
+        vendor.qti.hardware.radio.lpa@1.1 | \
+        vendor.qti.hardware.radio.lpa@1.2 | \
+        vendor.qti.hardware.radio.lpa@1.3 | \
+        vendor.qti.hardware.radio.qcrilhook@1.0 | \
+        vendor.qti.hardware.radio.qcrilhook-V1-ndk | \
+        vendor.qti.hardware.radio.qtiradio@1.0 | \
+        vendor.qti.hardware.radio.qtiradio@2.0 | \
+        vendor.qti.hardware.radio.qtiradio@2.1 | \
+        vendor.qti.hardware.radio.qtiradio@2.2 | \
+        vendor.qti.hardware.radio.qtiradio@2.3 | \
+        vendor.qti.hardware.radio.qtiradio@2.4 | \
+        vendor.qti.hardware.radio.qtiradio@2.5 | \
+        vendor.qti.hardware.radio.qtiradio@2.6 | \
+        vendor.qti.hardware.radio.qtiradioconfig-V3-ndk | \
+        vendor.qti.hardware.radio.qtiradio-V9-ndk | \
+        vendor.qti.hardware.radio.uim@1.0 | \
+        vendor.qti.hardware.radio.uim@1.1 | \
+        vendor.qti.hardware.radio.uim@1.2 | \
+        vendor.qti.hardware.radio.uim_remote_client@1.0 | \
+        vendor.qti.hardware.radio.uim_remote_client@1.1 | \
+        vendor.qti.hardware.radio.uim_remote_client@1.2 | \
+        vendor.qti.hardware.radio.uim_remote_server@1.0 | \
+        vendor.qti.hardware.sigma_miracast@1.0 | \
+        vendor.qti.hardware.slmadapter@1.0 | \
+        vendor.qti.hardware.wifidisplaysession@1.0 | \
+        vendor.qti.ims.callcapability@1.0 | \
+        vendor.qti.ims.callinfo@1.0 | \
+        vendor.qti.ims.configservice@1.0 | \
+        vendor.qti.ims.configservice@1.1 | \
+        vendor.qti.ims.connection@1.0 | \
+        vendor.qti.ims.factory@1.0 | \
+        vendor.qti.ims.factory@1.1 | \
+        vendor.qti.ims.factory@2.0 | \
+        vendor.qti.ims.factory@2.1 | \
+        vendor.qti.ims.factory@2.2 | \
+        vendor.qti.ims.rcsconfig@1.0 | \
+        vendor.qti.ims.rcsconfig@1.1 | \
+        vendor.qti.ims.rcsconfig@2.0 | \
+        vendor.qti.ims.rcsconfig@2.1 | \
+        vendor.qti.ims.rcssip@1.0 | \
+        vendor.qti.ims.rcssip@1.1 | \
+        vendor.qti.ims.rcssip@1.2 | \
+        vendor.qti.ims.rcsuce@1.0 | \
+        vendor.qti.ims.rcsuce@1.1 | \
+        vendor.qti.ims.rcsuce@1.2 | \
+        vendor.qti.imsrtpservice@3.0 | \
+        vendor.qti.imsrtpservice@3.1 | \
+        vendor.qti.latency@2.0 | \
+        vendor.qti.latency@2.1 | \
+        vendor.qti.latency@2.2)
+            echo "$1_vendor"
             ;;
+        libdigital-dimming | \
+        libdisp-aba | \
+        libdisplayconfig.qti | \
+        libdisplaydebug | \
+        libdisplayqos | \
+        libdisplayskuutils | \
+        libdpps | \
+        libdrmutils | \
+        libfilefinder | \
+        libgpu_tonemapper | \
+        libhistogram | \
+        libintervmipc | \
+        libmemutils | \
+        libqservice | \
+        libsdedrm | \
+        libsdm-color | \
+        libsdmcore | \
+        libsdmdal | \
+        libsdm-disp-vndapis | \
+        libsdmextension | \
+        libsdmutils | \
+        libsnapdragoncolor-manager | \
+        libtestutils | \
+        libtinyxml2_1 | \
+        libvmfilexfer | \
+        libvmmem | \
+        vendor.display.color@1.0 | \
+        vendor.display.color@1.1 | \
+        vendor.display.color@1.2 | \
+        vendor.display.color@1.3 | \
+        vendor.display.color@1.4 | \
+        vendor.display.color@1.5 | \
+        vendor.display.color@1.6 | \
+        vendor.display.color@1.7 | \
+        vendor.display.postproc@1.0)
+            echo "$1_nubia"
+            ;;
+
         libwpa_client) ;;
         *)
             return 1

@@ -60,17 +60,38 @@ fi
 
 function blob_fixup() {
     case "${1}" in
+        vendor/bin/rkp_factory_extraction_tool)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "android.hardware.security.keymint-V2-ndk.so" "android.hardware.security.keymint-V3-ndk.so" "${2}"
+            "${PATCHELF}" --add-needed "android.hardware.security.rkp-V3-ndk.so" "${2}"
+            ;;
         vendor/bin/hw/android.hardware.security.keymint-service-qti)
             [ "$2" = "" ] && return 0
-            "${PATCHELF}" --add-needed android.hardware.security.rkp-V3-ndk.so "${2}"
+            "${PATCHELF}" --add-needed "android.hardware.security.rkp-V3-ndk.so" "${2}"
             ;;
         vendor/lib64/libqtikeymint.so)
             [ "$2" = "" ] && return 0
-            "${PATCHELF}" --add-needed android.hardware.security.rkp-V3-ndk.so "${2}"
+            "${PATCHELF}" --add-needed "android.hardware.security.rkp-V3-ndk.so" "${2}"
             ;;
         vendor/bin/slim_daemon)
             [ "$2" = "" ] && return 0
-            "${PATCHELF}" --add-needed libemutls_get_address.so "${2}"
+            "${PATCHELF}" --add-needed "libemutls_get_address.so" "${2}"
+            ;;
+        vendor/lib64/libtestcore.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
+            ;;
+        vendor/lib64/libNubiaImageAlgorithmVD.so )
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --remove-needed "libjnigraphics.so" "${2}"
+            ;;
+        vendor/lib64/libopencv_java4.so | vendor/lib64/libzcv.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "libjnigraphics.so" "libcv_shim.so" "${2}"
+            ;;
+        vendor/lib64/vendor.libdpmframework.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --add-needed "libhidlbase_shim.so" "${2}"
             ;;
         vendor/lib64/libgf_hal.so | vendor/lib64/hw/fingerprint.gf95xx.default.so)
             [ "$2" = "" ] && return 0
