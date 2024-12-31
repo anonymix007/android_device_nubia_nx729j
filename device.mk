@@ -79,28 +79,15 @@ TARGET_USE_AIDL_QTI_HEALTH := true
 BOARD_SHIPPING_API_LEVEL := 33
 PRODUCT_SHIPPING_API_LEVEL := 33
 
-# ANT+
-PRODUCT_PACKAGES += \
-    com.dsi.ant@1.0.vendor
-
 # Atrace
 PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service
 
 # Audio
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth.audio-V2-ndk.vendor \
-    libchrome.vendor
-
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama_qssi/audio_effects.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama_qssi/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama_qssi/audio_policy_volumes.xml
-
-# Authsecret
-PRODUCT_PACKAGES += \
-    android.hardware.authsecret@1.0.vendor
 
 # Boot Control
 PRODUCT_PACKAGES += \
@@ -108,21 +95,7 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl-qti.recovery \
     android.hardware.boot@1.2-service
 
-PRODUCT_PACKAGES += \
-    android.hardware.camera.common-V1-ndk.vendor \
-    android.hardware.camera.device-V1-ndk.vendor \
-    android.hardware.camera.metadata-V1-ndk.vendor \
-    android.hardware.camera.provider-V1-ndk.vendor \
-    android.hardware.camera.provider@2.4-external \
-    android.hardware.camera.provider@2.4-legacy \
-    android.hardware.camera.provider@2.7.vendor \
-    android.hardware.camera.common@1.0.vendor \
-    camera.device@1.0-impl \
-    libcamera2ndk_vendor \
-    vendor.qti.hardware.camera.aon@1.3.vendor \
-    vendor.qti.hardware.camera.device@1.0.vendor \
-    vendor.qti.hardware.camera.postproc@1.0.vendor
-
+# Camera
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.concurrent.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.concurrent.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -133,22 +106,15 @@ PRODUCT_COPY_FILES += \
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# Dirty hack for slim_daemon and others
-PRODUCT_PACKAGES += \
-    libemutls_get_address
-
 # Display
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3.vendor \
-    android.hardware.drm-service.clearkey \
-    libdrm.vendor
+    android.hardware.drm-service.clearkey
 
 # DTS Ultra
-
 PRODUCT_PACKAGES += \
     DtsUltra
 
@@ -158,36 +124,21 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.nubia \
-    vendor.goodix.hardware.biometrics.fingerprint@2.1.vendor
-
+    android.hardware.biometrics.fingerprint-service.nubia
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 TARGET_USES_FOD_ZPOS := true
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0.vendor
-
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss-V2-ndk.vendor
-
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.qti \
-    android.hardware.health@1.0 \
-    android.hardware.health@2.1
+    android.hardware.health-service.qti_recovery
 
 # Hotword Enrollement
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
-
-# Identity
-PRODUCT_PACKAGES += \
-    android.hardware.identity-V4-ndk.vendor
 
 # Init
 PRODUCT_PACKAGES += \
@@ -203,18 +154,9 @@ PRODUCT_COPY_FILES += \
 # Kernel Binary
 KERNEL_PREBUILT_DIR := device/nubia/nx729j-kernel
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1.vendor \
-    libkeymaster_messages.vendor
-
 # Keymint
 PRODUCT_PACKAGES += \
-    android.hardware.hardware_keystore.xml \
-    android.hardware.security.keymint-V2-ndk.vendor \
-    android.hardware.security.rkp-V3-ndk.vendor \
-    android.hardware.security.secureclock-V1-ndk.vendor \
-    android.hardware.security.sharedsecret-V1-ndk.vendor
+    android.hardware.hardware_keystore.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml \
@@ -225,17 +167,6 @@ PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
 
 # Media
-PRODUCT_PACKAGES += \
-    android.hardware.media.c2@1.2.vendor \
-    libavservices_minijail \
-    libavservices_minijail.vendor \
-    libcodec2_soft_common.vendor \
-    libcodec2_hidl@1.2.vendor \
-    libcodec2_vndk.vendor \
-    libgui_vendor \
-    libsfplugin_ccodec_utils.vendor \
-    libstagefrighthw
-
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2.xml \
@@ -245,18 +176,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
-# Neural Networks
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks-V1-ndk.vendor
-
 # NFC
 PRODUCT_PACKAGES += \
     NfcNci \
-    libnfc-nci.conf-sec \
-    android.hardware.nfc-V1-ndk.vendor \
-    android.hardware.nfc@1.0.vendor \
-    android.hardware.nfc@1.1.vendor \
-    android.hardware.nfc@1.2.vendor \
+    libnfc-nci.conf-sec
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
@@ -303,16 +226,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.aospa.powershare-service
 
-# QMI
-PRODUCT_PACKAGES += \
-    libjson
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal \
     libsensorndkbridge \
     sensors.nubia
-
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -331,18 +249,11 @@ PRODUCT_COPY_FILES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0 \
-    android.hardware.thermal@2.0.vendor \
     android.hardware.thermal@2.0-service.qti-v2
 
 # Touchscreen
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-
-# Trusted User Interface
-PRODUCT_PACKAGES += \
-    android.hidl.memory.block@1.0.vendor \
-    vendor.qti.hardware.systemhelper@1.0.vendor
 
 # USB
 PRODUCT_HAS_GADGET_HAL := true
@@ -377,8 +288,3 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.rtt.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.rtt.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
-
-# WiFi Display
-PRODUCT_PACKAGES += \
-    libnl \
-    libwfdaac_vendor
