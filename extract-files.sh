@@ -103,7 +103,11 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libhidlbase_shim.so" "${2}"
             ;;
-        vendor/lib64/libgf_hal.so | vendor/lib64/hw/fingerprint.gf95xx.default.so)
+        vendor/lib64/hw/fingerprint.gf95xx.default.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --remove-needed libvendor.goodix.hardware.biometrics.fingerprint@2.1.so "${2}"
+            ;;
+        vendor/lib64/libgf_hal.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed libvendor.goodix.hardware.biometrics.fingerprint@2.1.so vendor.goodix.hardware.biometrics.fingerprint@2.1.so "${2}"
             # Maybe sed?

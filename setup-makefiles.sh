@@ -25,12 +25,13 @@ source "${HELPER}"
 
 function vendor_imports() {
     cat <<EOF >>"$1"
-        "device/nubia/nx729j",
-        "hardware/nubia",
+		"device/nubia/nx729j",
+		"hardware/nubia",
 		"vendor/qcom/common/system/telephony",
 		"vendor/qcom/common/vendor/adreno-t",
+		"vendor/qcom/common/vendor/display",
 		"vendor/qcom/common/vendor/display/5.15",
-        "vendor/qcom/common/vendor/perf",
+		"vendor/qcom/common/vendor/perf",
 EOF
 }
 
@@ -159,9 +160,7 @@ function lib_to_package_fixup_vendor_variants() {
         vendor.qti.imsrtpservice@3.1 | \
         vendor.qti.latency@2.0 | \
         vendor.qti.latency@2.1 | \
-        vendor.qti.latency@2.2)
-            echo "$1_vendor"
-            ;;
+        vendor.qti.latency@2.2 | \
         libdigital-dimming | \
         libdisp-aba | \
         libdisplayconfig.qti | \
@@ -197,9 +196,8 @@ function lib_to_package_fixup_vendor_variants() {
         vendor.display.color@1.6 | \
         vendor.display.color@1.7 | \
         vendor.display.postproc@1.0)
-            echo "$1_nubia"
+            echo "$1_vendor"
             ;;
-
         libwpa_client) ;;
         *)
             return 1
