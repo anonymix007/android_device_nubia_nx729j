@@ -1061,35 +1061,6 @@ vendor/lib64/libdiag.so
 vendor/lib64/vendor.qti.diaghal@1.0.so;MODULE_SUFFIX=_vendor
 
 # Display
-vendor/bin/hw/vendor.display.color@1.0-service;MODULE_SUFFIX=_vendor
-vendor/bin/hw/vendor.qti.hardware.display.allocator-service;MODULE_SUFFIX=_vendor
-vendor/bin/hw/vendor.qti.hardware.display.composer-service;MODULE_SUFFIX=_vendor
-vendor/bin/hw/vendor.qti.hardware.display.demura-service;MODULE_SUFFIX=_vendor
-vendor/lib64/libdigital-dimming.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libdisp-aba.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libdisplayconfig.qti.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libdisplaydebug.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libdisplayqos.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libdisplayskuutils.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libdpps.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libdrmutils.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libfilefinder.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libgpu_tonemapper.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libhistogram.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libintervmipc.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libmemutils.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libqservice.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsdedrm.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsdm-color.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsdm-disp-vndapis.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsdmcore.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsdmdal.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsdmextension.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsdmutils.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libsnapdragoncolor-manager.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libtestutils.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libtinyxml2_1.so;MODULE_SUFFIX=_vendor
-vendor/lib64/libvmfilexfer.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libvmmem.so;MODULE_SUFFIX=_vendor
 
 # Display calibration data

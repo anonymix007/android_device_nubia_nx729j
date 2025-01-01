@@ -161,41 +161,7 @@ function lib_to_package_fixup_vendor_variants() {
         vendor.qti.latency@2.0 | \
         vendor.qti.latency@2.1 | \
         vendor.qti.latency@2.2 | \
-        libdigital-dimming | \
-        libdisp-aba | \
-        libdisplayconfig.qti | \
-        libdisplaydebug | \
-        libdisplayqos | \
-        libdisplayskuutils | \
-        libdpps | \
-        libdrmutils | \
-        libfilefinder | \
-        libgpu_tonemapper | \
-        libhistogram | \
-        libintervmipc | \
-        libmemutils | \
-        libqservice | \
-        libsdedrm | \
-        libsdm-color | \
-        libsdmcore | \
-        libsdmdal | \
-        libsdm-disp-vndapis | \
-        libsdmextension | \
-        libsdmutils | \
-        libsnapdragoncolor-manager | \
-        libtestutils | \
-        libtinyxml2_1 | \
-        libvmfilexfer | \
-        libvmmem | \
-        vendor.display.color@1.0 | \
-        vendor.display.color@1.1 | \
-        vendor.display.color@1.2 | \
-        vendor.display.color@1.3 | \
-        vendor.display.color@1.4 | \
-        vendor.display.color@1.5 | \
-        vendor.display.color@1.6 | \
-        vendor.display.color@1.7 | \
-        vendor.display.postproc@1.0)
+        libvmmem)
             echo "$1_vendor"
             ;;
         libwpa_client) ;;
