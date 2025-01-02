@@ -77,6 +77,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libemutls_get_address.so" "${2}"
             ;;
+        vendor/bin/qms)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "vendor.qti.hardware.bttpi-V2-ndk.so" "vendor.qti.hardware.bttpi-V3-ndk.so" "${2}"
+            ;;
         vendor/lib64/libtestcore.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"

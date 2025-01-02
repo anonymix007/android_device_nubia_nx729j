@@ -29,6 +29,7 @@ function vendor_imports() {
 		"hardware/nubia",
 		"vendor/qcom/common/system/telephony",
 		"vendor/qcom/common/vendor/adreno-t",
+		"vendor/qcom/common/vendor/bt/hci",
 		"vendor/qcom/common/vendor/display",
 		"vendor/qcom/common/vendor/display/5.15",
 		"vendor/qcom/common/vendor/perf",

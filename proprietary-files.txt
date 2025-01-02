@@ -126,7 +126,6 @@ vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libEvrcSwCodec.so
 vendor/lib64/libFlacSwDec.so
--vendor/lib64/libPeripheralStateUtils.so
 vendor/lib64/libadm.so
 -vendor/lib64/libar-pal.so;DISABLE_DEPS
 vendor/lib64/libaudio_log_utils.so
@@ -160,32 +159,15 @@ vendor/bin/battery_record_daemon
 vendor/bin/battery_stats
 vendor/etc/init/vendor.qti.battery_stats.rc
 
-# Bluetooth
-vendor/bin/btconfig
-vendor/bin/hw/android.hardware.bluetooth@1.1-service-qti
-vendor/etc/init/android.hardware.bluetooth@1.1-service-qti.rc
-vendor/etc/vintf/manifest/bttpi-saidl.xml
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib64/hw/android.hardware.bluetooth@1.1-impl-qti.so
-vendor/lib64/hw/audio.bluetooth_qti.default.so
-vendor/lib64/hw/vendor.qti.hardware.bttpi-impl.so
-vendor/lib64/libbt-hidlclient.so
-vendor/lib64/libbtnv.so
-vendor/lib64/vendor.qti.hardware.bttpi-V2-ndk.so
-
 # Bluetooth (A2DP)
 vendor/lib64/btaudio_offload_if.so
+vendor/lib64/hw/audio.bluetooth_qti.default.so
 vendor/lib64/hw/android.hardware.bluetooth.audio-impl-qti.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.1-impl.so
-vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
-vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
-vendor/lib64/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
 vendor/lib64/libbluetooth_audio_session_aidl_qti.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
-vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
-vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
 
 # CDSP
 vendor/bin/cdsprpcd
@@ -1708,10 +1690,6 @@ vendor/lib64/libss-modem.so
 vendor/lib64/libss-plugin.so
 vendor/lib64/libss-qti.so
 
-# QTI
-vendor/lib64/libsoc_helper.so
-vendor/lib64/libsoc_helper_jni.so
-
 # RIL
 vendor/bin/hw/qcrilNrd
 vendor/bin/ims-dataservice-daemon
@@ -2000,7 +1978,6 @@ vendor/bin/diag_socket_log
 vendor/bin/diag_uart_log
 vendor/bin/fmfactorytest
 vendor/bin/fmfactorytestserver
-vendor/bin/ftmdaemon
 vendor/bin/hw/capabilityconfigstoretest
 vendor/bin/memtester
 vendor/bin/mm-audio-ftm
@@ -2183,7 +2160,6 @@ vendor/bin/qcom-system-daemon
 vendor/bin/qdss_qmi_helper
 vendor/bin/toybox_oem
 vendor/bin/variantid
-vendor/bin/wdsdaemon
 vendor/etc/898-898-no-exp-2574099444.pfm
 vendor/etc/QWESAttestationCert.pfm
 vendor/etc/default_audio_logmask.cfg
