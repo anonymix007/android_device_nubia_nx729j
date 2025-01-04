@@ -6,6 +6,9 @@
 
 #define LOG_TAG "FingerprintEngineNX729J"
 
+#include <fcntl.h>
+#include <unistd.h>
+
 #include <android/log.h>
 #include <log/log.h>
 
@@ -14,6 +17,8 @@
 #include <Legacy2Aidl.h>
 
 #include "fingerprint_device_nx729j.h"
+
+#define LCD_HBM_PATH "/proc/driver/lcd_hbm"
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
@@ -38,12 +43,24 @@ public:
         return kSensorPositionCenterY;
     }
 
-    void onPointerDownImpl(int32_t pointerId, int32_t x, int32_t y, float minor, float major);
-    void onPointerUpImpl(int32_t pointerId);
-    void onUiReadyImpl();
+    void onPointerDownImpl(int32_t pointerId, int32_t x, int32_t y, float minor, float major) override;
+    void onPointerUpImpl(int32_t pointerId) override;
+    void onUiReadyImpl() override;
+    void onAcquired() override;
 
 private:
     fingerprint_device_gf95xx *mDevice;
+
+    void writeHbm(bool enable) {
+        int fd = open(LCD_HBM_PATH, O_RDWR);
+        char v = enable ? '1' : '0';
+        if (write(fd, &v, sizeof(v)) == sizeof(v)) {
+            ALOGI("%s: %s HBM successfully", __func__, enable ? "Enabled" : "Disabled");
+        } else {
+            ALOGI("%s: Failed to %s: %d", __func__, enable ? "enable" : "disable", errno);
+        }
+        close(fd);
+    }
 };
 
 const std::vector<HwFingerprintModule> kModules = {
@@ -70,6 +87,7 @@ FingerprintEngineNX729J::~FingerprintEngineNX729J() {
 
 void FingerprintEngineNX729J::onPointerDownImpl(int32_t /*pointerId*/, int32_t /*x*/, int32_t /*y*/, float /*minor*/, float /*major*/) {
     ALOGI("onPointerDownImpl");
+    writeHbm(true);
     if (mDevice->sendCustomizedCommand) {
         mDevice->sendCustomizedCommand(mDevice, 10, 1, CUSTOMIZED_COMMAND, CUSTOMIZED_COMMAND_LEN);
     } else {
@@ -79,6 +97,7 @@ void FingerprintEngineNX729J::onPointerDownImpl(int32_t /*pointerId*/, int32_t /
 
 void FingerprintEngineNX729J::onPointerUpImpl(int32_t /*pointerId*/) {
     ALOGI("onPointerUpImpl");
+    writeHbm(false);
     if (mDevice->sendCustomizedCommand) {
         mDevice->sendCustomizedCommand(mDevice, 10, 0, CUSTOMIZED_COMMAND, CUSTOMIZED_COMMAND_LEN);
     } else {
@@ -88,6 +107,11 @@ void FingerprintEngineNX729J::onPointerUpImpl(int32_t /*pointerId*/) {
 
 void FingerprintEngineNX729J::onUiReadyImpl() {
     ALOGI("onUiReadyImpl: stub");
+}
+
+void FingerprintEngineNX729J::onAcquired() {
+    ALOGI("onAcquired");
+    writeHbm(false);
 }
 
 std::shared_ptr<FingerprintEngine> makeFingerprintEngine() {

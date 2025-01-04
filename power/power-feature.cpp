@@ -22,7 +22,7 @@ bool setDeviceSpecificFeature(Feature feature, bool enabled) {
             int fd = open(WAKEGESTURE_PATH, O_RDWR);
             LOG(ERROR) << "Trying to " << (enabled ? "enable" : "disable") << " double tap gesture, fd: " << fd << ", errno: " << errno;
             char v = enabled ? '1' : '0';
-            if (write(fd, &v, sizeof(v)) < 0) {
+            if (write(fd, &v, sizeof(v)) == sizeof(v)) {
                 LOG(ERROR) << (enabled ? "Enabled" : "Disabled") << " double tap gesture successfully";
             } else {
                 LOG(ERROR) << "Errno: " << errno;

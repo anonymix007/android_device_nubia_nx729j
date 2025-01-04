@@ -3,3 +3,4 @@ allow hal_fingerprint_default fingerprint_device:chr_file { open write read ioct
 allow hal_fingerprint_default tee_device:chr_file { ioctl open read write };
 allow hal_fingerprint_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl open read };
 allow hal_fingerprint_default vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl open read };
+allow hal_fingerprint_default proc_ztelcd_set:file { open read write };
