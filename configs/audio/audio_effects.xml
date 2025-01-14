@@ -138,6 +138,7 @@
         <stream type="music">
             <!-- DTS_AUDIO START -->
             <!--apply effect="music_helper"/-->
+            <apply effect="dtsaudio"/>
             <!-- DTS_AUDIO END -->
         </stream>
         <stream type="ring">
