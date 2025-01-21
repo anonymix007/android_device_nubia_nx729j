@@ -36,8 +36,7 @@
 #include <android/binder_process.h>
 
 #include "Vibrator.h"
-#include "RichtapVibrator.h"
-
+#include "richtap/RichtapVibrator.h"
 
 using aidl::android::hardware::vibrator::Vibrator;
 using aidl::vendor::aac::hardware::richtap::vibrator::RichtapVibrator;
@@ -47,12 +46,14 @@ int main() {
     std::shared_ptr<Vibrator> vib = ndk::SharedRefBase::make<Vibrator>();
     ndk::SpAIBinder vibBinder = vib->asBinder();
 
-    /*std::shared_ptr<RichtapVibrator> cvib = ndk::SharedRefBase::make<RichtapVibrator>();
-    CHECK(STATUS_OK == AIBinder_setExtension(vibBinder.get(), cvib->asBinder().get()));*/
+    std::shared_ptr<RichtapVibrator> cvib = ndk::SharedRefBase::make<RichtapVibrator>();
+    CHECK(STATUS_OK == AIBinder_setExtension(vibBinder.get(), cvib->asBinder().get()));
 
     const std::string instance = std::string() + Vibrator::descriptor + "/default";
     binder_status_t status = AServiceManager_addService(vibBinder.get(), instance.c_str());
     CHECK(status == STATUS_OK);
+
+    cvib->init(nullptr);
 
     ABinderProcess_joinThreadPool();
     return EXIT_FAILURE;  // should not reach

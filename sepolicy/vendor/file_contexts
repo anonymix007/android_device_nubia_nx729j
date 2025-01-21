@@ -2,7 +2,11 @@
 /sys/class/qcom-battery(/.*)?              u:object_r:sysfs_healthd:s0
 
 # Vibrator
-/vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.nubia                            u:object_r:hal_vibrator_default_exec:s0
+/vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.nubia                      u:object_r:hal_vibrator_default_exec:s0
+/dev/awinic_haptic                                                                  u:object_r:aac_richtap_dev:s0
+/dev/aw8697_haptic                                                                  u:object_r:aac_richtap_dev:s0
+/dev/aw86917_haptic                                                                 u:object_r:aac_richtap_dev:s0
+/dev/awinic_x_haptic                                                                u:object_r:aac_richtap_dev:s0
 
 # Fan
 /sys/kernel/fan(/.*)?                                                                                 u:object_r:sysfs_nb_fan:s0
