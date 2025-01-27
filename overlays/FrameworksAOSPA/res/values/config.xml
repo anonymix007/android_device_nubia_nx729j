@@ -11,7 +11,7 @@
     </string-array>
 
     <!-- Whether to intercept inputs on screen off -->
-    <bool name="config_enableKeyHandler">false</bool>
+    <bool name="config_enableKeyHandler">true</bool>
 
     <!-- Gestures' key codes. If the gesture is not supported set it to 0. -->
     <!-- Set to invalid key code because this is handled using sensors -->
