@@ -1,14 +1,8 @@
 //
-// Copyright (C) 2023-2024 Paranoid Android
+// Copyright (C) 2023-2025 Paranoid Android
 //
 // SPDX-License-Identifier: Apache-2.0
 //
-
-cc_library_shared {
-    name: "libemutls_get_address",
-    srcs: ["emutls.c"],
-    vendor: true,
-}
 
 cc_library_shared {
     name: "libcv_shim",

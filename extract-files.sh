@@ -73,10 +73,6 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "android.hardware.security.rkp-V3-ndk.so" "${2}"
             ;;
-        vendor/bin/slim_daemon)
-            [ "$2" = "" ] && return 0
-            "${PATCHELF}" --add-needed "libemutls_get_address.so" "${2}"
-            ;;
         vendor/bin/qms)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "vendor.qti.hardware.bttpi-V2-ndk.so" "vendor.qti.hardware.bttpi-V3-ndk.so" "${2}"
@@ -93,7 +89,7 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "libjnigraphics.so" "libcv_shim.so" "${2}"
             ;;
-        vendor/etc/seccomp_policy/atfwd@2.0.policy | vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy | vendor/etc/seccomp_policy/modemManager.policy | vendor/etc/seccomp_policy/qsap_sensors.policy | vendor/etc/seccomp_policy/qwesd@2.0.policy | vendor/etc/seccomp_policy/wfdhdcphalservice.policy)
+        vendor/etc/seccomp_policy/atfwd@2.0.policy | vendor/etc/seccomp_policy/modemManager.policy | vendor/etc/seccomp_policy/qsap_sensors.policy | vendor/etc/seccomp_policy/qwesd@2.0.policy | vendor/etc/seccomp_policy/wfdhdcphalservice.policy)
             [ "$2" = "" ] && return 0
             [ -n "$(tail -c 1 "${2}")" ] && echo >> "${2}"
             grep -q "gettid: 1" "${2}" || echo "gettid: 1" >> "${2}"
