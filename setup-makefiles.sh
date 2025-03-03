@@ -32,6 +32,7 @@ function vendor_imports() {
 		"vendor/qcom/common/vendor/bt/hci",
 		"vendor/qcom/common/vendor/display",
 		"vendor/qcom/common/vendor/display/5.15",
+		"vendor/qcom/common/vendor/media-5.15",
 		"vendor/qcom/common/vendor/perf",
 EOF
 }

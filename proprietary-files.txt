@@ -119,10 +119,6 @@ vendor/lib/rfsa/adsp/libvpt_action_recognition.so
 vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
-vendor/lib64/libAlacSwDec.so
-vendor/lib64/libApeSwDec.so
-vendor/lib64/libEvrcSwCodec.so
-vendor/lib64/libFlacSwDec.so
 vendor/lib64/libadm.so
 -vendor/lib64/libar-pal.so;DISABLE_DEPS
 vendor/lib64/libaudio_log_utils.so
@@ -1441,64 +1437,6 @@ vendor/etc/permissions/vendor.qti.hardware.factory.xml
 vendor/lib64/vendor.qti.hardware.factory@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.factory@1.1.so;MODULE_SUFFIX=_vendor
 
-# Media
-vendor/bin/hw/qconfigservice
-vendor/bin/hw/vendor.qti.media.c2@1.0-service
-vendor/bin/hw/vendor.qti.media.c2audio@1.0-service
-vendor/etc/init/init.qti.media.rc
-vendor/etc/init/qconfig.rc
-vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
-vendor/etc/init/vendor.qti.media.c2audio@1.0-service.rc
-vendor/etc/media_codecs.xml
-vendor/etc/media_codecs_kalama.xml
-vendor/etc/media_codecs_kalama_vendor.xml
-vendor/etc/media_codecs_performance_kalama.xml
-vendor/etc/media_codecs_performance_kalama_vendor.xml
-vendor/etc/media_kalama/video_system_specs.json
-vendor/etc/media_profiles.xml
-vendor/etc/media_profiles_V1_0.xml
-vendor/etc/media_profiles_kalama.xml
-vendor/etc/seccomp_policy/c2audio.vendor.base-arm.policy
-vendor/etc/seccomp_policy/c2audio.vendor.base-arm64.policy
-vendor/etc/seccomp_policy/c2audio.vendor.ext-arm.policy
-vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy
-vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
-vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
-vendor/etc/vintf/manifest/c2_manifest_vendor.xml
-vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
-vendor/etc/vintf/manifest/vendor.qti.hardware.qconfig@1.0-service.xml
-vendor/lib64/libCOSNet_spatial_qnn_quantized.so
-vendor/lib64/libQcelp13SwCodec.so
-vendor/lib64/libmmosal_vendor.so
-vendor/lib64/libqc2audio_base.so
-vendor/lib64/libqc2audio_basecodec.so
-vendor/lib64/libqc2audio_core.so
-vendor/lib64/libqc2audio_hooks.so
-vendor/lib64/libqc2audio_hwaudiocodec.so;DISABLE_DEPS
-vendor/lib64/libqc2audio_platform.so
-vendor/lib64/libqc2audio_swaudiocodec.so
-vendor/lib64/libqc2audio_utils.so
-vendor/lib64/libqc2colorconvertfilter.so
-vendor/lib64/libqc2filter.so
-vendor/lib64/libqc2vppfilter.so
-vendor/lib64/libqcodec2_base.so
-vendor/lib64/libqcodec2_basecodec.so
-vendor/lib64/libqcodec2_core.so
-vendor/lib64/libqcodec2_cvpfilter.so
-vendor/lib64/libqcodec2_filterbase.so
-vendor/lib64/libqcodec2_hooks.so
-vendor/lib64/libqcodec2_imgtxrfilter.so
-vendor/lib64/libqcodec2_mockfilter.so
-vendor/lib64/libqcodec2_mockqc2filter.so
-vendor/lib64/libqcodec2_platform.so
-vendor/lib64/libqcodec2_salmapfilter.so
-vendor/lib64/libqcodec2_streaminteg_filter.so
-vendor/lib64/libqcodec2_utils.so
-vendor/lib64/libqcodec2_v4l2codec.so
-vendor/lib64/libqconfigclient.so
-vendor/lib64/qti.video.utils.videobufferlayout.so
-vendor/lib64/vendor.qti.hardware.qconfig@1.0.so
-
 # Modem Manager
 vendor/bin/modemManager
 vendor/etc/init/modemManager.rc
@@ -1530,6 +1468,7 @@ vendor/etc/public.libraries.txt
 
 # Neural Networks
 vendor/bin/COSNet_spatial_8bit_quantized.serialized.bin
+vendor/lib64/libCOSNet_spatial_qnn_quantized.so
 vendor/lib64/libQnnCpu.so
 vendor/lib64/libQnnHtp.so
 vendor/lib64/libQnnHtpNetRunExtensions.so
@@ -1542,7 +1481,6 @@ vendor/lib64/libQnnSystem.so
 vendor/lib64/libai_tflite.so
 vendor/lib64/libhvxopr_skel.so
 vendor/lib64/libhvxopr_stub.so
-vendor/lib64/libqnnengine.so
 vendor/lib64/libtensorflowlite_gpu_jni.so
 vendor/lib64/libtensorflowlite_jni.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libtflite_model_bnudc.so
@@ -1989,11 +1927,6 @@ vendor/bin/qsh_wifi_test
 vendor/bin/rkp_factory_extraction_tool
 vendor/bin/test_diag
 vendor/bin/tpdtest
-vendor/bin/vppcommonlibraryunittest
-vendor/bin/vppipcunittest
-vendor/bin/vpplibraryfunctionaltest
-vendor/bin/vpplibraryunittest
-vendor/bin/vppserviceunittest
 vendor/bin/zte_diag_callback
 vendor/bin/zte_ftm
 vendor/etc/ftm_test_config
@@ -2061,23 +1994,6 @@ vendor/bin/vmmgr
 vendor/etc/init/vmmgr.rc
 vendor/etc/vmmgr.conf
 
-# VPP
-vendor/bin/vppservice
-vendor/etc/configstore/vpp.configstore.xml
-vendor/etc/init/vppservice.rc
-vendor/etc/vintf/manifest/vendor.qti.hardware.vpp@2.0-service.xml
-vendor/lib64/libvppclient.so
-vendor/lib64/libvppcommon.so
-vendor/lib64/libvpphcp.so
-vendor/lib64/libvpphvx.so
-vendor/lib64/libvppimmotion.so
-vendor/lib64/libvpplibrary.so
-vendor/lib64/libvpptestutils.so
-vendor/lib64/vendor.qti.hardware.vpp@1.1.so
-vendor/lib64/vendor.qti.hardware.vpp@1.2.so
-vendor/lib64/vendor.qti.hardware.vpp@1.3.so
-vendor/lib64/vendor.qti.hardware.vpp@2.0.so
-
 # VPU firmware
 vendor/firmware/vpu20_4v.mbn
 vendor/firmware/vpu20_4v_unsigned.mbn
@@ -2096,10 +2012,6 @@ vendor/lib64/soundfx/libhaptic_effect.so
 # Vibrator firmware
 vendor/firmware/haptic_rtp.bin
 
-# Video
-vendor/lib64/libvideotxr.so
-vendor/lib64/libvideoutils.so
-
 # WiFi Display
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice
@@ -2115,6 +2027,7 @@ vendor/etc/wfdconfig.xml
 vendor/lib64/hw/vendor.qti.hardware.wifidisplaysession@1.0-impl.so
 vendor/lib64/libFileMux_proprietary.so
 vendor/lib64/libmiracast.so
+vendor/lib64/libmmosal_vendor.so
 vendor/lib64/libmmrtpdecoder_vendor.so
 vendor/lib64/libmmrtpencoder_vendor.so
 vendor/lib64/libwfdcodecv4l2_proprietary.so
