@@ -153,6 +153,7 @@ vendor/bin/battery_stats
 vendor/etc/init/vendor.qti.battery_stats.rc
 
 # Bluetooth (A2DP)
+vendor/etc/vintf/manifest/bluetooth_audio.xml
 vendor/lib64/btaudio_offload_if.so
 vendor/lib64/hw/audio.bluetooth_qti.default.so
 vendor/lib64/hw/android.hardware.bluetooth.audio-impl-qti.so
