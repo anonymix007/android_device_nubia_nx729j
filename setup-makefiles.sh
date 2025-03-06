@@ -167,7 +167,9 @@ function lib_to_package_fixup_vendor_variants() {
         libvmmem)
             echo "$1_vendor"
             ;;
-        libwpa_client) ;;
+        libwpa_client | \
+        libar-pal)
+            ;;
         *)
             return 1
             ;;

@@ -89,7 +89,13 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "libjnigraphics.so" "libcv_shim.so" "${2}"
             ;;
-        vendor/etc/seccomp_policy/atfwd@2.0.policy | vendor/etc/seccomp_policy/modemManager.policy | vendor/etc/seccomp_policy/qsap_sensors.policy | vendor/etc/seccomp_policy/qwesd@2.0.policy | vendor/etc/seccomp_policy/wfdhdcphalservice.policy)
+        vendor/etc/seccomp_policy/qwesd@2.0.policy)
+            [ "$2" = "" ] && return 0
+            [ -n "$(tail -c 1 "${2}")" ] && echo >> "${2}"
+            grep -q "gettid: 1" "${2}" || echo "gettid: 1" >> "${2}"
+            grep -q "pipe2: 1" "${2}" || echo "pipe2: 1" >> "${2}"
+            ;;
+        vendor/etc/seccomp_policy/atfwd@2.0.policy | vendor/etc/seccomp_policy/modemManager.policy | vendor/etc/seccomp_policy/qsap_sensors.policy | vendor/etc/seccomp_policy/wfdhdcphalservice.policy)
             [ "$2" = "" ] && return 0
             [ -n "$(tail -c 1 "${2}")" ] && echo >> "${2}"
             grep -q "gettid: 1" "${2}" || echo "gettid: 1" >> "${2}"
