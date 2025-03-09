@@ -30,4 +30,148 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
+
+    <!-- Minimum screen brightness setting allowed by power manager.
+         The user is forbidden from setting the brightness below this level.  -->
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0</item>
+
+    <!-- Maximum screen brightness allowed by the power manager.
+         The user is forbidden from setting the brightness above this level. -->
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+
+    <!-- Whether to enable framework dimming for UDFPS -->
+    <bool name="config_udfpsFrameworkDimming">true</bool>
+
+    <!-- Array of brightness-alpha LUT for framework dimming -->
+    <string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
+          <item>0,235</item>
+          <item>32,235</item>
+          <item>64,235</item>
+          <item>96,235</item>
+          <item>128,235</item>
+          <item>161,232</item>
+          <item>193,231</item>
+          <item>225,231</item>
+          <item>257,232</item>
+          <item>290,232</item>
+          <item>322,229</item>
+          <item>354,228</item>
+          <item>386,227</item>
+          <item>419,226</item>
+          <item>451,224</item>
+          <item>483,224</item>
+          <item>515,223</item>
+          <item>548,221</item>
+          <item>580,220</item>
+          <item>612,219</item>
+          <item>644,217</item>
+          <item>677,216</item>
+          <item>709,214</item>
+          <item>741,213</item>
+          <item>773,211</item>
+          <item>806,210</item>
+          <item>838,209</item>
+          <item>870,206</item>
+          <item>902,205</item>
+          <item>935,204</item>
+          <item>967,203</item>
+          <item>999,201</item>
+          <item>1031,200</item>
+          <item>1064,198</item>
+          <item>1096,196</item>
+          <item>1128,195</item>
+          <item>1160,193</item>
+          <item>1193,191</item>
+          <item>1225,190</item>
+          <item>1257,188</item>
+          <item>1289,187</item>
+          <item>1322,185</item>
+          <item>1354,183</item>
+          <item>1386,181</item>
+          <item>1418,179</item>
+          <item>1450,178</item>
+          <item>1483,176</item>
+          <item>1515,174</item>
+          <item>1547,172</item>
+          <item>1579,170</item>
+          <item>1612,169</item>
+          <item>1644,167</item>
+          <item>1676,166</item>
+          <item>1708,164</item>
+          <item>1741,163</item>
+          <item>1773,162</item>
+          <item>1805,160</item>
+          <item>1837,159</item>
+          <item>1870,157</item>
+          <item>1902,156</item>
+          <item>1934,155</item>
+          <item>1966,153</item>
+          <item>1999,152</item>
+          <item>2031,150</item>
+          <item>2063,148</item>
+          <item>2095,146</item>
+          <item>2128,144</item>
+          <item>2160,142</item>
+          <item>2192,140</item>
+          <item>2224,138</item>
+          <item>2257,136</item>
+          <item>2289,134</item>
+          <item>2321,132</item>
+          <item>2353,130</item>
+          <item>2386,128</item>
+          <item>2418,126</item>
+          <item>2450,125</item>
+          <item>2482,123</item>
+          <item>2515,122</item>
+          <item>2547,120</item>
+          <item>2579,119</item>
+          <item>2611,117</item>
+          <item>2644,116</item>
+          <item>2676,114</item>
+          <item>2708,112</item>
+          <item>2740,111</item>
+          <item>2772,109</item>
+          <item>2805,107</item>
+          <item>2837,106</item>
+          <item>2869,104</item>
+          <item>2901,102</item>
+          <item>2934,100</item>
+          <item>2966,98</item>
+          <item>2998,97</item>
+          <item>3030,95</item>
+          <item>3063,93</item>
+          <item>3095,91</item>
+          <item>3127,89</item>
+          <item>3159,87</item>
+          <item>3192,85</item>
+          <item>3224,83</item>
+          <item>3256,81</item>
+          <item>3288,80</item>
+          <item>3321,78</item>
+          <item>3353,77</item>
+          <item>3385,75</item>
+          <item>3417,74</item>
+          <item>3450,72</item>
+          <item>3482,71</item>
+          <item>3514,69</item>
+          <item>3546,68</item>
+          <item>3579,66</item>
+          <item>3611,65</item>
+          <item>3643,63</item>
+          <item>3675,61</item>
+          <item>3708,60</item>
+          <item>3740,58</item>
+          <item>3772,56</item>
+          <item>3804,55</item>
+          <item>3837,53</item>
+          <item>3869,51</item>
+          <item>3901,50</item>
+          <item>3933,49</item>
+          <item>3966,48</item>
+          <item>3998,47</item>
+          <item>4030,45</item>
+          <item>4062,40</item>
+          <item>4095,37</item>
+    </string-array>
+
 </resources>

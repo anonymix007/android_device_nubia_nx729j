@@ -60,7 +60,9 @@ BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # Display
+SOONG_CONFIG_qtidisplay_zte_udfps := true
 TARGET_SCREEN_DENSITY := 400
+TARGET_USE_YCRCB_CAMERA_ENCODE := true
 
 # Biometrics
 TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/nubia:libudfps_extension.nubia

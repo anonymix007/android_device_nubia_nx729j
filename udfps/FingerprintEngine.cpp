@@ -87,6 +87,7 @@ FingerprintEngineNX729J::~FingerprintEngineNX729J() {
 
 void FingerprintEngineNX729J::onPointerDownImpl(int32_t /*pointerId*/, int32_t /*x*/, int32_t /*y*/, float /*minor*/, float /*major*/) {
     ALOGI("onPointerDownImpl");
+    writeHbm(true);
     if (mDevice->sendCustomizedCommand) {
         mDevice->sendCustomizedCommand(mDevice, 10, 1, CUSTOMIZED_COMMAND, CUSTOMIZED_COMMAND_LEN);
     } else {
